@@ -24,7 +24,7 @@ namespace Vimera {
         string lang, lang_path;
         // FILE HASH
         // ======================================================================================================
-        int file_hash_algorithm_mode, file_select_mode, file_hash_process_end, file_hash_preloader = 0;
+        int file_hash_algorithm_mode, file_hash_process_end, file_hash_preloader = 0;
         string file_last_hash_algorithm;
         bool file_hash_timer_mode;
         // TEXT HASH
@@ -204,16 +204,11 @@ namespace Vimera {
                     FileHashAlgorithmSelect.Items.Add(hash_algorithm[i]);
                 }
                 FileHashAlgorithmSelect.SelectedIndex = 0;
-                string[] file_hash_mode = { Encoding.UTF8.GetString(Encoding.Default.GetBytes(v_lang.VimeraReadLangs("FileHashTool", "fht_2").Trim())), Encoding.UTF8.GetString(Encoding.Default.GetBytes(v_lang.VimeraReadLangs("FileHashTool", "fht_3").Trim())) };
-                for (int i = 0; i <= file_hash_mode.Length - 1; i++){
-                    FileHashModeSelect.Items.Add(file_hash_mode[i]);
-                }
-                FileHashModeSelect.SelectedIndex = 0;
                 // DVG
-                FileHashDGV.Columns.Add("FP", Encoding.UTF8.GetString(Encoding.Default.GetBytes(v_lang.VimeraReadLangs("FileHashTool", "fht_5").Trim())));
-                FileHashDGV.Columns.Add("FS", Encoding.UTF8.GetString(Encoding.Default.GetBytes(v_lang.VimeraReadLangs("FileHashTool", "fht_6").Trim())));
-                FileHashDGV.Columns.Add("HV", Encoding.UTF8.GetString(Encoding.Default.GetBytes(v_lang.VimeraReadLangs("FileHashTool", "fht_7").Trim())));
-                FileHashDGV.Columns.Add("CP", Encoding.UTF8.GetString(Encoding.Default.GetBytes(v_lang.VimeraReadLangs("FileHashTool", "fht_8").Trim())));
+                FileHashDGV.Columns.Add("FP", Encoding.UTF8.GetString(Encoding.Default.GetBytes(v_lang.VimeraReadLangs("FileHashTool", "fht_3").Trim())));
+                FileHashDGV.Columns.Add("FS", Encoding.UTF8.GetString(Encoding.Default.GetBytes(v_lang.VimeraReadLangs("FileHashTool", "fht_4").Trim())));
+                FileHashDGV.Columns.Add("HV", Encoding.UTF8.GetString(Encoding.Default.GetBytes(v_lang.VimeraReadLangs("FileHashTool", "fht_5").Trim())));
+                FileHashDGV.Columns.Add("CP", Encoding.UTF8.GetString(Encoding.Default.GetBytes(v_lang.VimeraReadLangs("FileHashTool", "fht_6").Trim())));
                 FileHashDGV.Columns[0].Width = 185;
                 FileHashDGV.Columns[1].Width = 115;
                 FileHashDGV.Columns[3].Width = 115;
@@ -245,11 +240,6 @@ namespace Vimera {
                FileHashStartBtn.Enabled = true;
             }
         }
-        // FILE HASH HASH MODE SELECT CHANGED INDEX
-        // ======================================================================================================
-        private void FileHashModeSelect_SelectedIndexChanged(object sender, EventArgs e){
-            file_select_mode = FileHashModeSelect.SelectedIndex;
-        }
         // FILE HASH DRAG ENTER FUNCTION
         // ======================================================================================================
         private void FileHashPanel_DragEnter(object sender, DragEventArgs e){
@@ -267,7 +257,6 @@ namespace Vimera {
                         // Folder
                         file_select_clear_function();
                         string[] file_list = Directory.GetFiles(data_path, "*.*", SearchOption.AllDirectories);
-                        if (file_list.Count() > 1){ FileHashModeSelect.SelectedIndex = 1; }
                         foreach (string files in file_list){
                             file_select_process_function(files);
                         }
@@ -276,7 +265,6 @@ namespace Vimera {
                         // File
                         string[] select_file = (string[])e.Data.GetData(DataFormats.FileDrop, true);
                         file_select_clear_function();
-                        if (select_file.Length > 1){ FileHashModeSelect.SelectedIndex = 1; }
                         for (int i = 0; i <= select_file.Length - 1; i++){
                             file_select_process_function(select_file[i]);
                         }
@@ -288,52 +276,22 @@ namespace Vimera {
         // FILE HASH SELECT FILE BTN
         // ======================================================================================================
         private void FileHashSelectFileBtn_Click(object sender, EventArgs e){
-            if (file_select_mode == 0){
-                file_hash_select_btn_engine(0);
-            }else if (file_select_mode == 1){
-                file_hash_select_btn_engine(1);
-            }
-        }
-        // FILE HASH SELECT FILE FUNCTION
-        // ======================================================================================================
-        private void file_hash_select_btn_engine(int select_mode){
-            VimeraGetLangs v_lang = new VimeraGetLangs(lang_path);
-            switch (select_mode){
-                case 0:
-                    try{
-                        using (var select_file = new OpenFileDialog()){
-                            select_file.Filter = Encoding.UTF8.GetString(Encoding.Default.GetBytes(v_lang.VimeraReadLangs("FileHashTool", "fht_9").Trim())) + " (*.*)|*.*";
-                            select_file.InitialDirectory = @"C:\Users\" + SystemInformation.UserName + @"\Desktop\";
-                            select_file.Title = Application.ProductName + " - " + Encoding.UTF8.GetString(Encoding.Default.GetBytes(v_lang.VimeraReadLangs("FileHashTool", "fht_10").Trim()));
-                            select_file.Multiselect = false;
-                            if (select_file.ShowDialog() == DialogResult.OK){
-                                file_select_clear_function();
-                                foreach (String files in select_file.FileNames){
-                                    file_select_process_function(files);
-                                }
-                                FileHashDGV.ClearSelection();
-                            }
+            try{
+                VimeraGetLangs v_lang = new VimeraGetLangs(lang_path);
+                using (var select_file = new OpenFileDialog()){
+                    select_file.Filter = Encoding.UTF8.GetString(Encoding.Default.GetBytes(v_lang.VimeraReadLangs("FileHashTool", "fht_7").Trim())) + " (*.*)|*.*";
+                    select_file.InitialDirectory = @"C:\Users\" + SystemInformation.UserName + @"\Desktop\";
+                    select_file.Title = Application.ProductName + " - " + Encoding.UTF8.GetString(Encoding.Default.GetBytes(v_lang.VimeraReadLangs("FileHashTool", "fht_8").Trim()));
+                    select_file.Multiselect = true;
+                    if (select_file.ShowDialog() == DialogResult.OK){
+                        file_select_clear_function();
+                        foreach (String files in select_file.FileNames){
+                            file_select_process_function(files);
                         }
-                    }catch (Exception){ }
-                break;
-                case 1:
-                    try{
-                        using (var select_folder = new FolderBrowserDialog()){
-                            select_folder.ShowNewFolderButton = false;
-                            select_folder.Description = Encoding.UTF8.GetString(Encoding.Default.GetBytes(v_lang.VimeraReadLangs("FileHashTool", "fht_11").Trim()));
-                            select_folder.SelectedPath = @"C:\Users\" + SystemInformation.UserName + @"\Desktop\";
-                            if (select_folder.ShowDialog() == DialogResult.OK && !string.IsNullOrWhiteSpace(select_folder.SelectedPath)){
-                                string[] files = Directory.GetFiles(select_folder.SelectedPath, "*.*", SearchOption.AllDirectories);
-                                file_select_clear_function();
-                                for (int i = 0; i <= files.Length - 1; i++){
-                                    file_select_process_function(files[i]);
-                                }
-                                FileHashDGV.ClearSelection();
-                            }
-                        }
-                    }catch (Exception){ }
-                break;
-            }
+                        FileHashDGV.ClearSelection();
+                    }
+                }
+            }catch (Exception){ }
         }
         // FILE HASH FILE SELECT PROCESS FUNCTION
         // ======================================================================================================
@@ -415,7 +373,7 @@ namespace Vimera {
                                     } while (bytes_read != 0);
                                     hasher.TransformFinalBlock(buffer, 0, 0);
                                     FileHashDGV.Rows[i].Cells[2].Value = HashStringRotate(hasher.Hash);
-                                    FileHashDGV.Rows[i].Cells[3].Value = Encoding.UTF8.GetString(Encoding.Default.GetBytes(v_lang.VimeraReadLangs("FileHashTool", "fht_12").Trim()));
+                                    FileHashDGV.Rows[i].Cells[3].Value = Encoding.UTF8.GetString(Encoding.Default.GetBytes(v_lang.VimeraReadLangs("FileHashTool", "fht_9").Trim()));
                                 }
                                 break;
                             case 1:
@@ -429,7 +387,7 @@ namespace Vimera {
                                     } while (bytes_read != 0);
                                     hasher.TransformFinalBlock(buffer, 0, 0);
                                     FileHashDGV.Rows[i].Cells[2].Value = HashStringRotate(hasher.Hash);
-                                    FileHashDGV.Rows[i].Cells[3].Value = Encoding.UTF8.GetString(Encoding.Default.GetBytes(v_lang.VimeraReadLangs("FileHashTool", "fht_12").Trim()));
+                                    FileHashDGV.Rows[i].Cells[3].Value = Encoding.UTF8.GetString(Encoding.Default.GetBytes(v_lang.VimeraReadLangs("FileHashTool", "fht_9").Trim()));
                                 }
                                 break;
                             case 2:
@@ -443,7 +401,7 @@ namespace Vimera {
                                     } while (bytes_read != 0);
                                     hasher.TransformFinalBlock(buffer, 0, 0);
                                     FileHashDGV.Rows[i].Cells[2].Value = HashStringRotate(hasher.Hash);
-                                    FileHashDGV.Rows[i].Cells[3].Value = Encoding.UTF8.GetString(Encoding.Default.GetBytes(v_lang.VimeraReadLangs("FileHashTool", "fht_12").Trim()));
+                                    FileHashDGV.Rows[i].Cells[3].Value = Encoding.UTF8.GetString(Encoding.Default.GetBytes(v_lang.VimeraReadLangs("FileHashTool", "fht_9").Trim()));
                                 }
                                 break;
                             case 3:
@@ -457,7 +415,7 @@ namespace Vimera {
                                     } while (bytes_read != 0);
                                     hasher.TransformFinalBlock(buffer, 0, 0);
                                     FileHashDGV.Rows[i].Cells[2].Value = HashStringRotate(hasher.Hash);
-                                    FileHashDGV.Rows[i].Cells[3].Value = Encoding.UTF8.GetString(Encoding.Default.GetBytes(v_lang.VimeraReadLangs("FileHashTool", "fht_12").Trim()));
+                                    FileHashDGV.Rows[i].Cells[3].Value = Encoding.UTF8.GetString(Encoding.Default.GetBytes(v_lang.VimeraReadLangs("FileHashTool", "fht_9").Trim()));
                                 }
                                 break;
                             case 4:
@@ -471,7 +429,7 @@ namespace Vimera {
                                     } while (bytes_read != 0);
                                     hasher.TransformFinalBlock(buffer, 0, 0);
                                     FileHashDGV.Rows[i].Cells[2].Value = HashStringRotate(hasher.Hash);
-                                    FileHashDGV.Rows[i].Cells[3].Value = Encoding.UTF8.GetString(Encoding.Default.GetBytes(v_lang.VimeraReadLangs("FileHashTool", "fht_12").Trim()));
+                                    FileHashDGV.Rows[i].Cells[3].Value = Encoding.UTF8.GetString(Encoding.Default.GetBytes(v_lang.VimeraReadLangs("FileHashTool", "fht_9").Trim()));
                                 }
                                 break;
                         }
@@ -491,7 +449,7 @@ namespace Vimera {
             VimeraGetLangs v_lang = new VimeraGetLangs(lang_path);
             Text = Application.ProductName + " " + Application.ProductVersion.Substring(0, 3);
             file_hash_enabled_ui();
-            MessageBox.Show(Encoding.UTF8.GetString(Encoding.Default.GetBytes(v_lang.VimeraReadLangs("FileHashTool", "fht_13").Trim())), Application.ProductName, MessageBoxButtons.OK, MessageBoxIcon.Information);
+            MessageBox.Show(Encoding.UTF8.GetString(Encoding.Default.GetBytes(v_lang.VimeraReadLangs("FileHashTool", "fht_10").Trim())), Application.ProductName, MessageBoxButtons.OK, MessageBoxIcon.Information);
         }
         // FILE HASH STRING GENERATE
         // ======================================================================================================
@@ -516,7 +474,6 @@ namespace Vimera {
             FileHashLoadBG_Panel.Visible = true;
             FileHashTimer.Visible = true;
             FileHashAlgorithmSelect.Enabled = false;
-            FileHashModeSelect.Enabled = false;
             FileHashSelectFileBtn.Enabled = false;
             FileHashStartBtn.Enabled = false;
             FileHashDGV.ClearSelection();
@@ -527,7 +484,6 @@ namespace Vimera {
         private void file_hash_enabled_ui(){
             file_hash_timer_mode = false;
             FileHashAlgorithmSelect.Enabled = true;
-            FileHashModeSelect.Enabled = true;
             FileHashSelectFilePathTextBox.Text = string.Empty;
             FileHashSelectFileBtn.Enabled = true;
             FileHashUpperHashMode.Visible = true;
@@ -537,6 +493,20 @@ namespace Vimera {
             FileHashCompareTextBox.Enabled = true;
             FileHashCompareBtn.Visible = true;
             FileHashPanel.AllowDrop = true;
+            // NULL VALUE CHANGE
+            try{
+                if (FileHashDGV.Rows.Count > 0){
+                    VimeraGetLangs v_lang = new VimeraGetLangs(lang_path);
+                    for (int i = 0; i <= FileHashDGV.Rows.Count - 1; i++){
+                        if (FileHashDGV.Rows[i].Cells[2].Value == null || (string)FileHashDGV.Rows[i].Cells[2].Value == "" || (string)FileHashDGV.Rows[i].Cells[2].Value == string.Empty){
+                            FileHashDGV.Rows[i].Cells[2].Value = Encoding.UTF8.GetString(Encoding.Default.GetBytes(v_lang.VimeraReadLangs("FileHashTool", "fht_null").Trim()));
+                        }
+                        if (FileHashDGV.Rows[i].Cells[3].Value == null || (string)FileHashDGV.Rows[i].Cells[3].Value == "" || (string)FileHashDGV.Rows[i].Cells[3].Value == string.Empty){
+                            FileHashDGV.Rows[i].Cells[3].Value = Encoding.UTF8.GetString(Encoding.Default.GetBytes(v_lang.VimeraReadLangs("FileHashTool", "fht_9").Trim()));
+                        }
+                    }
+                }
+            }catch (Exception){ }
             if (WindowState == FormWindowState.Minimized){
                 WindowState = FormWindowState.Normal;
             }
@@ -561,14 +531,16 @@ namespace Vimera {
         // FILE HASH DGV CELL CLICK COPY HASH
         // ======================================================================================================
         private void FileHashDGV_CellDoubleClick(object sender, DataGridViewCellEventArgs e){
-            if (file_hash_process_end == 1){
-                VimeraGetLangs v_lang = new VimeraGetLangs(lang_path);
-                if (Clipboard.GetText() != FileHashDGV.Rows[e.RowIndex].Cells[2].Value.ToString()){
-                    Clipboard.SetText(FileHashDGV.Rows[e.RowIndex].Cells[2].Value.ToString());
-                    //FileHashDGV.ClearSelection();
-                    MessageBox.Show(Encoding.UTF8.GetString(Encoding.Default.GetBytes(v_lang.VimeraReadLangs("FileHashTool", "fht_14").Trim())), Application.ProductName, MessageBoxButtons.OK, MessageBoxIcon.Information);
+            try{
+                if (file_hash_process_end == 1){
+                    VimeraGetLangs v_lang = new VimeraGetLangs(lang_path);
+                    if (Clipboard.GetText() != FileHashDGV.Rows[e.RowIndex].Cells[2].Value.ToString()){
+                        Clipboard.SetText(FileHashDGV.Rows[e.RowIndex].Cells[2].Value.ToString());
+                        //FileHashDGV.ClearSelection();
+                        MessageBox.Show(Encoding.UTF8.GetString(Encoding.Default.GetBytes(v_lang.VimeraReadLangs("FileHashTool", "fht_11").Trim())), Application.ProductName, MessageBoxButtons.OK, MessageBoxIcon.Information);
+                    }
                 }
-            }
+            }catch (Exception){ }
         }
         // FILE HASH COMPARE BTN ENABLED CHECK MODE
         // ======================================================================================================
@@ -588,13 +560,13 @@ namespace Vimera {
                     string generate_hash_value = FileHashDGV.Rows[FileHashDGV.CurrentCell.RowIndex].Cells[2].Value.ToString().ToLower();
                     string original_value = FileHashCompareTextBox.Text.Trim().ToLower();
                     if (original_value == generate_hash_value){
-                        MessageBox.Show(Encoding.UTF8.GetString(Encoding.Default.GetBytes(v_lang.VimeraReadLangs("FileHashTool", "fht_15").Trim())), Application.ProductName, MessageBoxButtons.OK, MessageBoxIcon.Information);
+                        MessageBox.Show(Encoding.UTF8.GetString(Encoding.Default.GetBytes(v_lang.VimeraReadLangs("FileHashTool", "fht_12").Trim())), Application.ProductName, MessageBoxButtons.OK, MessageBoxIcon.Information);
                     }else{
-                        MessageBox.Show(Encoding.UTF8.GetString(Encoding.Default.GetBytes(v_lang.VimeraReadLangs("FileHashTool", "fht_16").Trim())), Application.ProductName, MessageBoxButtons.OK, MessageBoxIcon.Warning);
+                        MessageBox.Show(Encoding.UTF8.GetString(Encoding.Default.GetBytes(v_lang.VimeraReadLangs("FileHashTool", "fht_13").Trim())), Application.ProductName, MessageBoxButtons.OK, MessageBoxIcon.Error);
                     }
                     FileHashDGV.ClearSelection();
                 }else{
-                    MessageBox.Show(Encoding.UTF8.GetString(Encoding.Default.GetBytes(v_lang.VimeraReadLangs("FileHashTool", "fht_17").Trim())), Application.ProductName, MessageBoxButtons.OK, MessageBoxIcon.Warning);
+                    MessageBox.Show(Encoding.UTF8.GetString(Encoding.Default.GetBytes(v_lang.VimeraReadLangs("FileHashTool", "fht_14").Trim())), Application.ProductName, MessageBoxButtons.OK, MessageBoxIcon.Warning);
                 }
             }catch (Exception){ }
         }
@@ -626,30 +598,31 @@ namespace Vimera {
         private void FileHashExportHashsBtn_Click(object sender, EventArgs e){
             try{
                 VimeraGetLangs v_lang = new VimeraGetLangs(lang_path);
-                PrintEngineList.Add($"<{new string('-', 13)} {string.Format(Encoding.UTF8.GetString(Encoding.Default.GetBytes(v_lang.VimeraReadLangs("FileHashTool", "fht_27").Trim())), Application.ProductName)} {new string('-', 13)}>");
-                PrintEngineList.Add($"{Environment.NewLine}{new string('-', 60)}{Environment.NewLine}");
+                PrintEngineList.Add($"<{new string('-', 13)} {string.Format(Encoding.UTF8.GetString(Encoding.Default.GetBytes(v_lang.VimeraReadLangs("FileHashPrintEngine", "fhpe_1").Trim())), Application.ProductName)} {new string('-', 13)}>");
+                PrintEngineList.Add($"{Environment.NewLine}{new string('-', 75)}{Environment.NewLine}");
                 for (int i = 0; i <= FileHashDGV.Rows.Count - 1; i++){
-                    PrintEngineList.Add(Encoding.UTF8.GetString(Encoding.Default.GetBytes(v_lang.VimeraReadLangs("FileHashTool", "fht_5").Trim())) + ": " + FileHashDGV.Rows[i].Cells[0].Value.ToString());
-                    PrintEngineList.Add(Encoding.UTF8.GetString(Encoding.Default.GetBytes(v_lang.VimeraReadLangs("FileHashTool", "fht_6").Trim())) + ": " + FileHashDGV.Rows[i].Cells[1].Value.ToString());
-                    PrintEngineList.Add(file_last_hash_algorithm + " " + Encoding.UTF8.GetString(Encoding.Default.GetBytes(v_lang.VimeraReadLangs("FileHashTool", "fht_7").Trim())) + ": " + FileHashDGV.Rows[i].Cells[2].Value.ToString() + "\n\n" + new string('-', 60) + Environment.NewLine);
+                    PrintEngineList.Add(Encoding.UTF8.GetString(Encoding.Default.GetBytes(v_lang.VimeraReadLangs("FileHashPrintEngine", "fhpe_2").Trim())) + " " + Path.GetFileName(FileHashDGV.Rows[i].Cells[0].Value.ToString()));
+                    PrintEngineList.Add(Encoding.UTF8.GetString(Encoding.Default.GetBytes(v_lang.VimeraReadLangs("FileHashPrintEngine", "fhpe_3").Trim())) + " " + FileHashDGV.Rows[i].Cells[0].Value.ToString());
+                    PrintEngineList.Add(Encoding.UTF8.GetString(Encoding.Default.GetBytes(v_lang.VimeraReadLangs("FileHashPrintEngine", "fhpe_4").Trim())) + " " + FileHashDGV.Rows[i].Cells[1].Value.ToString());
+                    PrintEngineList.Add(file_last_hash_algorithm + " " + Encoding.UTF8.GetString(Encoding.Default.GetBytes(v_lang.VimeraReadLangs("FileHashPrintEngine", "fhpe_5").Trim())) + " " + FileHashDGV.Rows[i].Cells[2].Value.ToString() + "\n\n" + new string('-', 75) + Environment.NewLine);
                 }
-                PrintEngineList.Add(Application.ProductName + " " + Encoding.UTF8.GetString(Encoding.Default.GetBytes(v_lang.VimeraReadLangs("FileHashTool", "fht_22").Trim())) + " " + Application.ProductVersion.Substring(0, 3));
+                PrintEngineList.Add(string.Format(Encoding.UTF8.GetString(Encoding.Default.GetBytes(v_lang.VimeraReadLangs("FileHashPrintEngine", "fhpe_6").Trim())), Application.ProductName, Application.ProductVersion.Substring(0, 3)));
                 PrintEngineList.Add($"(C) {DateTime.Now.Year} {Application.CompanyName}.");
-                PrintEngineList.Add(Encoding.UTF8.GetString(Encoding.Default.GetBytes(v_lang.VimeraReadLangs("FileHashTool", "fht_23").Trim())) + " " + DateTime.Now.ToString("dd.MM.yyyy - H:mm:ss"));
-                PrintEngineList.Add(Encoding.UTF8.GetString(Encoding.Default.GetBytes(v_lang.VimeraReadLangs("FileHashTool", "fht_24").Trim())) + " " + github_link);
+                PrintEngineList.Add(Encoding.UTF8.GetString(Encoding.Default.GetBytes(v_lang.VimeraReadLangs("FileHashPrintEngine", "fhpe_7").Trim())) + " " + DateTime.Now.ToString("dd.MM.yyyy - H:mm:ss"));
+                PrintEngineList.Add(Encoding.UTF8.GetString(Encoding.Default.GetBytes(v_lang.VimeraReadLangs("FileHashPrintEngine", "fhpe_8").Trim())) + " " + github_link);
                 SaveFileDialog save_engine = new SaveFileDialog{
                     InitialDirectory = @"C:\Users\" + SystemInformation.UserName + @"\Desktop\",
-                    Title = Application.ProductName + " - " + Encoding.UTF8.GetString(Encoding.Default.GetBytes(v_lang.VimeraReadLangs("FileHashTool", "fht_25").Trim())),
+                    Title = string.Format(Encoding.UTF8.GetString(Encoding.Default.GetBytes(v_lang.VimeraReadLangs("FileHashPrintEngine", "fhpe_9").Trim())), Application.ProductName),
                     DefaultExt = "txt",
-                    FileName = string.Format(Encoding.UTF8.GetString(Encoding.Default.GetBytes(v_lang.VimeraReadLangs("FileHashTool", "fht_26").Trim())), Application.ProductName),
-                    Filter = Encoding.UTF8.GetString(Encoding.Default.GetBytes(v_lang.VimeraReadLangs("FileHashTool", "fht_27").Trim())) + " (*.txt)|*.txt"
+                    FileName = string.Format(Encoding.UTF8.GetString(Encoding.Default.GetBytes(v_lang.VimeraReadLangs("FileHashPrintEngine", "fhpe_10").Trim())), Application.ProductName),
+                    Filter = Encoding.UTF8.GetString(Encoding.Default.GetBytes(v_lang.VimeraReadLangs("FileHashPrintEngine", "fhpe_11").Trim())) + " (*.txt)|*.txt"
                 };
                 if (save_engine.ShowDialog() == DialogResult.OK){
                     String[] text_engine = new String[PrintEngineList.Count];
                     PrintEngineList.CopyTo(text_engine, 0);
                     File.WriteAllLines(save_engine.FileName, text_engine);
-                    DialogResult vimera_print_engine_query = MessageBox.Show(string.Format(Encoding.UTF8.GetString(Encoding.Default.GetBytes(v_lang.VimeraReadLangs("FileHashTool", "fht_28").Trim())) + Environment.NewLine + Environment.NewLine + Encoding.UTF8.GetString(Encoding.Default.GetBytes(v_lang.VimeraReadLangs("FileHashTool", "fht_29").Trim())), Application.ProductName, save_engine.FileName), Application.ProductName, MessageBoxButtons.YesNo, MessageBoxIcon.Information);
-                    if (vimera_print_engine_query == DialogResult.Yes) { Process.Start(save_engine.FileName); }
+                    DialogResult vimera_print_engine_query = MessageBox.Show(string.Format(Encoding.UTF8.GetString(Encoding.Default.GetBytes(v_lang.VimeraReadLangs("FileHashPrintEngine", "fhpe_12").Trim())) + Environment.NewLine + Environment.NewLine + Encoding.UTF8.GetString(Encoding.Default.GetBytes(v_lang.VimeraReadLangs("FileHashPrintEngine", "fhpe_13").Trim())), Application.ProductName, save_engine.FileName), Application.ProductName, MessageBoxButtons.YesNo, MessageBoxIcon.Information);
+                    if (vimera_print_engine_query == DialogResult.Yes){ Process.Start(save_engine.FileName); }
                     PrintEngineList.Clear(); save_engine.Dispose();
                 }else{
                     PrintEngineList.Clear(); save_engine.Dispose();
@@ -1000,37 +973,44 @@ namespace Vimera {
                 TextHashBtn.Text = " " + " " + Encoding.UTF8.GetString(Encoding.Default.GetBytes(v_lang.VimeraReadLangs("LeftMenu", "left_m_2").Trim()));
                 HashCompareBtn.Text = " " + " " + Encoding.UTF8.GetString(Encoding.Default.GetBytes(v_lang.VimeraReadLangs("LeftMenu", "left_m_3").Trim()));
                 // FILE HASH
-                FileHashModeSelect.Items[0] = Encoding.UTF8.GetString(Encoding.Default.GetBytes(v_lang.VimeraReadLangs("FileHashTool", "fht_2").Trim()));
-                FileHashModeSelect.Items[1] = Encoding.UTF8.GetString(Encoding.Default.GetBytes(v_lang.VimeraReadLangs("FileHashTool", "fht_3").Trim()));
-                FileHashSelectFileBtn.Text = Encoding.UTF8.GetString(Encoding.Default.GetBytes(v_lang.VimeraReadLangs("FileHashTool", "fht_4").Trim()));
-                FileHashDGV.Columns[0].HeaderText = Encoding.UTF8.GetString(Encoding.Default.GetBytes(v_lang.VimeraReadLangs("FileHashTool", "fht_5").Trim()));
-                FileHashDGV.Columns[1].HeaderText = Encoding.UTF8.GetString(Encoding.Default.GetBytes(v_lang.VimeraReadLangs("FileHashTool", "fht_6").Trim()));
-                FileHashDGV.Columns[2].HeaderText = Encoding.UTF8.GetString(Encoding.Default.GetBytes(v_lang.VimeraReadLangs("FileHashTool", "fht_7").Trim()));
-                FileHashDGV.Columns[3].HeaderText = Encoding.UTF8.GetString(Encoding.Default.GetBytes(v_lang.VimeraReadLangs("FileHashTool", "fht_8").Trim()));
-                FileHashUpperHashMode.Text = Encoding.UTF8.GetString(Encoding.Default.GetBytes(v_lang.VimeraReadLangs("FileHashTool", "fht_18").Trim()));
-                FileHashExportHashsBtn.Text = Encoding.UTF8.GetString(Encoding.Default.GetBytes(v_lang.VimeraReadLangs("FileHashTool", "fht_19").Trim()));
-                FileHashCompareBtn.Text = Encoding.UTF8.GetString(Encoding.Default.GetBytes(v_lang.VimeraReadLangs("FileHashTool", "fht_20").Trim()));
-                FileHashStartBtn.Text = Encoding.UTF8.GetString(Encoding.Default.GetBytes(v_lang.VimeraReadLangs("FileHashTool", "fht_21").Trim()));
+                FileHashSelectFileBtn.Text = Encoding.UTF8.GetString(Encoding.Default.GetBytes(v_lang.VimeraReadLangs("FileHashTool", "fht_2").Trim()));
+                FileHashDGV.Columns[0].HeaderText = Encoding.UTF8.GetString(Encoding.Default.GetBytes(v_lang.VimeraReadLangs("FileHashTool", "fht_3").Trim()));
+                FileHashDGV.Columns[1].HeaderText = Encoding.UTF8.GetString(Encoding.Default.GetBytes(v_lang.VimeraReadLangs("FileHashTool", "fht_4").Trim()));
+                FileHashDGV.Columns[2].HeaderText = Encoding.UTF8.GetString(Encoding.Default.GetBytes(v_lang.VimeraReadLangs("FileHashTool", "fht_5").Trim()));
+                FileHashDGV.Columns[3].HeaderText = Encoding.UTF8.GetString(Encoding.Default.GetBytes(v_lang.VimeraReadLangs("FileHashTool", "fht_6").Trim()));
+                FileHashUpperHashMode.Text = Encoding.UTF8.GetString(Encoding.Default.GetBytes(v_lang.VimeraReadLangs("FileHashTool", "fht_15").Trim()));
+                FileHashExportHashsBtn.Text = Encoding.UTF8.GetString(Encoding.Default.GetBytes(v_lang.VimeraReadLangs("FileHashTool", "fht_16").Trim()));
+                FileHashCompareBtn.Text = Encoding.UTF8.GetString(Encoding.Default.GetBytes(v_lang.VimeraReadLangs("FileHashTool", "fht_17").Trim()));
+                FileHashStartBtn.Text = Encoding.UTF8.GetString(Encoding.Default.GetBytes(v_lang.VimeraReadLangs("FileHashTool", "fht_18").Trim()));
                 // ROW COPY CHANGE WRAPPER
-                if (FileHashDGV.Rows.Count > 0){
-                    // BYTE TYPE CONVERT LANGUAGE
-                    for (int i = 0; i <= FileHashDGV.Rows.Count - 1; i++){
-                        if (FileHashDGV.Rows[i].Cells[1].Value.ToString().Contains("Byte")){
-                            string reload_text = FileHashDGV.Rows[i].Cells[1].Value.ToString().Replace("Byte", Encoding.UTF8.GetString(Encoding.Default.GetBytes(v_lang.VimeraReadLangs("FileHashTool", "fht_byte").Trim())));
-                            FileHashDGV.Rows[i].Cells[1].Value = reload_text;
+                try{
+                    if (FileHashDGV.Rows.Count > 0){
+                        // BYTE TYPE CONVERT LANGUAGE
+                        for (int i = 0; i <= FileHashDGV.Rows.Count - 1; i++){
+                            if (FileHashDGV.Rows[i].Cells[1].Value.ToString().Contains("Byte")){
+                                string reload_text = FileHashDGV.Rows[i].Cells[1].Value.ToString().Replace("Byte", Encoding.UTF8.GetString(Encoding.Default.GetBytes(v_lang.VimeraReadLangs("FileHashTool", "fht_byte").Trim())));
+                                FileHashDGV.Rows[i].Cells[1].Value = reload_text;
+                            }
+                            if (FileHashDGV.Rows[i].Cells[1].Value.ToString().Contains("Bayt")){
+                                string reload_text = FileHashDGV.Rows[i].Cells[1].Value.ToString().Replace("Bayt", Encoding.UTF8.GetString(Encoding.Default.GetBytes(v_lang.VimeraReadLangs("FileHashTool", "fht_byte").Trim())));
+                                FileHashDGV.Rows[i].Cells[1].Value = reload_text;
+                            }
+                            if (FileHashDGV.Rows[i].Cells[2].Value.ToString().ToLower().Contains("unreadable") || FileHashDGV.Rows[i].Cells[2].Value.ToString().ToLower().Contains("okunamıyor")){
+                                if (FileHashUpperHashMode.Checked == true){
+                                    FileHashDGV.Rows[i].Cells[2].Value = Encoding.UTF8.GetString(Encoding.Default.GetBytes(v_lang.VimeraReadLangs("FileHashTool", "fht_null").Trim().ToUpper()));
+                                }else{
+                                    FileHashDGV.Rows[i].Cells[2].Value = Encoding.UTF8.GetString(Encoding.Default.GetBytes(v_lang.VimeraReadLangs("FileHashTool", "fht_null").Trim()));
+                                }
+                            }
                         }
-                        if (FileHashDGV.Rows[i].Cells[1].Value.ToString().Contains("Bayt")){
-                            string reload_text = FileHashDGV.Rows[i].Cells[1].Value.ToString().Replace("Bayt", Encoding.UTF8.GetString(Encoding.Default.GetBytes(v_lang.VimeraReadLangs("FileHashTool", "fht_byte").Trim())));
-                            FileHashDGV.Rows[i].Cells[1].Value = reload_text;
+                        // COPY ROWS
+                        for (int i = 0; i <= FileHashDGV.Rows.Count - 1; i++){
+                            if ((string)FileHashDGV.Rows[i].Cells[3].Value == "Copy" || (string)FileHashDGV.Rows[i].Cells[3].Value == "Kopyala"){
+                                FileHashDGV.Rows[i].Cells[3].Value = Encoding.UTF8.GetString(Encoding.Default.GetBytes(v_lang.VimeraReadLangs("FileHashTool", "fht_9").Trim()));
+                            }
                         }
                     }
-                    // COPY ROWS
-                    for (int i = 0; i <= FileHashDGV.Rows.Count - 1; i++){
-                        if ((string)FileHashDGV.Rows[i].Cells[3].Value == "Copy" || (string)FileHashDGV.Rows[i].Cells[3].Value == "Kopyala"){
-                            FileHashDGV.Rows[i].Cells[3].Value = Encoding.UTF8.GetString(Encoding.Default.GetBytes(v_lang.VimeraReadLangs("FileHashTool", "fht_12").Trim()));
-                        }
-                    }
-                }
+                }catch (Exception){ }
                 // TEXT HASH
                 TextHashAlgorithmSelect.Items[0] = Encoding.UTF8.GetString(Encoding.Default.GetBytes(v_lang.VimeraReadLangs("FileHashTool", "fht_1").Trim()));
                 TextHashL1.Text = Encoding.UTF8.GetString(Encoding.Default.GetBytes(v_lang.VimeraReadLangs("TextHashTool", "tht_1").Trim()));

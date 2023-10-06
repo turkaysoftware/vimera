@@ -66,7 +66,6 @@
             this.FileHashUpperHashMode = new System.Windows.Forms.CheckBox();
             this.FileHashSelectFileBtn = new System.Windows.Forms.Button();
             this.FileHashSelectFilePathTextBox = new System.Windows.Forms.TextBox();
-            this.FileHashModeSelect = new System.Windows.Forms.ComboBox();
             this.FileHashAlgorithmSelect = new System.Windows.Forms.ComboBox();
             this.FileHashStartBtn = new System.Windows.Forms.Button();
             this.TextHash = new System.Windows.Forms.TabPage();
@@ -292,7 +291,7 @@
             this.darkThemeToolStripMenuItem});
             this.themeToolStripMenuItem.Image = global::Vimera.Properties.Resources.top_theme;
             this.themeToolStripMenuItem.Name = "themeToolStripMenuItem";
-            this.themeToolStripMenuItem.Size = new System.Drawing.Size(180, 22);
+            this.themeToolStripMenuItem.Size = new System.Drawing.Size(131, 22);
             this.themeToolStripMenuItem.Text = "Theme";
             // 
             // lightThemeToolStripMenuItem
@@ -318,7 +317,7 @@
             this.turkishToolStripMenuItem});
             this.languageToolStripMenuItem.Image = global::Vimera.Properties.Resources.top_language;
             this.languageToolStripMenuItem.Name = "languageToolStripMenuItem";
-            this.languageToolStripMenuItem.Size = new System.Drawing.Size(180, 22);
+            this.languageToolStripMenuItem.Size = new System.Drawing.Size(131, 22);
             this.languageToolStripMenuItem.Text = "Language";
             // 
             // englishToolStripMenuItem
@@ -344,14 +343,14 @@
             this.fullScreenToolStripMenuItem});
             this.initialViewToolStripMenuItem.Image = global::Vimera.Properties.Resources.top_launch;
             this.initialViewToolStripMenuItem.Name = "initialViewToolStripMenuItem";
-            this.initialViewToolStripMenuItem.Size = new System.Drawing.Size(180, 22);
+            this.initialViewToolStripMenuItem.Size = new System.Drawing.Size(131, 22);
             this.initialViewToolStripMenuItem.Text = "Initial View";
             // 
             // windowedToolStripMenuItem
             // 
             this.windowedToolStripMenuItem.Name = "windowedToolStripMenuItem";
             this.windowedToolStripMenuItem.ShortcutKeys = System.Windows.Forms.Keys.F5;
-            this.windowedToolStripMenuItem.Size = new System.Drawing.Size(180, 22);
+            this.windowedToolStripMenuItem.Size = new System.Drawing.Size(150, 22);
             this.windowedToolStripMenuItem.Text = "Windowed";
             this.windowedToolStripMenuItem.Click += new System.EventHandler(this.windowedToolStripMenuItem_Click);
             // 
@@ -359,7 +358,7 @@
             // 
             this.fullScreenToolStripMenuItem.Name = "fullScreenToolStripMenuItem";
             this.fullScreenToolStripMenuItem.ShortcutKeys = System.Windows.Forms.Keys.F6;
-            this.fullScreenToolStripMenuItem.Size = new System.Drawing.Size(180, 22);
+            this.fullScreenToolStripMenuItem.Size = new System.Drawing.Size(150, 22);
             this.fullScreenToolStripMenuItem.Text = "Full Screen";
             this.fullScreenToolStripMenuItem.Click += new System.EventHandler(this.fullScreenToolStripMenuItem_Click);
             // 
@@ -429,7 +428,6 @@
             this.FileHashPanel.Controls.Add(this.FileHashUpperHashMode);
             this.FileHashPanel.Controls.Add(this.FileHashSelectFileBtn);
             this.FileHashPanel.Controls.Add(this.FileHashSelectFilePathTextBox);
-            this.FileHashPanel.Controls.Add(this.FileHashModeSelect);
             this.FileHashPanel.Controls.Add(this.FileHashAlgorithmSelect);
             this.FileHashPanel.Controls.Add(this.FileHashStartBtn);
             this.FileHashPanel.Location = new System.Drawing.Point(7, 7);
@@ -627,28 +625,12 @@
             this.FileHashSelectFilePathTextBox.Enabled = false;
             this.FileHashSelectFilePathTextBox.Font = new System.Drawing.Font("Segoe UI Semibold", 9.75F, System.Drawing.FontStyle.Bold);
             this.FileHashSelectFilePathTextBox.ForeColor = System.Drawing.Color.Black;
-            this.FileHashSelectFilePathTextBox.Location = new System.Drawing.Point(219, 9);
+            this.FileHashSelectFilePathTextBox.Location = new System.Drawing.Point(113, 9);
             this.FileHashSelectFilePathTextBox.Margin = new System.Windows.Forms.Padding(3, 3, 0, 3);
             this.FileHashSelectFilePathTextBox.MaxLength = 256;
             this.FileHashSelectFilePathTextBox.Name = "FileHashSelectFilePathTextBox";
-            this.FileHashSelectFilePathTextBox.Size = new System.Drawing.Size(411, 25);
+            this.FileHashSelectFilePathTextBox.Size = new System.Drawing.Size(517, 25);
             this.FileHashSelectFilePathTextBox.TabIndex = 2;
-            // 
-            // FileHashModeSelect
-            // 
-            this.FileHashModeSelect.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(88)))), ((int)(((byte)(45)))), ((int)(((byte)(163)))));
-            this.FileHashModeSelect.Cursor = System.Windows.Forms.Cursors.Hand;
-            this.FileHashModeSelect.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
-            this.FileHashModeSelect.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.FileHashModeSelect.Font = new System.Drawing.Font("Segoe UI Semibold", 9.75F, System.Drawing.FontStyle.Bold);
-            this.FileHashModeSelect.ForeColor = System.Drawing.Color.White;
-            this.FileHashModeSelect.FormattingEnabled = true;
-            this.FileHashModeSelect.Location = new System.Drawing.Point(113, 9);
-            this.FileHashModeSelect.Margin = new System.Windows.Forms.Padding(3, 3, 3, 25);
-            this.FileHashModeSelect.Name = "FileHashModeSelect";
-            this.FileHashModeSelect.Size = new System.Drawing.Size(100, 25);
-            this.FileHashModeSelect.TabIndex = 1;
-            this.FileHashModeSelect.SelectedIndexChanged += new System.EventHandler(this.FileHashModeSelect_SelectedIndexChanged);
             // 
             // FileHashAlgorithmSelect
             // 
@@ -1193,7 +1175,6 @@
         private System.Windows.Forms.Panel HashComparePanel;
         private System.Windows.Forms.Button FileHashStartBtn;
         internal System.Windows.Forms.ComboBox FileHashAlgorithmSelect;
-        internal System.Windows.Forms.ComboBox FileHashModeSelect;
         internal System.Windows.Forms.TextBox FileHashSelectFilePathTextBox;
         private System.Windows.Forms.Button FileHashSelectFileBtn;
         private System.Windows.Forms.DataGridView FileHashDGV;
