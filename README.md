@@ -6,7 +6,7 @@
 
 # Download Vimera
 
-Download: https://github.com/roines45/vimera/releases/latest
+Download: [Vimera Latest Version](https://github.com/roines45/vimera/releases/latest)
 
 # Supported Languages
 
