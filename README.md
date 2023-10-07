@@ -12,6 +12,7 @@ Download: https://github.com/roines45/vimera/releases/latest
 
 - English
 - Turkish
+- For language support: [Translation Guide](https://github.com/roines45/vimera/discussions/1)
 
 # Supported Themes
 
