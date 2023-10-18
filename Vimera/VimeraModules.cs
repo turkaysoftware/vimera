@@ -9,9 +9,10 @@ namespace Vimera{
         // SAVE PATHS
         public static string vimera_lf = @"v_langs";                                // Main Path
         public static string vimera_lang_en = vimera_lf + @"\English.ini";          // English    | en
+        public static string vimera_lang_fr = vimera_lf + @"\French.ini";           // French     | fr
         public static string vimera_lang_tr = vimera_lf + @"\Turkish.ini";          // Turkish    | tr
-        // Total Langs | Current Langs Count: 2
-        public static int v_langs_count = 2;
+        // Total Langs | Current Langs Count: 3
+        public static int v_langs_count = 3;
         // ======================================================================================================
         // VIMERA SETTINGS SAVE CLASS
         public class VimeraGetLangs{

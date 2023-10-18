@@ -49,6 +49,7 @@
             this.languageToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.englishToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.turkishToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.frenchToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.initialViewToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.windowedToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.fullScreenToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
@@ -291,14 +292,14 @@
             this.darkThemeToolStripMenuItem});
             this.themeToolStripMenuItem.Image = global::Vimera.Properties.Resources.top_theme;
             this.themeToolStripMenuItem.Name = "themeToolStripMenuItem";
-            this.themeToolStripMenuItem.Size = new System.Drawing.Size(131, 22);
+            this.themeToolStripMenuItem.Size = new System.Drawing.Size(180, 22);
             this.themeToolStripMenuItem.Text = "Theme";
             // 
             // lightThemeToolStripMenuItem
             // 
             this.lightThemeToolStripMenuItem.Name = "lightThemeToolStripMenuItem";
             this.lightThemeToolStripMenuItem.ShortcutKeys = System.Windows.Forms.Keys.F1;
-            this.lightThemeToolStripMenuItem.Size = new System.Drawing.Size(159, 22);
+            this.lightThemeToolStripMenuItem.Size = new System.Drawing.Size(180, 22);
             this.lightThemeToolStripMenuItem.Text = "Light Theme";
             this.lightThemeToolStripMenuItem.Click += new System.EventHandler(this.lightThemeToolStripMenuItem_Click);
             // 
@@ -306,7 +307,7 @@
             // 
             this.darkThemeToolStripMenuItem.Name = "darkThemeToolStripMenuItem";
             this.darkThemeToolStripMenuItem.ShortcutKeys = System.Windows.Forms.Keys.F2;
-            this.darkThemeToolStripMenuItem.Size = new System.Drawing.Size(159, 22);
+            this.darkThemeToolStripMenuItem.Size = new System.Drawing.Size(180, 22);
             this.darkThemeToolStripMenuItem.Text = "Dark Theme";
             this.darkThemeToolStripMenuItem.Click += new System.EventHandler(this.darkThemeToolStripMenuItem_Click);
             // 
@@ -314,27 +315,33 @@
             // 
             this.languageToolStripMenuItem.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] {
             this.englishToolStripMenuItem,
+            this.frenchToolStripMenuItem,
             this.turkishToolStripMenuItem});
             this.languageToolStripMenuItem.Image = global::Vimera.Properties.Resources.top_language;
             this.languageToolStripMenuItem.Name = "languageToolStripMenuItem";
-            this.languageToolStripMenuItem.Size = new System.Drawing.Size(131, 22);
+            this.languageToolStripMenuItem.Size = new System.Drawing.Size(180, 22);
             this.languageToolStripMenuItem.Text = "Language";
             // 
             // englishToolStripMenuItem
             // 
             this.englishToolStripMenuItem.Name = "englishToolStripMenuItem";
-            this.englishToolStripMenuItem.ShortcutKeys = System.Windows.Forms.Keys.F3;
-            this.englishToolStripMenuItem.Size = new System.Drawing.Size(131, 22);
+            this.englishToolStripMenuItem.Size = new System.Drawing.Size(180, 22);
             this.englishToolStripMenuItem.Text = "English";
             this.englishToolStripMenuItem.Click += new System.EventHandler(this.englishToolStripMenuItem_Click);
             // 
             // turkishToolStripMenuItem
             // 
             this.turkishToolStripMenuItem.Name = "turkishToolStripMenuItem";
-            this.turkishToolStripMenuItem.ShortcutKeys = System.Windows.Forms.Keys.F4;
-            this.turkishToolStripMenuItem.Size = new System.Drawing.Size(131, 22);
+            this.turkishToolStripMenuItem.Size = new System.Drawing.Size(180, 22);
             this.turkishToolStripMenuItem.Text = "Turkish";
             this.turkishToolStripMenuItem.Click += new System.EventHandler(this.turkishToolStripMenuItem_Click);
+            // 
+            // frenchToolStripMenuItem
+            // 
+            this.frenchToolStripMenuItem.Name = "frenchToolStripMenuItem";
+            this.frenchToolStripMenuItem.Size = new System.Drawing.Size(180, 22);
+            this.frenchToolStripMenuItem.Text = "French";
+            this.frenchToolStripMenuItem.Click += new System.EventHandler(this.frenchToolStripMenuItem_Click);
             // 
             // initialViewToolStripMenuItem
             // 
@@ -343,22 +350,22 @@
             this.fullScreenToolStripMenuItem});
             this.initialViewToolStripMenuItem.Image = global::Vimera.Properties.Resources.top_launch;
             this.initialViewToolStripMenuItem.Name = "initialViewToolStripMenuItem";
-            this.initialViewToolStripMenuItem.Size = new System.Drawing.Size(131, 22);
+            this.initialViewToolStripMenuItem.Size = new System.Drawing.Size(180, 22);
             this.initialViewToolStripMenuItem.Text = "Initial View";
             // 
             // windowedToolStripMenuItem
             // 
             this.windowedToolStripMenuItem.Name = "windowedToolStripMenuItem";
-            this.windowedToolStripMenuItem.ShortcutKeys = System.Windows.Forms.Keys.F5;
-            this.windowedToolStripMenuItem.Size = new System.Drawing.Size(150, 22);
+            this.windowedToolStripMenuItem.ShortcutKeys = System.Windows.Forms.Keys.F3;
+            this.windowedToolStripMenuItem.Size = new System.Drawing.Size(180, 22);
             this.windowedToolStripMenuItem.Text = "Windowed";
             this.windowedToolStripMenuItem.Click += new System.EventHandler(this.windowedToolStripMenuItem_Click);
             // 
             // fullScreenToolStripMenuItem
             // 
             this.fullScreenToolStripMenuItem.Name = "fullScreenToolStripMenuItem";
-            this.fullScreenToolStripMenuItem.ShortcutKeys = System.Windows.Forms.Keys.F6;
-            this.fullScreenToolStripMenuItem.Size = new System.Drawing.Size(150, 22);
+            this.fullScreenToolStripMenuItem.ShortcutKeys = System.Windows.Forms.Keys.F4;
+            this.fullScreenToolStripMenuItem.Size = new System.Drawing.Size(180, 22);
             this.fullScreenToolStripMenuItem.Text = "Full Screen";
             this.fullScreenToolStripMenuItem.Click += new System.EventHandler(this.fullScreenToolStripMenuItem_Click);
             // 
@@ -367,7 +374,7 @@
             this.gitHubToolStripMenuItem.Image = global::Vimera.Properties.Resources.top_github;
             this.gitHubToolStripMenuItem.ImageAlign = System.Drawing.ContentAlignment.MiddleRight;
             this.gitHubToolStripMenuItem.Name = "gitHubToolStripMenuItem";
-            this.gitHubToolStripMenuItem.ShortcutKeys = System.Windows.Forms.Keys.F7;
+            this.gitHubToolStripMenuItem.ShortcutKeys = System.Windows.Forms.Keys.F5;
             this.gitHubToolStripMenuItem.Size = new System.Drawing.Size(73, 20);
             this.gitHubToolStripMenuItem.Text = "GitHub";
             this.gitHubToolStripMenuItem.Click += new System.EventHandler(this.gitHubToolStripMenuItem_Click);
@@ -1212,6 +1219,7 @@
         private System.Windows.Forms.TableLayoutPanel TextHash_TLP;
         private System.Windows.Forms.TableLayoutPanel HashCompare_TLP;
         private System.Windows.Forms.ToolStripMenuItem gitHubToolStripMenuItem;
+        private System.Windows.Forms.ToolStripMenuItem frenchToolStripMenuItem;
     }
 }
 

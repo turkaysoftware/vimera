@@ -99,21 +99,46 @@ namespace Vimera {
                             }
                         }catch (Exception){ }
                     }else{
-                        if (ui_lang == "tr"){
-                            MessageBox.Show($"Dil dosyaları eksik veya bulunamadı.\n{Application.ProductName} kapatılıyor", Application.ProductName, MessageBoxButtons.OK, MessageBoxIcon.Error);
-                        }else{
-                            MessageBox.Show($"Language files missing or not found.\n{Application.ProductName} is shutting down.", Application.ProductName, MessageBoxButtons.OK, MessageBoxIcon.Error);
-                        }
-                        vimera_exit();
+                        preloader_message(1, ui_lang);      // 1 = No lang file 
                     }
                 }else{
-                    if (ui_lang == "tr"){
-                        MessageBox.Show($"V_langs klasörü bulunamadı.\n{Application.ProductName} kapatılıyor", Application.ProductName, MessageBoxButtons.OK, MessageBoxIcon.Error);
-                    }else{
-                        MessageBox.Show($"V_langs folder not found.\n{Application.ProductName} is shutting down.", Application.ProductName, MessageBoxButtons.OK, MessageBoxIcon.Error);
-                    }
-                    vimera_exit();
+                    preloader_message(2, ui_lang);          // 2 = No G_langs folder 
                 }
+            }catch (Exception){ }
+        }
+        // ======================================================================================================
+        // VIMERA PRELOADER MESSAGE
+        private void preloader_message(int pre_mod, string pre_lang){
+            try{
+                switch (pre_mod){
+                    case 1:
+                        switch (pre_lang){
+                            case "tr":
+                                MessageBox.Show($"Dil dosyaları eksik veya bulunamadı.\n{Application.ProductName} kapatılıyor.", Application.ProductName, MessageBoxButtons.OK, MessageBoxIcon.Error);
+                                break;
+                            case "fr":
+                                MessageBox.Show($"Fichiers de langue manquants ou non trouvés.\n{Application.ProductName} est en train de fermer.", Application.ProductName, MessageBoxButtons.OK, MessageBoxIcon.Error);
+                                break;
+                            default:
+                                MessageBox.Show($"Language files missing or not found.\n{Application.ProductName} is shutting down.", Application.ProductName, MessageBoxButtons.OK, MessageBoxIcon.Error);
+                                break;
+                        }
+                        break;
+                    case 2:
+                        switch (pre_lang){
+                            case "tr":
+                                MessageBox.Show($"V_langs klasörü bulunamadı.\n{Application.ProductName} kapatılıyor.", Application.ProductName, MessageBoxButtons.OK, MessageBoxIcon.Error);
+                                break;
+                            case "fr":
+                                MessageBox.Show($"Le dossier V_langs n'a pas été trouvé.\n{Application.ProductName} est en train de fermer.", Application.ProductName, MessageBoxButtons.OK, MessageBoxIcon.Error);
+                                break;
+                            default:
+                                MessageBox.Show($"V_langs folder not found.\n{Application.ProductName} is shutting down.", Application.ProductName, MessageBoxButtons.OK, MessageBoxIcon.Error);
+                                break;
+                        }
+                        break;
+                }
+                vimera_exit();
             }catch (Exception){ }
         }
         // ======================================================================================================
@@ -137,6 +162,10 @@ namespace Vimera {
                 case "en":
                     lang_engine("en");
                     englishToolStripMenuItem.Checked = true;
+                    break;
+                case "fr":
+                    lang_engine("fr");
+                    frenchToolStripMenuItem.Checked = true;
                     break;
                 case "tr":
                     lang_engine("tr");
@@ -921,6 +950,9 @@ namespace Vimera {
         private void englishToolStripMenuItem_Click(object sender, EventArgs e){
             if (lang != "en"){ lang_preload("en"); select_lang_active(sender); }
         }
+        private void frenchToolStripMenuItem_Click(object sender, EventArgs e){
+            if (lang != "fr"){ lang_preload("fr"); select_lang_active(sender); }
+        }
         private void turkishToolStripMenuItem_Click(object sender, EventArgs e){
             if (lang != "tr"){ lang_preload("tr"); select_lang_active(sender); }
         }
@@ -930,6 +962,10 @@ namespace Vimera {
                 VimeraSettingsSave vimera_setting_save = new VimeraSettingsSave(vimera_sf);
                 vimera_setting_save.VimeraWriteSettings("VimeraSettings", "LanguageStatus", lang_type);
             }catch (Exception){ }
+            // LANG CHANGE NOTIFICATION
+            VimeraGetLangs v_lang = new VimeraGetLangs(lang_path);
+            DialogResult lang_change_message = MessageBox.Show(Encoding.UTF8.GetString(Encoding.Default.GetBytes(v_lang.VimeraReadLangs("LangChange", "le_1").Trim())) + "\n\n" + Encoding.UTF8.GetString(Encoding.Default.GetBytes(v_lang.VimeraReadLangs("LangChange", "le_2").Trim())) + "\n\n" + Encoding.UTF8.GetString(Encoding.Default.GetBytes(v_lang.VimeraReadLangs("LangChange", "le_3").Trim())), Application.ProductName, MessageBoxButtons.YesNo, MessageBoxIcon.Information);
+            if (lang_change_message == DialogResult.Yes){ Application.Restart(); }
         }
         private void lang_engine(string lang_type){
             try{
@@ -937,6 +973,10 @@ namespace Vimera {
                     case "en":
                         lang = "en";
                         lang_path = vimera_lang_en;
+                        break;
+                    case "fr":
+                        lang = "fr";
+                        lang_path = vimera_lang_fr;
                         break;
                     case "tr":
                         lang = "tr";
@@ -961,6 +1001,7 @@ namespace Vimera {
                 // LANGS
                 languageToolStripMenuItem.Text = Encoding.UTF8.GetString(Encoding.Default.GetBytes(v_lang.VimeraReadLangs("HeaderMenu", "header_m_3").Trim()));
                 englishToolStripMenuItem.Text = Encoding.UTF8.GetString(Encoding.Default.GetBytes(v_lang.VimeraReadLangs("HeaderLangs", "lang_en").Trim()));
+                frenchToolStripMenuItem.Text = Encoding.UTF8.GetString(Encoding.Default.GetBytes(v_lang.VimeraReadLangs("HeaderLangs", "lang_fr").Trim()));
                 turkishToolStripMenuItem.Text = Encoding.UTF8.GetString(Encoding.Default.GetBytes(v_lang.VimeraReadLangs("HeaderLangs", "lang_tr").Trim()));
                 // INITIAL VIEW
                 initialViewToolStripMenuItem.Text = Encoding.UTF8.GetString(Encoding.Default.GetBytes(v_lang.VimeraReadLangs("HeaderMenu", "header_m_4").Trim()));
@@ -982,35 +1023,6 @@ namespace Vimera {
                 FileHashExportHashsBtn.Text = Encoding.UTF8.GetString(Encoding.Default.GetBytes(v_lang.VimeraReadLangs("FileHashTool", "fht_16").Trim()));
                 FileHashCompareBtn.Text = Encoding.UTF8.GetString(Encoding.Default.GetBytes(v_lang.VimeraReadLangs("FileHashTool", "fht_17").Trim()));
                 FileHashStartBtn.Text = Encoding.UTF8.GetString(Encoding.Default.GetBytes(v_lang.VimeraReadLangs("FileHashTool", "fht_18").Trim()));
-                // ROW COPY CHANGE WRAPPER
-                try{
-                    if (FileHashDGV.Rows.Count > 0){
-                        // BYTE TYPE CONVERT LANGUAGE
-                        for (int i = 0; i <= FileHashDGV.Rows.Count - 1; i++){
-                            if (FileHashDGV.Rows[i].Cells[1].Value.ToString().Contains("Byte")){
-                                string reload_text = FileHashDGV.Rows[i].Cells[1].Value.ToString().Replace("Byte", Encoding.UTF8.GetString(Encoding.Default.GetBytes(v_lang.VimeraReadLangs("FileHashTool", "fht_byte").Trim())));
-                                FileHashDGV.Rows[i].Cells[1].Value = reload_text;
-                            }
-                            if (FileHashDGV.Rows[i].Cells[1].Value.ToString().Contains("Bayt")){
-                                string reload_text = FileHashDGV.Rows[i].Cells[1].Value.ToString().Replace("Bayt", Encoding.UTF8.GetString(Encoding.Default.GetBytes(v_lang.VimeraReadLangs("FileHashTool", "fht_byte").Trim())));
-                                FileHashDGV.Rows[i].Cells[1].Value = reload_text;
-                            }
-                            if (FileHashDGV.Rows[i].Cells[2].Value.ToString().ToLower().Contains("unreadable") || FileHashDGV.Rows[i].Cells[2].Value.ToString().ToLower().Contains("okunamıyor")){
-                                if (FileHashUpperHashMode.Checked == true){
-                                    FileHashDGV.Rows[i].Cells[2].Value = Encoding.UTF8.GetString(Encoding.Default.GetBytes(v_lang.VimeraReadLangs("FileHashTool", "fht_null").Trim().ToUpper()));
-                                }else{
-                                    FileHashDGV.Rows[i].Cells[2].Value = Encoding.UTF8.GetString(Encoding.Default.GetBytes(v_lang.VimeraReadLangs("FileHashTool", "fht_null").Trim()));
-                                }
-                            }
-                        }
-                        // COPY ROWS
-                        for (int i = 0; i <= FileHashDGV.Rows.Count - 1; i++){
-                            if ((string)FileHashDGV.Rows[i].Cells[3].Value == "Copy" || (string)FileHashDGV.Rows[i].Cells[3].Value == "Kopyala"){
-                                FileHashDGV.Rows[i].Cells[3].Value = Encoding.UTF8.GetString(Encoding.Default.GetBytes(v_lang.VimeraReadLangs("FileHashTool", "fht_9").Trim()));
-                            }
-                        }
-                    }
-                }catch (Exception){ }
                 // TEXT HASH
                 TextHashAlgorithmSelect.Items[0] = Encoding.UTF8.GetString(Encoding.Default.GetBytes(v_lang.VimeraReadLangs("FileHashTool", "fht_1").Trim()));
                 TextHashL1.Text = Encoding.UTF8.GetString(Encoding.Default.GetBytes(v_lang.VimeraReadLangs("TextHashTool", "tht_1").Trim()));
@@ -1157,6 +1169,8 @@ namespace Vimera {
                 languageToolStripMenuItem.ForeColor = ui_colors[0];
                 englishToolStripMenuItem.BackColor = ui_colors[1];
                 englishToolStripMenuItem.ForeColor = ui_colors[0];
+                frenchToolStripMenuItem.BackColor = ui_colors[1];
+                frenchToolStripMenuItem.ForeColor = ui_colors[0];
                 turkishToolStripMenuItem.BackColor = ui_colors[1];
                 turkishToolStripMenuItem.ForeColor = ui_colors[0];
                 // INITIAL VIEW
