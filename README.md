@@ -28,7 +28,7 @@ Download: [Vimera Latest Version](https://github.com/roines45/vimera/releases/la
 
 |  | Minimum Requirements | Recommended Requirements |
 | -- | :--: | :--: |
-| OS: | Windows 10 20H2 | Windows 10 22H2 x64 |
+| OS: | Windows 10 20H2 x64 | Windows 10 22H2 x64 |
 | CPU: | 1 Core, 2 GHz Processor Speed | 2 Cores, 3 GHz Processor Speed |
 | RAM: | 35 MB Free RAM | 50 MB Free RAM |
 | GPU: | DirectX 9 Support| DirectX 10.1 Support |
