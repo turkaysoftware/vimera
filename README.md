@@ -12,8 +12,6 @@ Download: [Vimera Latest Version](https://github.com/roines45/vimera/releases/la
 
 - English
 - Turkish
-- French
-- For language support: [Translation Guide](https://github.com/roines45/vimera/discussions/1)
 
 # Supported Themes
 
