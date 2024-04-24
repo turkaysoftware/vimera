@@ -20,7 +20,7 @@ namespace Vimera {
         public Vimera(){ InitializeComponent(); CheckForIllegalCrossThreadCalls = false; }
         // GLOBAL VARIABLES
         public static string lang, lang_path;
-        public static int theme;
+        public static int theme, v_version_mode = 0;
         // ======================================================================================================
         // VARIABLES
         int menu_btns = 1, menu_rp = 1, initial_status;
@@ -37,7 +37,8 @@ namespace Vimera {
         int hash_compare_status;
         // GITHUB WEBSITE & GITHUB LINK
         // ======================================================================================================
-        public static readonly string github_link = "https://github.com/roines45";
+        // MEDIA LINK SYSTEM
+        TS_LinkSystem TS_LinkSystem = new TS_LinkSystem();
         // ======================================================================================================
         // COLOR MODES / Index Mode | 0 = Dark - 1 = Light - 2 = Nord 
         List<Color> btn_colors_active = new List<Color>(){ Color.WhiteSmoke, Color.FromArgb(31, 31, 31), Color.FromArgb(46, 52, 64) };
@@ -206,9 +207,13 @@ namespace Vimera {
             MainContent.SelectedTab = TextHash;
             MainContent.SelectedTab = FileHash;
         }
+        // ======================================================================================================
+        // GLOW LOAD
+        VimeraVersionEngine vimera_version = new VimeraVersionEngine();
         // VIMERA LOAD
+        // ======================================================================================================
         private void Vimera_Load(object sender, EventArgs e){
-            Text = Application.ProductName + " " + Application.ProductVersion.Substring(0, 4);
+            Text = vimera_version.VimeraVersion(0, v_version_mode);
             HeaderMenu.Cursor = Cursors.Hand;
             vimera_pre_selected_values();
             vimera_preloader();
@@ -467,14 +472,14 @@ namespace Vimera {
         // FILE HASH PROCESS CHANGED
         // ======================================================================================================
         private void FileHash_BG_Worker_ProgressChanged(object sender, ProgressChangedEventArgs e){
-            Text = Application.ProductName + " " + Application.ProductVersion.Substring(0, 4) + " - " + "%" + e.ProgressPercentage;
+            Text = vimera_version.VimeraVersion(0, v_version_mode) + " - " + "%" + e.ProgressPercentage;
             FileHashLoadFE_Panel.Width = e.ProgressPercentage * FileHashLoadBG_Panel.Width / 100;
         }
         // FILE HASH PROCESS RUNWORKER COMPLETED
         // ======================================================================================================
         private void FileHash_BG_Worker_RunWorkerCompleted(object sender, RunWorkerCompletedEventArgs e){
             VimeraGetLangs v_lang = new VimeraGetLangs(lang_path);
-            Text = Application.ProductName + " " + Application.ProductVersion.Substring(0, 4);
+            Text = vimera_version.VimeraVersion(0, v_version_mode);
             file_hash_enabled_ui();
             MessageBox.Show(Encoding.UTF8.GetString(Encoding.Default.GetBytes(v_lang.VimeraReadLangs("FileHashTool", "fht_hash_success").Trim())), Application.ProductName, MessageBoxButtons.OK, MessageBoxIcon.Information);
         }
@@ -633,10 +638,10 @@ namespace Vimera {
                     PrintEngineList.Add(Encoding.UTF8.GetString(Encoding.Default.GetBytes(v_lang.VimeraReadLangs("FileHashPrintEngine", "fhpe_file_size").Trim())) + " " + FileHashDGV.Rows[i].Cells[1].Value.ToString());
                     PrintEngineList.Add(file_last_hash_algorithm + " " + Encoding.UTF8.GetString(Encoding.Default.GetBytes(v_lang.VimeraReadLangs("FileHashPrintEngine", "fhpe_hash_value").Trim())) + " " + FileHashDGV.Rows[i].Cells[2].Value.ToString() + "\n\n" + new string('-', 75) + Environment.NewLine);
                 }
-                PrintEngineList.Add(string.Format(Encoding.UTF8.GetString(Encoding.Default.GetBytes(v_lang.VimeraReadLangs("FileHashPrintEngine", "fhpe_version").Trim())), Application.ProductName, Application.ProductVersion.Substring(0, 4)));
+                PrintEngineList.Add(string.Format(Encoding.UTF8.GetString(Encoding.Default.GetBytes(v_lang.VimeraReadLangs("FileHashPrintEngine", "fhpe_version").Trim())), Application.ProductName, vimera_version.VimeraVersion(1, v_version_mode)));
                 PrintEngineList.Add($"(C) {DateTime.Now.Year} {Application.CompanyName}.");
                 PrintEngineList.Add(Encoding.UTF8.GetString(Encoding.Default.GetBytes(v_lang.VimeraReadLangs("FileHashPrintEngine", "fhpe_processing_time").Trim())) + " " + DateTime.Now.ToString("dd.MM.yyyy - H:mm:ss"));
-                PrintEngineList.Add(Encoding.UTF8.GetString(Encoding.Default.GetBytes(v_lang.VimeraReadLangs("FileHashPrintEngine", "fhpe_github").Trim())) + " " + github_link);
+                PrintEngineList.Add(Encoding.UTF8.GetString(Encoding.Default.GetBytes(v_lang.VimeraReadLangs("FileHashPrintEngine", "fhpe_github").Trim())) + " " + TS_LinkSystem.github_link);
                 SaveFileDialog save_engine = new SaveFileDialog{
                     InitialDirectory = @"C:\Users\" + SystemInformation.UserName + @"\Desktop\",
                     Title = string.Format(Encoding.UTF8.GetString(Encoding.Default.GetBytes(v_lang.VimeraReadLangs("FileHashPrintEngine", "fhpe_save_directory_notification").Trim())), Application.ProductName),
@@ -994,10 +999,8 @@ namespace Vimera {
                 initialViewToolStripMenuItem.Text = Encoding.UTF8.GetString(Encoding.Default.GetBytes(v_lang.VimeraReadLangs("HeaderMenu", "header_menu_start").Trim()));
                 windowedToolStripMenuItem.Text = Encoding.UTF8.GetString(Encoding.Default.GetBytes(v_lang.VimeraReadLangs("HeaderViewMode", "header_viev_mode_windowed").Trim()));
                 fullScreenToolStripMenuItem.Text = Encoding.UTF8.GetString(Encoding.Default.GetBytes(v_lang.VimeraReadLangs("HeaderViewMode", "header_viev_mode_full_screen").Trim()));
-                // GITHUB
-                helpToolStripMenuItem.Text = Encoding.UTF8.GetString(Encoding.Default.GetBytes(v_lang.VimeraReadLangs("HeaderMenu", "header_menu_help").Trim()));
-                aboutToolStripMenuItem.Text = Encoding.UTF8.GetString(Encoding.Default.GetBytes(v_lang.VimeraReadLangs("HeaderHelp", "header_help_about").Trim()));
-                gitHubToolStripMenuItem.Text = Encoding.UTF8.GetString(Encoding.Default.GetBytes(v_lang.VimeraReadLangs("HeaderHelp", "header_help_github").Trim()));
+                // ABOUT
+                aboutToolStripMenuItem.Text = Encoding.UTF8.GetString(Encoding.Default.GetBytes(v_lang.VimeraReadLangs("HeaderMenu", "header_menu_about").Trim()));
                 // MENU
                 FileHashBtn.Text = " " + " " + Encoding.UTF8.GetString(Encoding.Default.GetBytes(v_lang.VimeraReadLangs("LeftMenu", "left_file_hash").Trim()));
                 TextHashBtn.Text = " " + " " + Encoding.UTF8.GetString(Encoding.Default.GetBytes(v_lang.VimeraReadLangs("LeftMenu", "left_text_hash").Trim()));
@@ -1113,10 +1116,8 @@ namespace Vimera {
                 themeToolStripMenuItem.Image = Properties.Resources.light_top_menu_theme;
                 languageToolStripMenuItem.Image = Properties.Resources.light_top_menu_language;
                 initialViewToolStripMenuItem.Image = Properties.Resources.light_top_menu_start;
-                // HELP
-                helpToolStripMenuItem.Image = Properties.Resources.light_top_menu_help;
+                // ABOUT
                 aboutToolStripMenuItem.Image = Properties.Resources.light_top_menu_about;
-                gitHubToolStripMenuItem.Image = Properties.Resources.light_top_menu_github;
             }else if (theme == 0){
                 // TITLEBAR CHANGE
                 try { if (DwmSetWindowAttribute(Handle, 19, new[]{ 1 }, 4) != 0){ DwmSetWindowAttribute(Handle, 20, new[]{ 1 }, 4); } }catch (Exception){ }
@@ -1154,10 +1155,8 @@ namespace Vimera {
                 themeToolStripMenuItem.Image = Properties.Resources.dark_top_menu_theme;
                 languageToolStripMenuItem.Image = Properties.Resources.dark_top_menu_language;
                 initialViewToolStripMenuItem.Image = Properties.Resources.dark_top_menu_start;
-                // HELP
-                helpToolStripMenuItem.Image = Properties.Resources.dark_top_menu_help;
+                // ABOUT
                 aboutToolStripMenuItem.Image = Properties.Resources.dark_top_menu_about;
-                gitHubToolStripMenuItem.Image = Properties.Resources.dark_top_menu_github;
             }else if (theme == 2){
                 // TITLEBAR CHANGE
                 try { if (DwmSetWindowAttribute(Handle, 19, new[]{ 1 }, 4) != 0){ DwmSetWindowAttribute(Handle, 20, new[] { 1 }, 4); } }catch (Exception){ }
@@ -1195,10 +1194,8 @@ namespace Vimera {
                 themeToolStripMenuItem.Image = Properties.Resources.nord_top_menu_theme;
                 languageToolStripMenuItem.Image = Properties.Resources.nord_top_menu_language;
                 initialViewToolStripMenuItem.Image = Properties.Resources.nord_top_menu_start;
-                // HELP
-                helpToolStripMenuItem.Image = Properties.Resources.nord_top_menu_help;
+                // ABOUT
                 aboutToolStripMenuItem.Image = Properties.Resources.nord_top_menu_about;
-                gitHubToolStripMenuItem.Image = Properties.Resources.nord_top_menu_github;
             }
             // SAVE THEME
             try{
@@ -1219,7 +1216,7 @@ namespace Vimera {
                     vimera_about = (VimeraAbout)Application.OpenForms[vimera_about_name];
                     vimera_about.about_preloader();
                 }
-            }catch (Exception) { }
+            }catch (Exception){ }
         }
         private void theme_engine(){
             try{
@@ -1259,13 +1256,9 @@ namespace Vimera {
                 windowedToolStripMenuItem.ForeColor = ui_colors[0];
                 fullScreenToolStripMenuItem.BackColor = ui_colors[1];
                 fullScreenToolStripMenuItem.ForeColor = ui_colors[0];
-                // HELP
-                helpToolStripMenuItem.BackColor = ui_colors[1];
-                helpToolStripMenuItem.ForeColor = ui_colors[0];
+                // ABOUT
                 aboutToolStripMenuItem.BackColor = ui_colors[1];
                 aboutToolStripMenuItem.ForeColor = ui_colors[0];
-                gitHubToolStripMenuItem.BackColor = ui_colors[1];
-                gitHubToolStripMenuItem.ForeColor = ui_colors[0];
                 // LEFT MENU
                 LeftPanel.BackColor = ui_colors[2];
                 FileHashBtn.BackColor = ui_colors[2];
@@ -1435,16 +1428,9 @@ namespace Vimera {
                         Application.OpenForms[vimera_about_name].WindowState = FormWindowState.Normal;
                     }
                     Application.OpenForms[vimera_about_name].Activate();
-                    MessageBox.Show(string.Format(Encoding.UTF8.GetString(Encoding.Default.GetBytes(v_lang.VimeraReadLangs("HeaderHelp", "header_help_info_notification").Trim())), Encoding.UTF8.GetString(Encoding.Default.GetBytes(v_lang.VimeraReadLangs("HeaderHelp", "header_help_about").Trim()))), Application.ProductName, MessageBoxButtons.OK, MessageBoxIcon.Information);
+                    MessageBox.Show(string.Format(Encoding.UTF8.GetString(Encoding.Default.GetBytes(v_lang.VimeraReadLangs("HeaderHelp", "header_help_info_notification").Trim())), Encoding.UTF8.GetString(Encoding.Default.GetBytes(v_lang.VimeraReadLangs("HeaderMenu", "header_menu_about").Trim()))), Application.ProductName, MessageBoxButtons.OK, MessageBoxIcon.Information);
                 }
-            }catch (Exception){ }
-        }
-        // ======================================================================================================
-        // ROINES45 GITHUB
-        private void gitHubToolStripMenuItem_Click(object sender, EventArgs e){
-            try{
-                Process.Start(github_link);
-            }catch (Exception){ }
+            }catch (Exception) { }
         }
         // VIMERA EXIT
         // ======================================================================================================

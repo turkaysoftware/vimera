@@ -53,9 +53,6 @@
             this.initialViewToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.windowedToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.fullScreenToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
-            this.helpToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
-            this.aboutToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
-            this.gitHubToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.MainContent = new System.Windows.Forms.TabControl();
             this.FileHash = new System.Windows.Forms.TabPage();
             this.FileHash_TLP = new System.Windows.Forms.TableLayoutPanel();
@@ -100,6 +97,7 @@
             this.SecondHashValueLabel = new System.Windows.Forms.Label();
             this.SecondHashValueTextBox = new System.Windows.Forms.TextBox();
             this.FileHash_BG_Worker = new System.ComponentModel.BackgroundWorker();
+            this.aboutToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.LeftPanel.SuspendLayout();
             this.HeaderPanel.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.HeaderImage)).BeginInit();
@@ -264,10 +262,10 @@
             this.HeaderMenu.Dock = System.Windows.Forms.DockStyle.None;
             this.HeaderMenu.Items.AddRange(new System.Windows.Forms.ToolStripItem[] {
             this.settingsToolStripMenuItem,
-            this.helpToolStripMenuItem});
-            this.HeaderMenu.Location = new System.Drawing.Point(663, 11);
+            this.aboutToolStripMenuItem});
+            this.HeaderMenu.Location = new System.Drawing.Point(535, 11);
             this.HeaderMenu.Name = "HeaderMenu";
-            this.HeaderMenu.Size = new System.Drawing.Size(113, 24);
+            this.HeaderMenu.Size = new System.Drawing.Size(241, 24);
             this.HeaderMenu.TabIndex = 7;
             this.HeaderMenu.Text = "menuStrip1";
             // 
@@ -296,7 +294,7 @@
             // 
             this.lightThemeToolStripMenuItem.Name = "lightThemeToolStripMenuItem";
             this.lightThemeToolStripMenuItem.ShortcutKeys = System.Windows.Forms.Keys.F1;
-            this.lightThemeToolStripMenuItem.Size = new System.Drawing.Size(180, 22);
+            this.lightThemeToolStripMenuItem.Size = new System.Drawing.Size(159, 22);
             this.lightThemeToolStripMenuItem.Text = "Light Theme";
             this.lightThemeToolStripMenuItem.Click += new System.EventHandler(this.lightThemeToolStripMenuItem_Click);
             // 
@@ -304,7 +302,7 @@
             // 
             this.darkThemeToolStripMenuItem.Name = "darkThemeToolStripMenuItem";
             this.darkThemeToolStripMenuItem.ShortcutKeys = System.Windows.Forms.Keys.F2;
-            this.darkThemeToolStripMenuItem.Size = new System.Drawing.Size(180, 22);
+            this.darkThemeToolStripMenuItem.Size = new System.Drawing.Size(159, 22);
             this.darkThemeToolStripMenuItem.Text = "Dark Theme";
             this.darkThemeToolStripMenuItem.Click += new System.EventHandler(this.darkThemeToolStripMenuItem_Click);
             // 
@@ -312,7 +310,7 @@
             // 
             this.nordThemeToolStripMenuItem.Name = "nordThemeToolStripMenuItem";
             this.nordThemeToolStripMenuItem.ShortcutKeys = System.Windows.Forms.Keys.F3;
-            this.nordThemeToolStripMenuItem.Size = new System.Drawing.Size(180, 22);
+            this.nordThemeToolStripMenuItem.Size = new System.Drawing.Size(159, 22);
             this.nordThemeToolStripMenuItem.Text = "Nord Theme";
             this.nordThemeToolStripMenuItem.Click += new System.EventHandler(this.nordThemeToolStripMenuItem_Click);
             // 
@@ -329,7 +327,7 @@
             // 
             this.englishToolStripMenuItem.Name = "englishToolStripMenuItem";
             this.englishToolStripMenuItem.ShortcutKeys = System.Windows.Forms.Keys.F4;
-            this.englishToolStripMenuItem.Size = new System.Drawing.Size(180, 22);
+            this.englishToolStripMenuItem.Size = new System.Drawing.Size(131, 22);
             this.englishToolStripMenuItem.Text = "English";
             this.englishToolStripMenuItem.Click += new System.EventHandler(this.englishToolStripMenuItem_Click);
             // 
@@ -337,7 +335,7 @@
             // 
             this.turkishToolStripMenuItem.Name = "turkishToolStripMenuItem";
             this.turkishToolStripMenuItem.ShortcutKeys = System.Windows.Forms.Keys.F5;
-            this.turkishToolStripMenuItem.Size = new System.Drawing.Size(180, 22);
+            this.turkishToolStripMenuItem.Size = new System.Drawing.Size(131, 22);
             this.turkishToolStripMenuItem.Text = "Turkish";
             this.turkishToolStripMenuItem.Click += new System.EventHandler(this.turkishToolStripMenuItem_Click);
             // 
@@ -354,7 +352,7 @@
             // 
             this.windowedToolStripMenuItem.Name = "windowedToolStripMenuItem";
             this.windowedToolStripMenuItem.ShortcutKeys = System.Windows.Forms.Keys.F6;
-            this.windowedToolStripMenuItem.Size = new System.Drawing.Size(180, 22);
+            this.windowedToolStripMenuItem.Size = new System.Drawing.Size(150, 22);
             this.windowedToolStripMenuItem.Text = "Windowed";
             this.windowedToolStripMenuItem.Click += new System.EventHandler(this.windowedToolStripMenuItem_Click);
             // 
@@ -362,34 +360,9 @@
             // 
             this.fullScreenToolStripMenuItem.Name = "fullScreenToolStripMenuItem";
             this.fullScreenToolStripMenuItem.ShortcutKeys = System.Windows.Forms.Keys.F7;
-            this.fullScreenToolStripMenuItem.Size = new System.Drawing.Size(180, 22);
+            this.fullScreenToolStripMenuItem.Size = new System.Drawing.Size(150, 22);
             this.fullScreenToolStripMenuItem.Text = "Full Screen";
             this.fullScreenToolStripMenuItem.Click += new System.EventHandler(this.fullScreenToolStripMenuItem_Click);
-            // 
-            // helpToolStripMenuItem
-            // 
-            this.helpToolStripMenuItem.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] {
-            this.aboutToolStripMenuItem,
-            this.gitHubToolStripMenuItem});
-            this.helpToolStripMenuItem.Name = "helpToolStripMenuItem";
-            this.helpToolStripMenuItem.Size = new System.Drawing.Size(44, 20);
-            this.helpToolStripMenuItem.Text = "Help";
-            // 
-            // aboutToolStripMenuItem
-            // 
-            this.aboutToolStripMenuItem.Name = "aboutToolStripMenuItem";
-            this.aboutToolStripMenuItem.ShortcutKeys = System.Windows.Forms.Keys.F11;
-            this.aboutToolStripMenuItem.Size = new System.Drawing.Size(180, 22);
-            this.aboutToolStripMenuItem.Text = "About";
-            this.aboutToolStripMenuItem.Click += new System.EventHandler(this.aboutToolStripMenuItem_Click);
-            // 
-            // gitHubToolStripMenuItem
-            // 
-            this.gitHubToolStripMenuItem.Name = "gitHubToolStripMenuItem";
-            this.gitHubToolStripMenuItem.ShortcutKeys = System.Windows.Forms.Keys.F12;
-            this.gitHubToolStripMenuItem.Size = new System.Drawing.Size(180, 22);
-            this.gitHubToolStripMenuItem.Text = "GitHub";
-            this.gitHubToolStripMenuItem.Click += new System.EventHandler(this.gitHubToolStripMenuItem_Click);
             // 
             // MainContent
             // 
@@ -1097,6 +1070,13 @@
             this.FileHash_BG_Worker.ProgressChanged += new System.ComponentModel.ProgressChangedEventHandler(this.FileHash_BG_Worker_ProgressChanged);
             this.FileHash_BG_Worker.RunWorkerCompleted += new System.ComponentModel.RunWorkerCompletedEventHandler(this.FileHash_BG_Worker_RunWorkerCompleted);
             // 
+            // aboutToolStripMenuItem
+            // 
+            this.aboutToolStripMenuItem.Name = "aboutToolStripMenuItem";
+            this.aboutToolStripMenuItem.Size = new System.Drawing.Size(52, 20);
+            this.aboutToolStripMenuItem.Text = "About";
+            this.aboutToolStripMenuItem.Click += new System.EventHandler(this.aboutToolStripMenuItem_Click);
+            // 
             // Vimera
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(96F, 96F);
@@ -1216,9 +1196,7 @@
         private System.Windows.Forms.TableLayoutPanel TextHash_TLP;
         private System.Windows.Forms.TableLayoutPanel HashCompare_TLP;
         private System.Windows.Forms.ToolStripMenuItem nordThemeToolStripMenuItem;
-        private System.Windows.Forms.ToolStripMenuItem helpToolStripMenuItem;
         private System.Windows.Forms.ToolStripMenuItem aboutToolStripMenuItem;
-        private System.Windows.Forms.ToolStripMenuItem gitHubToolStripMenuItem;
     }
 }
 

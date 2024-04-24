@@ -5,6 +5,35 @@ using System.Runtime.InteropServices;
 
 namespace Vimera{
     internal class VimeraModules{
+        // LINK SYSTEM
+        // ======================================================================================================
+        public class TS_LinkSystem{
+            public string
+            website_link = "https://www.erayturkay.com/",
+            github_link = "https://github.com/roines45",
+            twitter_link = "https://twitter.com/roines45";
+        }
+        // ======================================================================================================
+        // VERSIONS
+        public class VimeraVersionEngine{
+            string version_mode;
+            public string VimeraVersion(int v_type, int v_mode){
+                if (v_type == 0){
+                    if (v_mode == 0){
+                        version_mode = string.Format("{0} - v{1}", Application.ProductName, Application.ProductVersion.Substring(0, 5));
+                    }else if (v_mode == 1){
+                        version_mode = string.Format("{0} - v{1}", Application.ProductName, Application.ProductVersion.Substring(0, 7));
+                    }
+                }else if (v_type == 1){
+                    if (v_mode == 0){
+                        version_mode = string.Format("v{0}", Application.ProductVersion.Substring(0, 5));
+                    }else if (v_mode == 1){
+                        version_mode = string.Format("v{0}", Application.ProductVersion.Substring(0, 7));
+                    }
+                }
+                return version_mode;
+            }
+        }
         // ======================================================================================================
         // SAVE PATHS
         public static string vimera_lf = @"v_langs";                                // Main Path
