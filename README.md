@@ -17,7 +17,6 @@ Download: [Vimera Latest Version](https://github.com/roines45/vimera/releases/la
 
 - Light Theme
 - Dark Theme
-- Nord Theme
 
 # Supported Operating Systems
 
@@ -33,10 +32,6 @@ Download: [Vimera Latest Version](https://github.com/roines45/vimera/releases/la
 
 |  | Minimum Requirements | Recommended Requirements |
 | -- | :--: | :--: |
-| OS: | Windows 10 20H2 x64 | Windows 10 22H2 x64 |
-| CPU: | 1 Core, 2 GHz Processor Speed | 2 Cores, 3 GHz Processor Speed |
-| RAM: | 35 MB Free RAM | 50 MB Free RAM |
-| GPU: | DirectX 9 Support| DirectX 10.1 Support |
-| STORAGE: | 10 MB Free Space | 20 MB Free Space |
-| DISPLAY: | 1280x720 Resolution| 1600x900 Resolution |
+| OS: | Windows 10 x64 | Windows 10 22H2 x64|
+| RAM: | 50 MB Free RAM | 100 MB Free RAM |
 | .NET: | .NET Framework 4.8.1 | .NET Framework 4.8.1 |
