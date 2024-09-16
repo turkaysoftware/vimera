@@ -1,1 +1,0 @@
-vimera_version = 24.07
