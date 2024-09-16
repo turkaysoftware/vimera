@@ -6,7 +6,11 @@
 
 # Download Vimera
 
-Download: [Vimera Latest Version](https://github.com/roines45/vimera/releases/latest)
+Download: [Vimera Latest Version](https://github.com/turkaysoftware/vimera/releases/latest)
+
+# How to use Vimera?
+
+**Extract the entire contents of the Vimera ZIP file** you downloaded from the **[Release](https://github.com/turkaysoftware/vimera/releases/latest)** section into a folder. Just run *Vimera_x64.exe* if you have an **x64 processor** or *Vimera_arm64.exe* if you have an **ARM processor**!
 
 # Supported Languages
 
