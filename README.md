@@ -2,7 +2,7 @@
 
 **Vimera** is a **hash analysis software** developed by **Eray Türkay**. It has advanced features such as File Hash, Text Hash and Hash Comparison. It is programmed only in **C# and .NET Framework**. And it's **completely free**!
 
-![Vimera UI](https://github.com/user-attachments/assets/5e93b2a4-d0c6-4948-b97e-aa2618cd44e0)
+![Vimera UI](https://github.com/user-attachments/assets/4a3849cb-9093-4a91-926a-e5c3e03ef848)
 
 # Download Vimera
 
