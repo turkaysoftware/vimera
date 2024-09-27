@@ -30,8 +30,8 @@ namespace Vimera {
         // FILE HASH
         // ======================================================================================================
         int file_hash_algorithm_mode, file_hash_process_end, file_hash_preloader = 0;
-        string file_last_hash_algorithm;
         bool file_hash_timer_mode;
+        string file_hash_current_mode;
         // TEXT HASH
         // ======================================================================================================
         int text_hash_salt_mode;
@@ -45,10 +45,8 @@ namespace Vimera {
         TS_LinkSystem TS_LinkSystem = new TS_LinkSystem();
         // ======================================================================================================
         // COLOR MODES / Index Mode | 0 = Dark - 1 = Light
-        List<Color> btn_colors_active = new List<Color>(){ Color.WhiteSmoke, Color.FromArgb(31, 31, 31) };
-        List<Color> btn_colors_deactive = new List<Color>(){ Color.FromArgb(235, 235, 235), Color.FromArgb(24, 24, 24) };
-        public static List<Color> ui_colors = new List<Color>();
-        static List<Color> header_colors = new List<Color>();
+        List<Color> btn_colors_active = new List<Color>(){ Color.Transparent };
+        static List<Color> header_colors = new List<Color>(){ Color.Transparent, Color.Transparent };
         // ======================================================================================================
         // HEADER SETTINGS
         private class HeaderMenuColors : ToolStripProfessionalRenderer {
@@ -161,11 +159,11 @@ namespace Vimera {
             string theme_mode = software_read_settings.TSReadSettings(ts_settings_container, "ThemeStatus");
             switch (theme_mode){
                 case "0":
-                    color_mode(0);
+                    theme_engine(0);
                     darkThemeToolStripMenuItem.Checked = true;
                     break;
                 default:
-                    color_mode(1);
+                    theme_engine(1);
                     lightThemeToolStripMenuItem.Checked = true;
                     break;
             }
@@ -224,7 +222,7 @@ namespace Vimera {
         TS_VersionEngine TS_SofwareVersion = new TS_VersionEngine();
         // VIMERA LOAD
         // ====================================================================================================== 
-        private void Vimera_Load(object sender, EventArgs e){
+        private void Vimera_Load(object sender, EventArgs e){ 
             Text = TS_SofwareVersion.TS_SofwareVersion(0, ts_version_mode);
             HeaderMenu.Cursor = Cursors.Hand;
             software_pre_selected_values();
@@ -243,30 +241,28 @@ namespace Vimera {
                 FileHashExportHashsBtn.Height = btn_dpi_height;
                 FileHashCompareBtn.Height = btn_dpi_height;
                 // HASH ALGORITHM
-                string[] hash_algorithm = { Encoding.UTF8.GetString(Encoding.Default.GetBytes(software_lang.TSReadLangs("FileHashTool", "fht_binary").Trim())), "RIPEMD-160", "MD5", "SHA-1", "SHA-256", "SHA-384", "SHA-512" };
+                string[] hash_algorithm_file = { "MD5", "SHA-1", "SHA-256", "SHA-384", "SHA-512" };
+                string[] hash_algorithm_text = { Encoding.UTF8.GetString(Encoding.Default.GetBytes(software_lang.TSReadLangs("FileHashTool", "fht_binary").Trim())), "Base64", "RIPEMD-160", "MD5", "SHA-1", "SHA-256", "SHA-384", "SHA-512" };
                 // FILE HASH PRELOAD
                 // ======================================================================================================
-                for (int i = 2; i <= hash_algorithm.Length - 1; i++){
-                    FileHashAlgorithmSelect.Items.Add(hash_algorithm[i]);
+                for (int i = 0; i <= hash_algorithm_file.Length - 1; i++){
+                    FileHashAlgorithmSelect.Items.Add(hash_algorithm_file[i]);
                 }
                 FileHashAlgorithmSelect.SelectedIndex = 0;
                 // DVG
                 FileHashDGV.Columns.Add("FP", Encoding.UTF8.GetString(Encoding.Default.GetBytes(software_lang.TSReadLangs("FileHashTool", "fht_file_path").Trim())));
                 FileHashDGV.Columns.Add("FS", Encoding.UTF8.GetString(Encoding.Default.GetBytes(software_lang.TSReadLangs("FileHashTool", "fht_file_size").Trim())));
                 FileHashDGV.Columns.Add("HV", Encoding.UTF8.GetString(Encoding.Default.GetBytes(software_lang.TSReadLangs("FileHashTool", "fht_hash_value").Trim())));
-                FileHashDGV.Columns.Add("CP", Encoding.UTF8.GetString(Encoding.Default.GetBytes(software_lang.TSReadLangs("FileHashTool", "fht_copy").Trim())));
-                FileHashDGV.Columns[0].Width = 185;
-                FileHashDGV.Columns[1].Width = 115;
-                FileHashDGV.Columns[3].Width = 115;
-                FileHashDGV.Columns[3].DefaultCellStyle.Alignment = DataGridViewContentAlignment.MiddleCenter;
+                FileHashDGV.Columns[0].Width = 225;
+                FileHashDGV.Columns[1].Width = 140;
                 foreach (DataGridViewColumn OSD_Column in FileHashDGV.Columns){
                     OSD_Column.SortMode = DataGridViewColumnSortMode.NotSortable;
                 }
                 FileHashDGV.ClearSelection();
                 // TEXT HASH PRELOAD
                 // ======================================================================================================
-                for (int i = 0; i <= hash_algorithm.Length - 1; i++){
-                    TextHashAlgorithmSelect.Items.Add(hash_algorithm[i]);
+                for (int i = 0; i <= hash_algorithm_text.Length - 1; i++){
+                    TextHashAlgorithmSelect.Items.Add(hash_algorithm_text[i]);
                 }
                 TextHashAlgorithmSelect.SelectedIndex = 0;
                 for (int i = 0; i <= 1; i++){
@@ -326,7 +322,7 @@ namespace Vimera {
                 TSGetLangs software_lang = new TSGetLangs(lang_path);
                 using (var select_file = new OpenFileDialog()){
                     select_file.Filter = Encoding.UTF8.GetString(Encoding.Default.GetBytes(software_lang.TSReadLangs("FileHashTool", "fht_all_files").Trim())) + " (*.*)|*.*";
-                    select_file.InitialDirectory = @"C:\Users\" + Dns.GetHostName() + @"\Desktop\";
+                    select_file.InitialDirectory = Environment.GetFolderPath(Environment.SpecialFolder.Desktop);
                     select_file.Title = Application.ProductName + " - " + Encoding.UTF8.GetString(Encoding.Default.GetBytes(software_lang.TSReadLangs("FileHashTool", "fht_file_select_notification").Trim()));
                     select_file.Multiselect = true;
                     if (select_file.ShowDialog() == DialogResult.OK){
@@ -368,7 +364,6 @@ namespace Vimera {
         private int FileHashTotalFiles;
         private List<int> FileProgressList;
         private void FileHash_BG_Worker_DoWork(object sender, DoWorkEventArgs e){
-            file_last_hash_algorithm = FileHashAlgorithmSelect.SelectedItem.ToString();
             TSGetLangs software_lang = new TSGetLangs(lang_path);
             file_hash_timer_mode = true;
             Task file_hash_timers = new Task(file_hash_timer);
@@ -407,7 +402,6 @@ namespace Vimera {
                             } while (bytes_read > 0);
                             hasher.TransformFinalBlock(buffer, 0, 0);
                             item.row.Cells[2].Value = HashStringRotate(hasher.Hash);
-                            item.row.Cells[3].Value = Encoding.UTF8.GetString(Encoding.Default.GetBytes(software_lang.TSReadLangs("FileHashTool", "fht_copy").Trim()));
                         }
                     }
                     // Increase the number of processed files as each file is processed
@@ -416,9 +410,7 @@ namespace Vimera {
                         int overallProgress = (int)((double)processedFiles / FileHashTotalFiles * 100);
                         FileHash_BG_Worker.ReportProgress(overallProgress);
                     }
-                }catch (Exception ex){
-                    Console.WriteLine($"Error processing file: {ex.Message}");
-                }
+                }catch (Exception){ }
             });
         }
         // HASH ALGORITHM SELECTION METHOD
@@ -499,9 +491,6 @@ namespace Vimera {
                     for (int i = 0; i <= FileHashDGV.Rows.Count - 1; i++){
                         if (FileHashDGV.Rows[i].Cells[2].Value == null || (string)FileHashDGV.Rows[i].Cells[2].Value == "" || (string)FileHashDGV.Rows[i].Cells[2].Value == string.Empty){
                             FileHashDGV.Rows[i].Cells[2].Value = Encoding.UTF8.GetString(Encoding.Default.GetBytes(software_lang.TSReadLangs("FileHashTool", "fht_unreadable").Trim()));
-                        }
-                        if (FileHashDGV.Rows[i].Cells[3].Value == null || (string)FileHashDGV.Rows[i].Cells[3].Value == "" || (string)FileHashDGV.Rows[i].Cells[3].Value == string.Empty){
-                            FileHashDGV.Rows[i].Cells[3].Value = Encoding.UTF8.GetString(Encoding.Default.GetBytes(software_lang.TSReadLangs("FileHashTool", "fht_copy").Trim()));
                         }
                     }
                 }
@@ -596,36 +585,49 @@ namespace Vimera {
         private void FileHashExportHashsBtn_Click(object sender, EventArgs e){
             try{
                 TSGetLangs software_lang = new TSGetLangs(lang_path);
-                PrintEngineList.Add($"<{new string('-', 13)} {string.Format(Encoding.UTF8.GetString(Encoding.Default.GetBytes(software_lang.TSReadLangs("FileHashPrintEngine", "fhpe_title").Trim())), Application.ProductName)} {new string('-', 13)}>");
-                PrintEngineList.Add($"{Environment.NewLine}{new string('-', 75)}{Environment.NewLine}");
-                for (int i = 0; i <= FileHashDGV.Rows.Count - 1; i++){
-                    PrintEngineList.Add(Encoding.UTF8.GetString(Encoding.Default.GetBytes(software_lang.TSReadLangs("FileHashPrintEngine", "fhpe_file_name").Trim())) + " " + Path.GetFileName(FileHashDGV.Rows[i].Cells[0].Value.ToString()));
-                    PrintEngineList.Add(Encoding.UTF8.GetString(Encoding.Default.GetBytes(software_lang.TSReadLangs("FileHashPrintEngine", "fhpe_file_path").Trim())) + " " + FileHashDGV.Rows[i].Cells[0].Value.ToString());
-                    PrintEngineList.Add(Encoding.UTF8.GetString(Encoding.Default.GetBytes(software_lang.TSReadLangs("FileHashPrintEngine", "fhpe_file_size").Trim())) + " " + FileHashDGV.Rows[i].Cells[1].Value.ToString());
-                    PrintEngineList.Add(file_last_hash_algorithm + " " + Encoding.UTF8.GetString(Encoding.Default.GetBytes(software_lang.TSReadLangs("FileHashPrintEngine", "fhpe_hash_value").Trim())) + " " + FileHashDGV.Rows[i].Cells[2].Value.ToString() + "\n\n" + new string('-', 75) + Environment.NewLine);
+                switch (file_hash_algorithm_mode){
+                    case 0:
+                        file_hash_current_mode = Encoding.UTF8.GetString(Encoding.Default.GetBytes(software_lang.TSReadLangs("FileHashPrintEngine", "fhpe_document_md5").Trim())) + " (*.md5)|*.md5";
+                        break;
+                    case 1:
+                        file_hash_current_mode = Encoding.UTF8.GetString(Encoding.Default.GetBytes(software_lang.TSReadLangs("FileHashPrintEngine", "fhpe_document_sha1").Trim())) + " (*.sha1)|*.sha1";
+                        break;
+                    case 2:
+                        file_hash_current_mode = Encoding.UTF8.GetString(Encoding.Default.GetBytes(software_lang.TSReadLangs("FileHashPrintEngine", "fhpe_document_sha256").Trim())) + " (*.sha256)|*.sha256";
+                        break;
+                    case 3:
+                        file_hash_current_mode = Encoding.UTF8.GetString(Encoding.Default.GetBytes(software_lang.TSReadLangs("FileHashPrintEngine", "fhpe_document_sha384").Trim())) + " (*.sha384)|*.sha384";
+                        break;
+                    case 4:
+                        file_hash_current_mode = Encoding.UTF8.GetString(Encoding.Default.GetBytes(software_lang.TSReadLangs("FileHashPrintEngine", "fhpe_document_sha512").Trim())) + " (*.sha512)|*.sha512";
+                        break;
                 }
-                PrintEngineList.Add(string.Format(Encoding.UTF8.GetString(Encoding.Default.GetBytes(software_lang.TSReadLangs("FileHashPrintEngine", "fhpe_version").Trim())), Application.ProductName, TS_SofwareVersion.TS_SofwareVersion(1, ts_version_mode)));
-                PrintEngineList.Add($"(C) {DateTime.Now.Year} {Application.CompanyName}.");
-                PrintEngineList.Add(Encoding.UTF8.GetString(Encoding.Default.GetBytes(software_lang.TSReadLangs("FileHashPrintEngine", "fhpe_processing_time").Trim())) + " " + DateTime.Now.ToString("dd.MM.yyyy - H:mm:ss"));
-                PrintEngineList.Add(Encoding.UTF8.GetString(Encoding.Default.GetBytes(software_lang.TSReadLangs("FileHashPrintEngine", "fhpe_website").Trim())) + " " + TS_LinkSystem.website_link);
-                PrintEngineList.Add(Encoding.UTF8.GetString(Encoding.Default.GetBytes(software_lang.TSReadLangs("FileHashPrintEngine", "fhpe_github").Trim())) + " " + TS_LinkSystem.github_link);
-                PrintEngineList.Add(Encoding.UTF8.GetString(Encoding.Default.GetBytes(software_lang.TSReadLangs("FileHashPrintEngine", "fhpe_twitter").Trim())) + " " + TS_LinkSystem.twitter_link);
+                //
+                for (int i = 0; i < FileHashDGV.Rows.Count; i++){
+                    if (!FileHashDGV.Rows[i].IsNewRow){
+                        //PrintEngineList.Add(FileHashDGV.Rows[i].Cells[2].Value?.ToString().Trim() + "  " + Path.GetFileName(FileHashDGV.Rows[i].Cells[0].Value?.ToString().Trim()));
+                        PrintEngineList.Add(FileHashDGV.Rows[i].Cells[2].Value?.ToString().Trim() + "  " + FileHashDGV.Rows[i].Cells[0].Value?.ToString().Trim());
+                    }
+                }
+                //
                 SaveFileDialog save_engine = new SaveFileDialog{
-                    InitialDirectory = @"C:\Users\" + Dns.GetHostName() + @"\Desktop\",
+                    InitialDirectory = Environment.GetFolderPath(Environment.SpecialFolder.Desktop),
                     Title = string.Format(Encoding.UTF8.GetString(Encoding.Default.GetBytes(software_lang.TSReadLangs("FileHashPrintEngine", "fhpe_save_directory_notification").Trim())), Application.ProductName),
-                    DefaultExt = "txt",
                     FileName = string.Format(Encoding.UTF8.GetString(Encoding.Default.GetBytes(software_lang.TSReadLangs("FileHashPrintEngine", "fhpe_save_file_name").Trim())), Application.ProductName),
-                    Filter = Encoding.UTF8.GetString(Encoding.Default.GetBytes(software_lang.TSReadLangs("FileHashPrintEngine", "fhpe_document_txt").Trim())) + " (*.txt)|*.txt"
+                    Filter = file_hash_current_mode + "|" + Encoding.UTF8.GetString(Encoding.Default.GetBytes(software_lang.TSReadLangs("FileHashPrintEngine", "fhpe_document_txt").Trim())) + " (*.txt)|*.txt"
                 };
                 if (save_engine.ShowDialog() == DialogResult.OK){
-                    String[] text_engine = new String[PrintEngineList.Count];
-                    PrintEngineList.CopyTo(text_engine, 0);
-                    File.WriteAllLines(save_engine.FileName, text_engine);
+                    String combinedText = String.Join(Environment.NewLine, PrintEngineList);
+                    File.WriteAllText(save_engine.FileName, combinedText);
                     DialogResult vimera_print_engine_query = MessageBox.Show(string.Format(Encoding.UTF8.GetString(Encoding.Default.GetBytes(software_lang.TSReadLangs("FileHashPrintEngine", "fhpe_save_hash_report_success_notification").Trim())), Application.ProductName, save_engine.FileName, "\n\n"), Application.ProductName, MessageBoxButtons.YesNo, MessageBoxIcon.Information);
-                    if (vimera_print_engine_query == DialogResult.Yes){ Process.Start(save_engine.FileName); }
-                    PrintEngineList.Clear(); save_engine.Dispose();
+                    if (vimera_print_engine_query == DialogResult.Yes){
+                        Process.Start(save_engine.FileName);
+                    }
+                    PrintEngineList.Clear();
+                    save_engine.Dispose();
                 }else{
-                    PrintEngineList.Clear(); save_engine.Dispose();
+                    PrintEngineList.Clear();
+                    save_engine.Dispose();
                 }
             }catch (Exception){ }
         }
@@ -701,31 +703,33 @@ namespace Vimera {
                 case 0:
                     return ToBinary(inputBytes);
                 case 1:
+                    return Convert.ToBase64String(inputBytes);
+                case 2:
                     using (var ripemd160 = new RIPEMD160Managed()){
                         hashBytes = ripemd160.ComputeHash(inputBytes);
                         return HashStringRotate(hashBytes);
                     }
-                case 2:
+                case 3:
                     using (MD5 md5 = MD5.Create()){
                         hashBytes = md5.ComputeHash(inputBytes);
                         return HashStringRotate(hashBytes);
                     }
-                case 3:
+                case 4:
                     using (SHA1 sha1 = SHA1.Create()){
                         hashBytes = sha1.ComputeHash(inputBytes);
                         return HashStringRotate(hashBytes);
                     }
-                case 4:
+                case 5:
                     using (SHA256 sha256 = SHA256.Create()){
                         hashBytes = sha256.ComputeHash(inputBytes);
                         return HashStringRotate(hashBytes);
                     }
-                case 5:
+                case 6:
                     using (SHA384 sha384 = SHA384.Create()){
                         hashBytes = sha384.ComputeHash(inputBytes);
                         return HashStringRotate(hashBytes);
                     }
-                case 6:
+                case 7:
                     using (SHA512 sha512 = SHA512.Create()){
                         hashBytes = sha512.ComputeHash(inputBytes);
                         return HashStringRotate(hashBytes);
@@ -790,13 +794,13 @@ namespace Vimera {
                 string hash_2 = SecondHashValueTextBox.Text.Trim().ToLower();
                 if (hash_1 == hash_2){
                     hash_compare_status = 0;
-                    HashCompareResultLabel.BackColor = Color.FromArgb(18, 119, 69);
-                    HashCompareResultLabel.ForeColor = Color.WhiteSmoke;
+                    HashCompareResultLabel.BackColor = TS_ThemeEngine.ColorMode(theme, "HashCompareSuccess");
+                    HashCompareResultLabel.ForeColor = TS_ThemeEngine.ColorMode(theme, "HashCompareResultFE");
                     HashCompareResultLabel.Text = Encoding.UTF8.GetString(Encoding.Default.GetBytes(software_lang.TSReadLangs("HashCompareTool", "hct_values_match").Trim()));
                 }else{
                     hash_compare_status = 1;
-                    HashCompareResultLabel.BackColor = Color.FromArgb(156, 37, 77);
-                    HashCompareResultLabel.ForeColor = Color.WhiteSmoke;
+                    HashCompareResultLabel.BackColor = TS_ThemeEngine.ColorMode(theme, "HashCompareFailed");
+                    HashCompareResultLabel.ForeColor = TS_ThemeEngine.ColorMode(theme, "HashCompareResultFE");
                     HashCompareResultLabel.Text = Encoding.UTF8.GetString(Encoding.Default.GetBytes(software_lang.TSReadLangs("HashCompareTool", "hct_values_not_match").Trim()));
                 }
             }catch (Exception){ }
@@ -809,16 +813,14 @@ namespace Vimera {
             if (btn_target != null){
                 if (active_btn != (Button)btn_target){
                     active_btn = (Button)btn_target;
-                    if (theme == 1){ active_btn.BackColor = btn_colors_active[0]; }
-                    else if (theme == 0){ active_btn.BackColor = btn_colors_active[1]; }
+                    active_btn.BackColor = TS_ThemeEngine.ColorMode(theme, "BtnActiveColor");
                     active_btn.Cursor = Cursors.Default;
                 }
             }
         }
         private void disabled_page(){
             foreach (Control disabled_btn in LeftPanel.Controls){
-                if (theme == 1){ disabled_btn.BackColor = btn_colors_deactive[0]; }
-                else if (theme == 0){ disabled_btn.BackColor = btn_colors_deactive[1]; }
+                disabled_btn.BackColor = TS_ThemeEngine.ColorMode(theme, "BtnDeActiveColor");
                 disabled_btn.Cursor = Cursors.Hand;
             }
         }
@@ -954,7 +956,6 @@ namespace Vimera {
                 FileHashDGV.Columns[0].HeaderText = Encoding.UTF8.GetString(Encoding.Default.GetBytes(software_lang.TSReadLangs("FileHashTool", "fht_file_path").Trim()));
                 FileHashDGV.Columns[1].HeaderText = Encoding.UTF8.GetString(Encoding.Default.GetBytes(software_lang.TSReadLangs("FileHashTool", "fht_file_size").Trim()));
                 FileHashDGV.Columns[2].HeaderText = Encoding.UTF8.GetString(Encoding.Default.GetBytes(software_lang.TSReadLangs("FileHashTool", "fht_hash_value").Trim()));
-                FileHashDGV.Columns[3].HeaderText = Encoding.UTF8.GetString(Encoding.Default.GetBytes(software_lang.TSReadLangs("FileHashTool", "fht_copy").Trim()));
                 FileHashUpperHashMode.Text = Encoding.UTF8.GetString(Encoding.Default.GetBytes(software_lang.TSReadLangs("FileHashTool", "fht_hash_uppercase").Trim()));
                 FileHashExportHashsBtn.Text = Encoding.UTF8.GetString(Encoding.Default.GetBytes(software_lang.TSReadLangs("FileHashTool", "fht_export_hashs").Trim()));
                 FileHashCompareBtn.Text = Encoding.UTF8.GetString(Encoding.Default.GetBytes(software_lang.TSReadLangs("FileHashTool", "fht_compare").Trim()));
@@ -998,249 +999,199 @@ namespace Vimera {
             }
         }
         private void lightThemeToolStripMenuItem_Click(object sender, EventArgs e){
-            if (theme != 1){ color_mode(1); select_theme_active(sender); }
+            if (theme != 1){ theme_engine(1); select_theme_active(sender); }
         }
         private void darkThemeToolStripMenuItem_Click(object sender, EventArgs e){
-            if (theme != 0){ color_mode(0); select_theme_active(sender); }
+            if (theme != 0){ theme_engine(0); select_theme_active(sender); }
         }
-        private void color_mode(int ts){
-            theme = ts;
-            if (theme == 1){
-                // TITLEBAR CHANGE 
-                try { if (DwmSetWindowAttribute(Handle, 20, new[]{ 1 }, 4) != 1){ DwmSetWindowAttribute(Handle, 20, new[]{ 0 }, 4); } }catch (Exception){ }
-                // CLEAR PRELOAD ITEMS
-                if (ui_colors.Count > 0){ ui_colors.Clear(); }
-                if (header_colors.Count > 1){ header_colors.Clear(); }
-                // HEADER MENU COLOR MODE
-                header_colors.Add(Color.FromArgb(222, 222, 222));
-                header_colors.Add(Color.FromArgb(31, 31, 31));
-                // HEADER AND TOOLTIP COLOR MODE
-                ui_colors.Add(Color.FromArgb(32, 32, 32));          // 0
-                ui_colors.Add(Color.FromArgb(235, 235, 235));       // 1
-                // LEFT MENU COLOR MODE
-                ui_colors.Add(Color.FromArgb(235, 235, 235));       // 2
-                ui_colors.Add(Color.WhiteSmoke);                    // 3
-                ui_colors.Add(Color.FromArgb(32, 32, 32));          // 4
-                // CONTENT BG COLOR MODE
-                ui_colors.Add(Color.WhiteSmoke);                    // 5
-                // UI COLOR MODES
-                ui_colors.Add(Color.FromArgb(235, 235, 235));       // 6
-                ui_colors.Add(Color.White);                         // 7
-                ui_colors.Add(Color.FromArgb(32, 32, 32));          // 8
-                ui_colors.Add(Color.FromArgb(217, 217, 217));       // 9
-                ui_colors.Add(Color.FromArgb(235, 235, 235));       // 10
-                ui_colors.Add(Color.FromArgb(105, 81, 147));        // 11 - Main Color
-                ui_colors.Add(Color.WhiteSmoke);                    // 12
-                ui_colors.Add(Color.WhiteSmoke);                    // 13
-                ui_colors.Add(Color.FromArgb(32, 32, 32));          // 14
-                // THEME LOGOS
-                FileHashBtn.Image = Properties.Resources.lm_file_hash_light;
-                TextHashBtn.Image = Properties.Resources.lm_text_hash_light;
-                HashCompareBtn.Image = Properties.Resources.lm_hash_compare_light;
-                // SETTINGS
-                settingsToolStripMenuItem.Image = Properties.Resources.tm_settings_light;
-                themeToolStripMenuItem.Image = Properties.Resources.tm_theme_light;
-                languageToolStripMenuItem.Image = Properties.Resources.tm_lang_light;
-                initialViewToolStripMenuItem.Image = Properties.Resources.tm_start_light;
-                checkForUpdateToolStripMenuItem.Image = Properties.Resources.tm_update_light;
-                // ABOUT
-                aboutToolStripMenuItem.Image = Properties.Resources.tm_about_light;
-            }else if (theme == 0){
-                // TITLEBAR CHANGE
-                try { if (DwmSetWindowAttribute(Handle, 19, new[]{ 1 }, 4) != 0){ DwmSetWindowAttribute(Handle, 20, new[]{ 1 }, 4); } }catch (Exception){ }
-                // CLEAR PRELOAD ITEMS
-                if (ui_colors.Count > 0){ ui_colors.Clear(); }
-                if (header_colors.Count > 1){ header_colors.Clear(); }
-                // HEADER MENU COLOR MODE
-                header_colors.Add(Color.FromArgb(31, 31, 31));
-                header_colors.Add(Color.FromArgb(222, 222, 222));
-                // HEADER AND TOOLTIP COLOR MODE
-                ui_colors.Add(Color.WhiteSmoke);                    // 0
-                ui_colors.Add(Color.FromArgb(24, 24, 24));          // 1
-                // LEFT MENU COLOR MODE
-                ui_colors.Add(Color.FromArgb(24, 24, 24));          // 2
-                ui_colors.Add(Color.FromArgb(31, 31, 31));          // 3
-                ui_colors.Add(Color.WhiteSmoke);                    // 4
-                // CONTENT BG COLOR MODE
-                ui_colors.Add(Color.FromArgb(31, 31, 31));          // 5
-                // UI COLOR MODES
-                ui_colors.Add(Color.FromArgb(24, 24, 24));          // 6
-                ui_colors.Add(Color.FromArgb(31, 31, 31));          // 7
-                ui_colors.Add(Color.WhiteSmoke);                    // 8
-                ui_colors.Add(Color.FromArgb(50, 50, 50));          // 9
-                ui_colors.Add(Color.FromArgb(24, 24, 24));          // 10
-                ui_colors.Add(Color.FromArgb(113, 88, 157));        // 11 - Main Color
-                ui_colors.Add(Color.WhiteSmoke);                    // 12
-                ui_colors.Add(Color.FromArgb(31, 31, 31));          // 13
-                ui_colors.Add(Color.WhiteSmoke);                    // 14
-                // THEME LOGOS
-                FileHashBtn.Image = Properties.Resources.lm_file_hash_dark;
-                TextHashBtn.Image = Properties.Resources.lm_text_hash_dark;
-                HashCompareBtn.Image = Properties.Resources.lm_hash_compare_dark;
-                // SETTINGS
-                settingsToolStripMenuItem.Image = Properties.Resources.tm_settings_dark;
-                themeToolStripMenuItem.Image = Properties.Resources.tm_theme_dark;
-                languageToolStripMenuItem.Image = Properties.Resources.tm_lang_dark;
-                initialViewToolStripMenuItem.Image = Properties.Resources.tm_start_dark;
-                checkForUpdateToolStripMenuItem.Image = Properties.Resources.tm_update_dark;
-                // ABOUT
-                aboutToolStripMenuItem.Image = Properties.Resources.tm_about_dark;
-            }
-            // SAVE THEME
+        // THEME ENGINE
+        // ======================================================================================================
+        private void theme_engine(int ts){
             try{
-                TSSettingsSave software_setting_save = new TSSettingsSave(ts_sf);
-                software_setting_save.TSWriteSettings(ts_settings_container, "ThemeStatus", Convert.ToString(ts));
-            }catch (Exception){ }
-            theme_engine();
-            // OTHER PAGE DYNAMIC UI
-            software_other_page_preloader();
-        }
-        private void software_other_page_preloader(){
-            // SOFTWARE ABOUT
-            try{
-                VimeraAbout software_about = new VimeraAbout();
-                string software_about_name = "vimera_about";
-                software_about.Name = software_about_name;
-                if (Application.OpenForms[software_about_name] != null){
-                    software_about = (VimeraAbout)Application.OpenForms[software_about_name];
-                    software_about.about_preloader();
+                theme = ts;
+                if (theme == 1){
+                    // TITLEBAR CHANGE 
+                    try { if (DwmSetWindowAttribute(Handle, 20, new[]{ 1 }, 4) != 1){ DwmSetWindowAttribute(Handle, 20, new[]{ 0 }, 4); } }catch (Exception){ }
+                    // THEME LOGOS
+                    FileHashBtn.Image = Properties.Resources.lm_file_hash_light;
+                    TextHashBtn.Image = Properties.Resources.lm_text_hash_light;
+                    HashCompareBtn.Image = Properties.Resources.lm_hash_compare_light;
+                    // SETTINGS
+                    settingsToolStripMenuItem.Image = Properties.Resources.tm_settings_light;
+                    themeToolStripMenuItem.Image = Properties.Resources.tm_theme_light;
+                    languageToolStripMenuItem.Image = Properties.Resources.tm_lang_light;
+                    initialViewToolStripMenuItem.Image = Properties.Resources.tm_start_light;
+                    checkForUpdateToolStripMenuItem.Image = Properties.Resources.tm_update_light;
+                    // ABOUT
+                    aboutToolStripMenuItem.Image = Properties.Resources.tm_about_light;
+                }else if (theme == 0){
+                    // TITLEBAR CHANGE
+                    try { if (DwmSetWindowAttribute(Handle, 19, new[]{ 1 }, 4) != 0){ DwmSetWindowAttribute(Handle, 20, new[]{ 1 }, 4); } }catch (Exception){ }
+                    // THEME LOGOS
+                    FileHashBtn.Image = Properties.Resources.lm_file_hash_dark;
+                    TextHashBtn.Image = Properties.Resources.lm_text_hash_dark;
+                    HashCompareBtn.Image = Properties.Resources.lm_hash_compare_dark;
+                    // SETTINGS
+                    settingsToolStripMenuItem.Image = Properties.Resources.tm_settings_dark;
+                    themeToolStripMenuItem.Image = Properties.Resources.tm_theme_dark;
+                    languageToolStripMenuItem.Image = Properties.Resources.tm_lang_dark;
+                    initialViewToolStripMenuItem.Image = Properties.Resources.tm_start_dark;
+                    checkForUpdateToolStripMenuItem.Image = Properties.Resources.tm_update_dark;
+                    // ABOUT
+                    aboutToolStripMenuItem.Image = Properties.Resources.tm_about_dark;
                 }
-            }catch (Exception){ }
-        }
-        private void theme_engine(){
-            try{
+                // OTHER PAGE DYNAMIC UI
+                software_other_page_preloader();
+                // HEADER
                 header_image_reloader(menu_btns);
+                header_colors[0] = TS_ThemeEngine.ColorMode(theme, "HeaderBGColorMain");
+                header_colors[1] = TS_ThemeEngine.ColorMode(theme, "HeaderFEColorMain");
                 HeaderMenu.Renderer = new HeaderMenuColors();
+                // ACTIVE BTN 
+                btn_colors_active[0] = TS_ThemeEngine.ColorMode(theme, "BtnActiveColor");
                 // HEADER PANEL
-                HeaderInPanel.BackColor = ui_colors[1];
+                HeaderInPanel.BackColor = TS_ThemeEngine.ColorMode(theme, "HeaderBGColor");
                 // HEADER PANEL TEXT
-                HeaderText.ForeColor = ui_colors[0];
+                HeaderText.ForeColor = TS_ThemeEngine.ColorMode(theme, "HeaderFEColor");
                 // HEADER MENU
-                HeaderMenu.ForeColor = ui_colors[0];
-                HeaderMenu.BackColor = ui_colors[1];
+                HeaderMenu.ForeColor = TS_ThemeEngine.ColorMode(theme, "HeaderFEColor");
+                HeaderMenu.BackColor = TS_ThemeEngine.ColorMode(theme, "HeaderBGColor");
                 // HEADER MENU CONTENT
                 // SETTINGS
-                settingsToolStripMenuItem.ForeColor = ui_colors[0];
-                settingsToolStripMenuItem.BackColor = ui_colors[1];
+                settingsToolStripMenuItem.ForeColor = TS_ThemeEngine.ColorMode(theme, "HeaderFEColor");
+                settingsToolStripMenuItem.BackColor = TS_ThemeEngine.ColorMode(theme, "HeaderBGColor");
                 // THEMES
-                themeToolStripMenuItem.BackColor = ui_colors[1];
-                themeToolStripMenuItem.ForeColor = ui_colors[0];
-                lightThemeToolStripMenuItem.BackColor = ui_colors[1];
-                lightThemeToolStripMenuItem.ForeColor = ui_colors[0];
-                darkThemeToolStripMenuItem.BackColor = ui_colors[1];
-                darkThemeToolStripMenuItem.ForeColor = ui_colors[0];
+                themeToolStripMenuItem.BackColor = TS_ThemeEngine.ColorMode(theme, "HeaderBGColor");
+                themeToolStripMenuItem.ForeColor = TS_ThemeEngine.ColorMode(theme, "HeaderFEColor");
+                lightThemeToolStripMenuItem.BackColor = TS_ThemeEngine.ColorMode(theme, "HeaderBGColor");
+                lightThemeToolStripMenuItem.ForeColor = TS_ThemeEngine.ColorMode(theme, "HeaderFEColor");
+                darkThemeToolStripMenuItem.BackColor = TS_ThemeEngine.ColorMode(theme, "HeaderBGColor");
+                darkThemeToolStripMenuItem.ForeColor = TS_ThemeEngine.ColorMode(theme, "HeaderFEColor");
                 // LANGS
-                languageToolStripMenuItem.BackColor = ui_colors[1];
-                languageToolStripMenuItem.ForeColor = ui_colors[0];
-                englishToolStripMenuItem.BackColor = ui_colors[1];
-                englishToolStripMenuItem.ForeColor = ui_colors[0];
-                turkishToolStripMenuItem.BackColor = ui_colors[1];
-                turkishToolStripMenuItem.ForeColor = ui_colors[0];
+                languageToolStripMenuItem.BackColor = TS_ThemeEngine.ColorMode(theme, "HeaderBGColor");
+                languageToolStripMenuItem.ForeColor = TS_ThemeEngine.ColorMode(theme, "HeaderFEColor");
+                englishToolStripMenuItem.BackColor = TS_ThemeEngine.ColorMode(theme, "HeaderBGColor");
+                englishToolStripMenuItem.ForeColor = TS_ThemeEngine.ColorMode(theme, "HeaderFEColor");
+                turkishToolStripMenuItem.BackColor = TS_ThemeEngine.ColorMode(theme, "HeaderBGColor");
+                turkishToolStripMenuItem.ForeColor = TS_ThemeEngine.ColorMode(theme, "HeaderFEColor");
                 // INITIAL VIEW
-                initialViewToolStripMenuItem.BackColor = ui_colors[1];
-                initialViewToolStripMenuItem.ForeColor = ui_colors[0];
-                windowedToolStripMenuItem.BackColor = ui_colors[1];
-                windowedToolStripMenuItem.ForeColor = ui_colors[0];
-                fullScreenToolStripMenuItem.BackColor = ui_colors[1];
-                fullScreenToolStripMenuItem.ForeColor = ui_colors[0];
+                initialViewToolStripMenuItem.BackColor = TS_ThemeEngine.ColorMode(theme, "HeaderBGColor");
+                initialViewToolStripMenuItem.ForeColor = TS_ThemeEngine.ColorMode(theme, "HeaderFEColor");
+                windowedToolStripMenuItem.BackColor = TS_ThemeEngine.ColorMode(theme, "HeaderBGColor");
+                windowedToolStripMenuItem.ForeColor = TS_ThemeEngine.ColorMode(theme, "HeaderFEColor");
+                fullScreenToolStripMenuItem.BackColor = TS_ThemeEngine.ColorMode(theme, "HeaderBGColor");
+                fullScreenToolStripMenuItem.ForeColor = TS_ThemeEngine.ColorMode(theme, "HeaderFEColor");
                 // UPDATE
-                checkForUpdateToolStripMenuItem.BackColor = ui_colors[1];
-                checkForUpdateToolStripMenuItem.ForeColor = ui_colors[0];
+                checkForUpdateToolStripMenuItem.BackColor = TS_ThemeEngine.ColorMode(theme, "HeaderBGColor");
+                checkForUpdateToolStripMenuItem.ForeColor = TS_ThemeEngine.ColorMode(theme, "HeaderFEColor");
                 // ABOUT
-                aboutToolStripMenuItem.BackColor = ui_colors[1];
-                aboutToolStripMenuItem.ForeColor = ui_colors[0];
+                aboutToolStripMenuItem.BackColor = TS_ThemeEngine.ColorMode(theme, "HeaderBGColor");
+                aboutToolStripMenuItem.ForeColor = TS_ThemeEngine.ColorMode(theme, "HeaderFEColor");
                 // LEFT MENU
-                LeftPanel.BackColor = ui_colors[2];
-                FileHashBtn.BackColor = ui_colors[2];
-                TextHashBtn.BackColor = ui_colors[2];
-                HashCompareBtn.BackColor = ui_colors[2];
+                LeftPanel.BackColor = TS_ThemeEngine.ColorMode(theme, "LeftMenuBGAndBorderColor");
+                FileHashBtn.BackColor = TS_ThemeEngine.ColorMode(theme, "LeftMenuBGAndBorderColor");
+                TextHashBtn.BackColor = TS_ThemeEngine.ColorMode(theme, "LeftMenuBGAndBorderColor");
+                HashCompareBtn.BackColor = TS_ThemeEngine.ColorMode(theme, "LeftMenuBGAndBorderColor");
                 // LEFT MENU BORDER
-                FileHashBtn.FlatAppearance.BorderColor = ui_colors[2];
-                TextHashBtn.FlatAppearance.BorderColor = ui_colors[2];
-                HashCompareBtn.FlatAppearance.BorderColor = ui_colors[2];
+                FileHashBtn.FlatAppearance.BorderColor = TS_ThemeEngine.ColorMode(theme, "LeftMenuBGAndBorderColor");
+                TextHashBtn.FlatAppearance.BorderColor = TS_ThemeEngine.ColorMode(theme, "LeftMenuBGAndBorderColor");
+                HashCompareBtn.FlatAppearance.BorderColor = TS_ThemeEngine.ColorMode(theme, "LeftMenuBGAndBorderColor");
                 // LEFT MENU MOUSE HOVER
-                FileHashBtn.FlatAppearance.MouseOverBackColor = ui_colors[3];
-                TextHashBtn.FlatAppearance.MouseOverBackColor = ui_colors[3];
-                HashCompareBtn.FlatAppearance.MouseOverBackColor = ui_colors[3];
+                FileHashBtn.FlatAppearance.MouseOverBackColor = TS_ThemeEngine.ColorMode(theme, "LeftMenuButtonHoverAndMouseDownColor");
+                TextHashBtn.FlatAppearance.MouseOverBackColor = TS_ThemeEngine.ColorMode(theme, "LeftMenuButtonHoverAndMouseDownColor");
+                HashCompareBtn.FlatAppearance.MouseOverBackColor = TS_ThemeEngine.ColorMode(theme, "LeftMenuButtonHoverAndMouseDownColor");
                 // LEFT MENU MOUSE DOWN
-                FileHashBtn.FlatAppearance.MouseDownBackColor = ui_colors[3];
-                TextHashBtn.FlatAppearance.MouseDownBackColor = ui_colors[3];
-                HashCompareBtn.FlatAppearance.MouseDownBackColor = ui_colors[3];
+                FileHashBtn.FlatAppearance.MouseDownBackColor = TS_ThemeEngine.ColorMode(theme, "LeftMenuButtonHoverAndMouseDownColor");
+                TextHashBtn.FlatAppearance.MouseDownBackColor = TS_ThemeEngine.ColorMode(theme, "LeftMenuButtonHoverAndMouseDownColor");
+                HashCompareBtn.FlatAppearance.MouseDownBackColor = TS_ThemeEngine.ColorMode(theme, "LeftMenuButtonHoverAndMouseDownColor");
                 // LEFT MENU BUTTON TEXT COLOR
-                FileHashBtn.ForeColor = ui_colors[4];
-                TextHashBtn.ForeColor = ui_colors[4];
-                HashCompareBtn.ForeColor = ui_colors[4];
+                FileHashBtn.ForeColor = TS_ThemeEngine.ColorMode(theme, "LeftMenuButtonFEColor");
+                TextHashBtn.ForeColor = TS_ThemeEngine.ColorMode(theme, "LeftMenuButtonFEColor");
+                HashCompareBtn.ForeColor = TS_ThemeEngine.ColorMode(theme, "LeftMenuButtonFEColor");
                 // CONTENT BG
-                BackColor = ui_colors[5];
-                FileHash.BackColor = ui_colors[5];
-                TextHash.BackColor = ui_colors[5];
-                HashCompare.BackColor = ui_colors[5];
+                BackColor = TS_ThemeEngine.ColorMode(theme, "PageContainerBGAndPageContentTotalColors");
+                FileHash.BackColor = TS_ThemeEngine.ColorMode(theme, "PageContainerBGAndPageContentTotalColors");
+                TextHash.BackColor = TS_ThemeEngine.ColorMode(theme, "PageContainerBGAndPageContentTotalColors");
+                HashCompare.BackColor = TS_ThemeEngine.ColorMode(theme, "PageContainerBGAndPageContentTotalColors");
                 // FILE HASH
-                FileHashPanel.BackColor = ui_colors[6];
-                FileHashAlgorithmSelect.BackColor = ui_colors[11];
-                FileHashSelectFileBtn.BackColor = ui_colors[11];
-                FileHashSelectFileBtn.FlatAppearance.BorderColor = ui_colors[11];
-                FileHashSelectFileBtn.FlatAppearance.MouseDownBackColor = ui_colors[11];
-                FileHashLoadFE_Panel.BackColor = ui_colors[11];
-                FileHashDGV.BackgroundColor = ui_colors[7];
-                FileHashDGV.GridColor = ui_colors[9];
-                FileHashDGV.DefaultCellStyle.BackColor = ui_colors[7];
-                FileHashDGV.DefaultCellStyle.ForeColor = ui_colors[8];
-                FileHashDGV.AlternatingRowsDefaultCellStyle.BackColor = ui_colors[10];
-                FileHashDGV.ColumnHeadersDefaultCellStyle.BackColor = ui_colors[11];
-                FileHashDGV.ColumnHeadersDefaultCellStyle.SelectionBackColor = ui_colors[11];
-                FileHashDGV.ColumnHeadersDefaultCellStyle.ForeColor = ui_colors[12];
-                FileHashDGV.DefaultCellStyle.SelectionBackColor = ui_colors[11];
-                FileHashDGV.DefaultCellStyle.SelectionForeColor = ui_colors[12];
-                FileHashExportHashsBtn.BackColor = ui_colors[11];
-                FileHashExportHashsBtn.FlatAppearance.BorderColor = ui_colors[11];
-                FileHashExportHashsBtn.FlatAppearance.MouseDownBackColor = ui_colors[11];
-                FileHashCompareBtn.BackColor = ui_colors[11];
-                FileHashCompareBtn.FlatAppearance.BorderColor = ui_colors[11];
-                FileHashCompareBtn.FlatAppearance.MouseDownBackColor = ui_colors[11];
-                FileHashStartBtn.BackColor = ui_colors[11];
-                FileHashStartBtn.FlatAppearance.BorderColor = ui_colors[11];
-                FileHashStartBtn.FlatAppearance.MouseDownBackColor = ui_colors[11];
-                FileHashSelectFilePathTextBox.BackColor = ui_colors[13];
-                FileHashSelectFilePathTextBox.ForeColor = ui_colors[14];
-                FileHashUpperHashMode.ForeColor = ui_colors[14];
-                FileHashTimer.BackColor = ui_colors[3];
-                FileHashTimer.ForeColor = ui_colors[4];
-                FileHashCompareTextBox.BackColor = ui_colors[13];
-                FileHashCompareTextBox.ForeColor = ui_colors[14];
+                FileHashPanel.BackColor = TS_ThemeEngine.ColorMode(theme, "ContentPanelBGColor");
+                FileHashAlgorithmSelect.BackColor = TS_ThemeEngine.ColorMode(theme, "MainAccentColor");
+                FileHashAlgorithmSelect.ForeColor = TS_ThemeEngine.ColorMode(theme, "DynamicThemeActiveBtnBG");
+                FileHashSelectFileBtn.BackColor = TS_ThemeEngine.ColorMode(theme, "MainAccentColor");
+                FileHashSelectFileBtn.FlatAppearance.BorderColor = TS_ThemeEngine.ColorMode(theme, "MainAccentColor");
+                FileHashSelectFileBtn.FlatAppearance.MouseDownBackColor = TS_ThemeEngine.ColorMode(theme, "MainAccentColor");
+                FileHashSelectFileBtn.ForeColor = TS_ThemeEngine.ColorMode(theme, "DynamicThemeActiveBtnBG");
+                FileHashLoadFE_Panel.BackColor = TS_ThemeEngine.ColorMode(theme, "MainAccentColor");
+                FileHashDGV.BackgroundColor = TS_ThemeEngine.ColorMode(theme, "DataGridBGColor");
+                FileHashDGV.GridColor = TS_ThemeEngine.ColorMode(theme, "DataGridColor");
+                FileHashDGV.DefaultCellStyle.BackColor = TS_ThemeEngine.ColorMode(theme, "DataGridBGColor");
+                FileHashDGV.DefaultCellStyle.ForeColor = TS_ThemeEngine.ColorMode(theme, "DataGridFEColor");
+                FileHashDGV.AlternatingRowsDefaultCellStyle.BackColor = TS_ThemeEngine.ColorMode(theme, "DataGridAlternatingColor");
+                FileHashDGV.ColumnHeadersDefaultCellStyle.BackColor = TS_ThemeEngine.ColorMode(theme, "MainAccentColor");
+                FileHashDGV.ColumnHeadersDefaultCellStyle.SelectionBackColor = TS_ThemeEngine.ColorMode(theme, "MainAccentColor");
+                FileHashDGV.ColumnHeadersDefaultCellStyle.ForeColor = TS_ThemeEngine.ColorMode(theme, "DataGridSelectionColor");
+                FileHashDGV.DefaultCellStyle.SelectionBackColor = TS_ThemeEngine.ColorMode(theme, "MainAccentColor");
+                FileHashDGV.DefaultCellStyle.SelectionForeColor = TS_ThemeEngine.ColorMode(theme, "DataGridSelectionColor");
+                FileHashExportHashsBtn.BackColor = TS_ThemeEngine.ColorMode(theme, "MainAccentColor");
+                FileHashExportHashsBtn.FlatAppearance.BorderColor = TS_ThemeEngine.ColorMode(theme, "MainAccentColor");
+                FileHashExportHashsBtn.FlatAppearance.MouseDownBackColor = TS_ThemeEngine.ColorMode(theme, "MainAccentColor");
+                FileHashExportHashsBtn.ForeColor = TS_ThemeEngine.ColorMode(theme, "DynamicThemeActiveBtnBG");
+                FileHashCompareBtn.BackColor = TS_ThemeEngine.ColorMode(theme, "MainAccentColor");
+                FileHashCompareBtn.FlatAppearance.BorderColor = TS_ThemeEngine.ColorMode(theme, "MainAccentColor");
+                FileHashCompareBtn.FlatAppearance.MouseDownBackColor = TS_ThemeEngine.ColorMode(theme, "MainAccentColor");
+                FileHashCompareBtn.ForeColor = TS_ThemeEngine.ColorMode(theme, "DynamicThemeActiveBtnBG");
+                FileHashStartBtn.BackColor = TS_ThemeEngine.ColorMode(theme, "MainAccentColor"); 
+                FileHashStartBtn.FlatAppearance.BorderColor = TS_ThemeEngine.ColorMode(theme, "MainAccentColor");
+                FileHashStartBtn.FlatAppearance.MouseDownBackColor = TS_ThemeEngine.ColorMode(theme, "MainAccentColor");
+                FileHashStartBtn.ForeColor = TS_ThemeEngine.ColorMode(theme, "DynamicThemeActiveBtnBG");
+                FileHashSelectFilePathTextBox.BackColor = TS_ThemeEngine.ColorMode(theme, "TextBoxBGColor");
+                FileHashSelectFilePathTextBox.ForeColor = TS_ThemeEngine.ColorMode(theme, "TextBoxFEColor");
+                FileHashUpperHashMode.ForeColor = TS_ThemeEngine.ColorMode(theme, "TextBoxFEColor");
+                FileHashTimer.BackColor = TS_ThemeEngine.ColorMode(theme, "LeftMenuButtonHoverAndMouseDownColor");
+                FileHashTimer.ForeColor = TS_ThemeEngine.ColorMode(theme, "LeftMenuButtonFEColor");
+                FileHashCompareTextBox.BackColor = TS_ThemeEngine.ColorMode(theme, "TextBoxBGColor");
+                FileHashCompareTextBox.ForeColor = TS_ThemeEngine.ColorMode(theme, "TextBoxFEColor");
                 // TEXT HASH
-                TextHashPanel.BackColor = ui_colors[6];
-                TextHashAlgorithmSelect.BackColor = ui_colors[11];
-                TextHashL1.ForeColor = ui_colors[4];
-                TextHashL2.ForeColor = ui_colors[4];
-                TextHashL3.ForeColor = ui_colors[4];
-                TextHashOriginalTextBox.BackColor = ui_colors[13];
-                TextHashOriginalTextBox.ForeColor = ui_colors[14];
-                TextHashSaltingMode.ForeColor = ui_colors[14];
-                TextHashSaltingTextBox.BackColor = ui_colors[13];
-                TextHashSaltingTextBox.ForeColor = ui_colors[14];
-                TextHashSaltingLocateMode.BackColor = ui_colors[11];
-                TextHashResultTextBox.BackColor = ui_colors[13];
-                TextHashResultTextBox.ForeColor = ui_colors[14];
-                TextHashResultCopyBtn.BackColor = ui_colors[11];
-                TextHashResultCopyBtn.FlatAppearance.BorderColor = ui_colors[11];
-                TextHashResultCopyBtn.FlatAppearance.MouseDownBackColor = ui_colors[11];
+                TextHashPanel.BackColor = TS_ThemeEngine.ColorMode(theme, "ContentPanelBGColor");
+                TextHashAlgorithmSelect.BackColor = TS_ThemeEngine.ColorMode(theme, "MainAccentColor");
+                TextHashAlgorithmSelect.ForeColor = TS_ThemeEngine.ColorMode(theme, "DynamicThemeActiveBtnBG");
+                TextHashL1.ForeColor = TS_ThemeEngine.ColorMode(theme, "LeftMenuButtonFEColor");
+                TextHashL2.ForeColor = TS_ThemeEngine.ColorMode(theme, "LeftMenuButtonFEColor");
+                TextHashL3.ForeColor = TS_ThemeEngine.ColorMode(theme, "LeftMenuButtonFEColor");
+                TextHashOriginalTextBox.BackColor = TS_ThemeEngine.ColorMode(theme, "TextBoxBGColor");
+                TextHashOriginalTextBox.ForeColor = TS_ThemeEngine.ColorMode(theme, "TextBoxFEColor");
+                TextHashSaltingMode.ForeColor = TS_ThemeEngine.ColorMode(theme, "TextBoxFEColor");
+                TextHashSaltingTextBox.BackColor = TS_ThemeEngine.ColorMode(theme, "TextBoxBGColor");
+                TextHashSaltingTextBox.ForeColor = TS_ThemeEngine.ColorMode(theme, "TextBoxFEColor");
+                TextHashSaltingLocateMode.BackColor = TS_ThemeEngine.ColorMode(theme, "MainAccentColor");
+                TextHashSaltingLocateMode.ForeColor = TS_ThemeEngine.ColorMode(theme, "DynamicThemeActiveBtnBG");
+                TextHashResultTextBox.BackColor = TS_ThemeEngine.ColorMode(theme, "TextBoxBGColor");
+                TextHashResultTextBox.ForeColor = TS_ThemeEngine.ColorMode(theme, "TextBoxFEColor");
+                TextHashResultCopyBtn.BackColor = TS_ThemeEngine.ColorMode(theme, "MainAccentColor");
+                TextHashResultCopyBtn.FlatAppearance.BorderColor = TS_ThemeEngine.ColorMode(theme, "MainAccentColor");
+                TextHashResultCopyBtn.FlatAppearance.MouseDownBackColor = TS_ThemeEngine.ColorMode(theme, "MainAccentColor");
+                TextHashResultCopyBtn.ForeColor = TS_ThemeEngine.ColorMode(theme, "DynamicThemeActiveBtnBG");
                 // HASH COMPARE
-                HashComparePanel.BackColor = ui_colors[6];
-                FirstHashValueLabel.ForeColor = ui_colors[4];
-                FirstHashValueTextBox.BackColor = ui_colors[13];
-                FirstHashValueTextBox.ForeColor = ui_colors[14];
-                SecondHashValueLabel.ForeColor = ui_colors[4];
-                SecondHashValueTextBox.BackColor = ui_colors[13];
-                SecondHashValueTextBox.ForeColor = ui_colors[14];
+                HashComparePanel.BackColor = TS_ThemeEngine.ColorMode(theme, "ContentPanelBGColor");
+                FirstHashValueLabel.ForeColor = TS_ThemeEngine.ColorMode(theme, "LeftMenuButtonFEColor");
+                FirstHashValueTextBox.BackColor = TS_ThemeEngine.ColorMode(theme, "TextBoxBGColor");
+                FirstHashValueTextBox.ForeColor = TS_ThemeEngine.ColorMode(theme, "TextBoxFEColor");
+                SecondHashValueLabel.ForeColor = TS_ThemeEngine.ColorMode(theme, "LeftMenuButtonFEColor");
+                SecondHashValueTextBox.BackColor = TS_ThemeEngine.ColorMode(theme, "TextBoxBGColor");
+                SecondHashValueTextBox.ForeColor = TS_ThemeEngine.ColorMode(theme, "TextBoxFEColor");
                 // ROTATE MENU
                 if (menu_btns == 1){
-                    FileHashBtn.BackColor = ui_colors[5];
+                    FileHashBtn.BackColor = TS_ThemeEngine.ColorMode(theme, "PageContainerBGAndPageContentTotalColors");
                 }else if (menu_btns == 2){
-                    TextHashBtn.BackColor = ui_colors[5];
+                    TextHashBtn.BackColor = TS_ThemeEngine.ColorMode(theme, "PageContainerBGAndPageContentTotalColors");
                 }else if (menu_btns == 3){
-                    HashCompareBtn.BackColor = ui_colors[5];
+                    HashCompareBtn.BackColor = TS_ThemeEngine.ColorMode(theme, "PageContainerBGAndPageContentTotalColors");
                 }
+                // SAVE CURRENT THEME
+                try{
+                    TSSettingsSave software_setting_save = new TSSettingsSave(ts_sf);
+                    software_setting_save.TSWriteSettings(ts_settings_container, "ThemeStatus", Convert.ToString(ts));
+                }catch (Exception){ }
             }catch (Exception){ }
         }
         private void header_image_reloader(int hi_value){
@@ -1269,6 +1220,20 @@ namespace Vimera {
                             HeaderImage.Image = Properties.Resources.lm_hash_compare_dark;
                             break;
                     }
+                }
+            }catch (Exception){ }
+        }
+        // MODULES PAGE DYNAMIC UI
+        // ======================================================================================================
+        private void software_other_page_preloader(){
+            // SOFTWARE ABOUT
+            try{
+                VimeraAbout software_about = new VimeraAbout();
+                string software_about_name = "vimera_about";
+                software_about.Name = software_about_name;
+                if (Application.OpenForms[software_about_name] != null){
+                    software_about = (VimeraAbout)Application.OpenForms[software_about_name];
+                    software_about.about_preloader();
                 }
             }catch (Exception){ }
         }

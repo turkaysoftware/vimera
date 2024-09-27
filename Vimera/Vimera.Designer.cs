@@ -668,7 +668,7 @@
             this.TextHash.Location = new System.Drawing.Point(4, 22);
             this.TextHash.Name = "TextHash";
             this.TextHash.Padding = new System.Windows.Forms.Padding(3);
-            this.TextHash.Size = new System.Drawing.Size(786, 551);
+            this.TextHash.Size = new System.Drawing.Size(810, 561);
             this.TextHash.TabIndex = 1;
             this.TextHash.Text = "TextHash";
             this.TextHash.UseVisualStyleBackColor = true;
@@ -683,7 +683,7 @@
             this.TextHash_TLP.Name = "TextHash_TLP";
             this.TextHash_TLP.RowCount = 1;
             this.TextHash_TLP.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 100F));
-            this.TextHash_TLP.Size = new System.Drawing.Size(780, 545);
+            this.TextHash_TLP.Size = new System.Drawing.Size(804, 555);
             this.TextHash_TLP.TabIndex = 1;
             // 
             // TextHashPanel
@@ -693,7 +693,7 @@
             this.TextHashPanel.Dock = System.Windows.Forms.DockStyle.Fill;
             this.TextHashPanel.Location = new System.Drawing.Point(3, 3);
             this.TextHashPanel.Name = "TextHashPanel";
-            this.TextHashPanel.Size = new System.Drawing.Size(774, 539);
+            this.TextHashPanel.Size = new System.Drawing.Size(798, 549);
             this.TextHashPanel.TabIndex = 0;
             // 
             // TextHashTLP
@@ -714,7 +714,7 @@
             this.TextHashTLP.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 50F));
             this.TextHashTLP.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 40F));
             this.TextHashTLP.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 20F));
-            this.TextHashTLP.Size = new System.Drawing.Size(774, 539);
+            this.TextHashTLP.Size = new System.Drawing.Size(798, 549);
             this.TextHashTLP.TabIndex = 10;
             // 
             // TextHashResultCopyBtn
@@ -729,10 +729,10 @@
             this.TextHashResultCopyBtn.Font = new System.Drawing.Font("Segoe UI Semibold", 11F, System.Drawing.FontStyle.Bold);
             this.TextHashResultCopyBtn.ForeColor = System.Drawing.Color.White;
             this.TextHashResultCopyBtn.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
-            this.TextHashResultCopyBtn.Location = new System.Drawing.Point(0, 498);
+            this.TextHashResultCopyBtn.Location = new System.Drawing.Point(0, 508);
             this.TextHashResultCopyBtn.Margin = new System.Windows.Forms.Padding(0);
             this.TextHashResultCopyBtn.Name = "TextHashResultCopyBtn";
-            this.TextHashResultCopyBtn.Size = new System.Drawing.Size(774, 41);
+            this.TextHashResultCopyBtn.Size = new System.Drawing.Size(798, 41);
             this.TextHashResultCopyBtn.TabIndex = 9;
             this.TextHashResultCopyBtn.Text = "KOPYALA";
             this.TextHashResultCopyBtn.TextImageRelation = System.Windows.Forms.TextImageRelation.ImageBeforeText;
@@ -749,7 +749,7 @@
             this.TextHashTLP_Panel2.Location = new System.Drawing.Point(3, 3);
             this.TextHashTLP_Panel2.Name = "TextHashTLP_Panel2";
             this.TextHashTLP_Panel2.Padding = new System.Windows.Forms.Padding(5);
-            this.TextHashTLP_Panel2.Size = new System.Drawing.Size(768, 198);
+            this.TextHashTLP_Panel2.Size = new System.Drawing.Size(792, 203);
             this.TextHashTLP_Panel2.TabIndex = 11;
             // 
             // TextHashAlgorithmSelect
@@ -762,7 +762,7 @@
             this.TextHashAlgorithmSelect.Font = new System.Drawing.Font("Segoe UI Semibold", 9.75F, System.Drawing.FontStyle.Bold);
             this.TextHashAlgorithmSelect.ForeColor = System.Drawing.Color.White;
             this.TextHashAlgorithmSelect.FormattingEnabled = true;
-            this.TextHashAlgorithmSelect.Location = new System.Drawing.Point(638, 5);
+            this.TextHashAlgorithmSelect.Location = new System.Drawing.Point(662, 5);
             this.TextHashAlgorithmSelect.Name = "TextHashAlgorithmSelect";
             this.TextHashAlgorithmSelect.Size = new System.Drawing.Size(125, 25);
             this.TextHashAlgorithmSelect.TabIndex = 0;
@@ -792,10 +792,10 @@
             this.TextHashOriginalTextBox.ForeColor = System.Drawing.Color.Black;
             this.TextHashOriginalTextBox.Location = new System.Drawing.Point(8, 36);
             this.TextHashOriginalTextBox.Margin = new System.Windows.Forms.Padding(3, 5, 0, 5);
-            this.TextHashOriginalTextBox.MaxLength = 512;
+            this.TextHashOriginalTextBox.MaxLength = 0;
             this.TextHashOriginalTextBox.Multiline = true;
             this.TextHashOriginalTextBox.Name = "TextHashOriginalTextBox";
-            this.TextHashOriginalTextBox.Size = new System.Drawing.Size(755, 152);
+            this.TextHashOriginalTextBox.Size = new System.Drawing.Size(779, 157);
             this.TextHashOriginalTextBox.TabIndex = 2;
             this.TextHashOriginalTextBox.TextChanged += new System.EventHandler(this.TextHashOriginalTextBox_TextChanged);
             // 
@@ -807,10 +807,10 @@
             this.TextHashTLP_Panel3.Controls.Add(this.TextHashSaltingLocateMode);
             this.TextHashTLP_Panel3.Controls.Add(this.TextHashSaltingMode);
             this.TextHashTLP_Panel3.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.TextHashTLP_Panel3.Location = new System.Drawing.Point(3, 207);
+            this.TextHashTLP_Panel3.Location = new System.Drawing.Point(3, 212);
             this.TextHashTLP_Panel3.Name = "TextHashTLP_Panel3";
             this.TextHashTLP_Panel3.Padding = new System.Windows.Forms.Padding(5);
-            this.TextHashTLP_Panel3.Size = new System.Drawing.Size(768, 84);
+            this.TextHashTLP_Panel3.Size = new System.Drawing.Size(792, 84);
             this.TextHashTLP_Panel3.TabIndex = 12;
             // 
             // TextHashSaltingTextBox
@@ -826,7 +826,7 @@
             this.TextHashSaltingTextBox.Margin = new System.Windows.Forms.Padding(3, 5, 0, 5);
             this.TextHashSaltingTextBox.MaxLength = 32;
             this.TextHashSaltingTextBox.Name = "TextHashSaltingTextBox";
-            this.TextHashSaltingTextBox.Size = new System.Drawing.Size(547, 25);
+            this.TextHashSaltingTextBox.Size = new System.Drawing.Size(571, 25);
             this.TextHashSaltingTextBox.TabIndex = 5;
             this.TextHashSaltingTextBox.TextChanged += new System.EventHandler(this.TextHashSaltingTextBox_TextChanged);
             // 
@@ -853,7 +853,7 @@
             this.TextHashSaltingLocateMode.Font = new System.Drawing.Font("Segoe UI Semibold", 9.75F, System.Drawing.FontStyle.Bold);
             this.TextHashSaltingLocateMode.ForeColor = System.Drawing.Color.White;
             this.TextHashSaltingLocateMode.FormattingEnabled = true;
-            this.TextHashSaltingLocateMode.Location = new System.Drawing.Point(559, 29);
+            this.TextHashSaltingLocateMode.Location = new System.Drawing.Point(583, 29);
             this.TextHashSaltingLocateMode.Margin = new System.Windows.Forms.Padding(3, 3, 3, 25);
             this.TextHashSaltingLocateMode.Name = "TextHashSaltingLocateMode";
             this.TextHashSaltingLocateMode.Size = new System.Drawing.Size(175, 25);
@@ -882,10 +882,10 @@
             this.TextHashTLP_Panel4.Controls.Add(this.TextHashL3);
             this.TextHashTLP_Panel4.Controls.Add(this.TextHashResultTextBox);
             this.TextHashTLP_Panel4.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.TextHashTLP_Panel4.Location = new System.Drawing.Point(3, 297);
+            this.TextHashTLP_Panel4.Location = new System.Drawing.Point(3, 302);
             this.TextHashTLP_Panel4.Name = "TextHashTLP_Panel4";
             this.TextHashTLP_Panel4.Padding = new System.Windows.Forms.Padding(5);
-            this.TextHashTLP_Panel4.Size = new System.Drawing.Size(768, 198);
+            this.TextHashTLP_Panel4.Size = new System.Drawing.Size(792, 203);
             this.TextHashTLP_Panel4.TabIndex = 13;
             // 
             // TextHashL3
@@ -915,7 +915,7 @@
             this.TextHashResultTextBox.MaxLength = 256;
             this.TextHashResultTextBox.Multiline = true;
             this.TextHashResultTextBox.Name = "TextHashResultTextBox";
-            this.TextHashResultTextBox.Size = new System.Drawing.Size(755, 152);
+            this.TextHashResultTextBox.Size = new System.Drawing.Size(779, 157);
             this.TextHashResultTextBox.TabIndex = 8;
             // 
             // HashCompare
@@ -923,7 +923,7 @@
             this.HashCompare.Controls.Add(this.HashCompare_TLP);
             this.HashCompare.Location = new System.Drawing.Point(4, 22);
             this.HashCompare.Name = "HashCompare";
-            this.HashCompare.Size = new System.Drawing.Size(786, 551);
+            this.HashCompare.Size = new System.Drawing.Size(810, 561);
             this.HashCompare.TabIndex = 2;
             this.HashCompare.Text = "HashCompare";
             this.HashCompare.UseVisualStyleBackColor = true;
@@ -939,7 +939,7 @@
             this.HashCompare_TLP.Padding = new System.Windows.Forms.Padding(3);
             this.HashCompare_TLP.RowCount = 1;
             this.HashCompare_TLP.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 100F));
-            this.HashCompare_TLP.Size = new System.Drawing.Size(786, 551);
+            this.HashCompare_TLP.Size = new System.Drawing.Size(810, 561);
             this.HashCompare_TLP.TabIndex = 2;
             // 
             // HashComparePanel
@@ -949,7 +949,7 @@
             this.HashComparePanel.Dock = System.Windows.Forms.DockStyle.Fill;
             this.HashComparePanel.Location = new System.Drawing.Point(6, 6);
             this.HashComparePanel.Name = "HashComparePanel";
-            this.HashComparePanel.Size = new System.Drawing.Size(774, 539);
+            this.HashComparePanel.Size = new System.Drawing.Size(798, 549);
             this.HashComparePanel.TabIndex = 1;
             // 
             // HashCompareTLP
@@ -967,7 +967,7 @@
             this.HashCompareTLP.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 50F));
             this.HashCompareTLP.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 50F));
             this.HashCompareTLP.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 40F));
-            this.HashCompareTLP.Size = new System.Drawing.Size(774, 539);
+            this.HashCompareTLP.Size = new System.Drawing.Size(798, 549);
             this.HashCompareTLP.TabIndex = 8;
             // 
             // HashCompareTopPanel
@@ -979,7 +979,7 @@
             this.HashCompareTopPanel.Location = new System.Drawing.Point(3, 3);
             this.HashCompareTopPanel.Name = "HashCompareTopPanel";
             this.HashCompareTopPanel.Padding = new System.Windows.Forms.Padding(5);
-            this.HashCompareTopPanel.Size = new System.Drawing.Size(768, 243);
+            this.HashCompareTopPanel.Size = new System.Drawing.Size(792, 248);
             this.HashCompareTopPanel.TabIndex = 0;
             // 
             // FirstHashValueLabel
@@ -1010,7 +1010,7 @@
             this.FirstHashValueTextBox.MaxLength = 512;
             this.FirstHashValueTextBox.Multiline = true;
             this.FirstHashValueTextBox.Name = "FirstHashValueTextBox";
-            this.FirstHashValueTextBox.Size = new System.Drawing.Size(755, 204);
+            this.FirstHashValueTextBox.Size = new System.Drawing.Size(779, 209);
             this.FirstHashValueTextBox.TabIndex = 4;
             this.FirstHashValueTextBox.TextChanged += new System.EventHandler(this.FirstHashValueTextBox_TextChanged);
             // 
@@ -1020,10 +1020,10 @@
             this.HashCompareResultLabel.Dock = System.Windows.Forms.DockStyle.Fill;
             this.HashCompareResultLabel.Font = new System.Drawing.Font("Segoe UI Semibold", 10F, System.Drawing.FontStyle.Bold);
             this.HashCompareResultLabel.ForeColor = System.Drawing.Color.Black;
-            this.HashCompareResultLabel.Location = new System.Drawing.Point(0, 498);
+            this.HashCompareResultLabel.Location = new System.Drawing.Point(0, 508);
             this.HashCompareResultLabel.Margin = new System.Windows.Forms.Padding(0);
             this.HashCompareResultLabel.Name = "HashCompareResultLabel";
-            this.HashCompareResultLabel.Size = new System.Drawing.Size(774, 41);
+            this.HashCompareResultLabel.Size = new System.Drawing.Size(798, 41);
             this.HashCompareResultLabel.TabIndex = 7;
             this.HashCompareResultLabel.Text = "HASH SONUCU";
             this.HashCompareResultLabel.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
@@ -1035,10 +1035,10 @@
             this.HashCompareBottomPanel.Controls.Add(this.SecondHashValueLabel);
             this.HashCompareBottomPanel.Controls.Add(this.SecondHashValueTextBox);
             this.HashCompareBottomPanel.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.HashCompareBottomPanel.Location = new System.Drawing.Point(3, 252);
+            this.HashCompareBottomPanel.Location = new System.Drawing.Point(3, 257);
             this.HashCompareBottomPanel.Name = "HashCompareBottomPanel";
             this.HashCompareBottomPanel.Padding = new System.Windows.Forms.Padding(5);
-            this.HashCompareBottomPanel.Size = new System.Drawing.Size(768, 243);
+            this.HashCompareBottomPanel.Size = new System.Drawing.Size(792, 248);
             this.HashCompareBottomPanel.TabIndex = 1;
             // 
             // SecondHashValueLabel
@@ -1070,7 +1070,7 @@
             this.SecondHashValueTextBox.MaxLength = 512;
             this.SecondHashValueTextBox.Multiline = true;
             this.SecondHashValueTextBox.Name = "SecondHashValueTextBox";
-            this.SecondHashValueTextBox.Size = new System.Drawing.Size(755, 204);
+            this.SecondHashValueTextBox.Size = new System.Drawing.Size(779, 209);
             this.SecondHashValueTextBox.TabIndex = 6;
             this.SecondHashValueTextBox.TextChanged += new System.EventHandler(this.SecondHashValueTextBox_TextChanged);
             // 
@@ -1108,7 +1108,7 @@
             this.DoubleBuffered = true;
             this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
             this.MainMenuStrip = this.HeaderMenu;
-            this.MinimumSize = new System.Drawing.Size(1000, 630);
+            this.MinimumSize = new System.Drawing.Size(1024, 640);
             this.Name = "Vimera";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "Vimera";

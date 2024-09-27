@@ -1,7 +1,9 @@
 ﻿using System;
 using System.IO;
 using System.Text;
+using System.Drawing;
 using System.Windows.Forms;
+using System.Collections.Generic;
 using System.Runtime.InteropServices;
 
 namespace Vimera{
@@ -12,6 +14,7 @@ namespace Vimera{
             public string
             website_link = "https://www.turkaysoftware.com",
             twitter_link = "https://x.com/turkaysoftware",
+            instagram_link = "https://www.instagram.com/erayturkayy/",
             github_link = "https://github.com/turkaysoftware",
             //
             github_link_lt = "https://raw.githubusercontent.com/turkaysoftware/vimera/main/Vimera/SoftwareVersion.txt",
@@ -55,6 +58,77 @@ namespace Vimera{
                 StringBuilder stringBuilder = new StringBuilder(512);
                 GetPrivateProfileString(episode, settingName, string.Empty, stringBuilder, 511, _saveFilePath);
                 return stringBuilder.ToString();
+            }
+        }
+        // TS THEME ENGINE
+        // ======================================================================================================
+        public class TS_ThemeEngine{
+            // Light Theme Colors
+            public static readonly Dictionary<string, Color> LightTheme = new Dictionary<string, Color>{
+                // HEADER MENU COLOR MODE
+                { "HeaderBGColorMain", Color.FromArgb(222, 222, 222) },
+                { "HeaderFEColorMain", Color.FromArgb(31, 31, 31) },
+                // ACTIVE PAGE COLOR
+                { "BtnActiveColor", Color.WhiteSmoke },
+                { "BtnDeActiveColor", Color.FromArgb(235, 235, 235) },
+                // UI COLOR
+                { "HeaderFEColor", Color.FromArgb(32, 32, 32) },
+                { "HeaderBGColor", Color.FromArgb(235, 235, 235) },
+                { "LeftMenuBGAndBorderColor", Color.FromArgb(235, 235, 235) },
+                { "LeftMenuButtonHoverAndMouseDownColor", Color.WhiteSmoke },
+                { "LeftMenuButtonFEColor", Color.FromArgb(32, 32, 32) },
+                { "PageContainerBGAndPageContentTotalColors", Color.WhiteSmoke },
+                { "ContentPanelBGColor", Color.FromArgb(235, 235, 235) },
+                { "DataGridBGColor", Color.White },
+                { "DataGridFEColor", Color.FromArgb(32, 32, 32) },
+                { "DataGridColor", Color.FromArgb(217, 217, 217) },
+                { "DataGridAlternatingColor", Color.FromArgb(235, 235, 235) },
+                { "DataGridSelectionColor", Color.WhiteSmoke },
+                { "MainAccentColor", Color.FromArgb(105, 81, 147) },
+                { "TextBoxBGColor", Color.WhiteSmoke },
+                { "TextBoxFEColor", Color.FromArgb(32, 32, 32) },
+                { "DynamicThemeActiveBtnBG", Color.WhiteSmoke },
+                { "HashCompareSuccess", Color.FromArgb(18, 119, 69) },
+                { "HashCompareFailed", Color.FromArgb(156, 37, 77) },
+                { "HashCompareResultFE", Color.WhiteSmoke }
+            };
+            // Dark Theme Colors
+            public static readonly Dictionary<string, Color> DarkTheme = new Dictionary<string, Color>{
+                // HEADER MENU COLOR MODE
+                { "HeaderBGColorMain", Color.FromArgb(31, 31, 31) },
+                { "HeaderFEColorMain", Color.FromArgb(222, 222, 222) },
+                 // ACTIVE PAGE COLOR
+                { "BtnActiveColor", Color.FromArgb(31, 31, 31) },
+                { "BtnDeActiveColor", Color.FromArgb(24, 24, 24) },
+                // UI COLOR
+                { "HeaderFEColor", Color.WhiteSmoke },
+                { "HeaderBGColor", Color.FromArgb(24, 24, 24) },
+                { "LeftMenuBGAndBorderColor", Color.FromArgb(24, 24, 24) },
+                { "LeftMenuButtonHoverAndMouseDownColor", Color.FromArgb(31, 31, 31) },
+                { "LeftMenuButtonFEColor", Color.WhiteSmoke },
+                { "PageContainerBGAndPageContentTotalColors", Color.FromArgb(31, 31, 31) },
+                { "ContentPanelBGColor", Color.FromArgb(24, 24, 24) },
+                { "DataGridBGColor", Color.FromArgb(31, 31, 31) },
+                { "DataGridFEColor", Color.WhiteSmoke },
+                { "DataGridColor", Color.FromArgb(50, 50, 50) },
+                { "DataGridAlternatingColor", Color.FromArgb(24, 24, 24) },
+                { "DataGridSelectionColor", Color.WhiteSmoke },
+                { "MainAccentColor", Color.FromArgb(113, 88, 157) },
+                { "TextBoxBGColor", Color.FromArgb(31, 31, 31) },
+                { "TextBoxFEColor", Color.WhiteSmoke },
+                { "DynamicThemeActiveBtnBG", Color.WhiteSmoke },
+                { "HashCompareSuccess", Color.FromArgb(18, 119, 69) },
+                { "HashCompareFailed", Color.FromArgb(156, 37, 77) },
+                { "HashCompareResultFE", Color.WhiteSmoke }
+            };
+            // Method to get color for the current theme
+            public static Color ColorMode(int theme, string key){
+                if (theme == 0){
+                    return DarkTheme.ContainsKey(key) ? DarkTheme[key] : Color.Transparent;
+                }else if (theme == 1){
+                    return LightTheme.ContainsKey(key) ? LightTheme[key] : Color.Transparent;
+                }
+                return Color.Transparent;
             }
         }
         // ======================================================================================================

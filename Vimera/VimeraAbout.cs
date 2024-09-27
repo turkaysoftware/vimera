@@ -30,25 +30,30 @@ namespace Vimera{
                     try { if (DwmSetWindowAttribute(Handle, 19, new[] { 1 }, 4) != 0){ DwmSetWindowAttribute(Handle, 20, new[]{ 1 }, 4); } }catch (Exception){ }
                 }
                 // COLORS
-                BackColor = Vimera.ui_colors[5];
-                About_BG_Panel.BackColor = Vimera.ui_colors[6];
-                About_L1.ForeColor = Vimera.ui_colors[8];
-                About_L2.ForeColor = Vimera.ui_colors[8];
+                BackColor = TS_ThemeEngine.ColorMode(Vimera.theme, "PageContainerBGAndPageContentTotalColors");
+                About_BG_Panel.BackColor = TS_ThemeEngine.ColorMode(Vimera.theme, "ContentPanelBGColor");
+                About_L1.ForeColor = TS_ThemeEngine.ColorMode(Vimera.theme, "LeftMenuButtonFEColor");
+                About_L2.ForeColor = TS_ThemeEngine.ColorMode(Vimera.theme, "LeftMenuButtonFEColor");
                 //
-                About_WebsiteBtn.BackColor = Vimera.ui_colors[11];
-                About_WebsiteBtn.FlatAppearance.BorderColor = Vimera.ui_colors[11];
-                About_WebsiteBtn.FlatAppearance.MouseDownBackColor = Vimera.ui_colors[11];
-                About_WebsiteBtn.ForeColor = Vimera.ui_colors[12];
+                About_WebsiteBtn.BackColor = TS_ThemeEngine.ColorMode(Vimera.theme, "MainAccentColor");
+                About_WebsiteBtn.FlatAppearance.BorderColor = TS_ThemeEngine.ColorMode(Vimera.theme, "MainAccentColor");
+                About_WebsiteBtn.FlatAppearance.MouseDownBackColor = TS_ThemeEngine.ColorMode(Vimera.theme, "MainAccentColor");
+                About_WebsiteBtn.ForeColor = TS_ThemeEngine.ColorMode(Vimera.theme, "DynamicThemeActiveBtnBG");
                 //
-                About_XBtn.BackColor = Vimera.ui_colors[11];
-                About_XBtn.FlatAppearance.BorderColor = Vimera.ui_colors[11];
-                About_XBtn.FlatAppearance.MouseDownBackColor = Vimera.ui_colors[11];
-                About_XBtn.ForeColor = Vimera.ui_colors[12];
+                About_XBtn.BackColor = TS_ThemeEngine.ColorMode(Vimera.theme, "MainAccentColor");
+                About_XBtn.FlatAppearance.BorderColor = TS_ThemeEngine.ColorMode(Vimera.theme, "MainAccentColor");
+                About_XBtn.FlatAppearance.MouseDownBackColor = TS_ThemeEngine.ColorMode(Vimera.theme, "MainAccentColor");
+                About_XBtn.ForeColor = TS_ThemeEngine.ColorMode(Vimera.theme, "DynamicThemeActiveBtnBG");
                 //
-                About_GitHubBtn.BackColor = Vimera.ui_colors[11];
-                About_GitHubBtn.FlatAppearance.BorderColor = Vimera.ui_colors[11];
-                About_GitHubBtn.FlatAppearance.MouseDownBackColor = Vimera.ui_colors[11];
-                About_GitHubBtn.ForeColor = Vimera.ui_colors[12];
+                About_InstagramBtn.BackColor = TS_ThemeEngine.ColorMode(Vimera.theme, "MainAccentColor");
+                About_InstagramBtn.FlatAppearance.BorderColor = TS_ThemeEngine.ColorMode(Vimera.theme, "MainAccentColor");
+                About_InstagramBtn.FlatAppearance.MouseDownBackColor = TS_ThemeEngine.ColorMode(Vimera.theme, "MainAccentColor");
+                About_InstagramBtn.ForeColor = TS_ThemeEngine.ColorMode(Vimera.theme, "DynamicThemeActiveBtnBG");
+                //
+                About_GitHubBtn.BackColor = TS_ThemeEngine.ColorMode(Vimera.theme, "MainAccentColor");
+                About_GitHubBtn.FlatAppearance.BorderColor = TS_ThemeEngine.ColorMode(Vimera.theme, "MainAccentColor");
+                About_GitHubBtn.FlatAppearance.MouseDownBackColor = TS_ThemeEngine.ColorMode(Vimera.theme, "MainAccentColor");
+                About_GitHubBtn.ForeColor = TS_ThemeEngine.ColorMode(Vimera.theme, "DynamicThemeActiveBtnBG");
                 // ======================================================================================================
                 TSGetLangs software_lang = new TSGetLangs(Vimera.lang_path);
                 TS_VersionEngine vimera_version = new TS_VersionEngine();
@@ -58,6 +63,7 @@ namespace Vimera{
                 About_L2.Text = string.Format(Encoding.UTF8.GetString(Encoding.Default.GetBytes(software_lang.TSReadLangs("SoftwareAbout", "sa_copyright").Trim())), "\u00a9", DateTime.Now.Year, Application.CompanyName);
                 About_WebsiteBtn.Text = Encoding.UTF8.GetString(Encoding.Default.GetBytes(software_lang.TSReadLangs("SoftwareAbout", "sa_website_page").Trim()));
                 About_XBtn.Text = Encoding.UTF8.GetString(Encoding.Default.GetBytes(software_lang.TSReadLangs("SoftwareAbout", "sa_twitter_page").Trim()));
+                About_InstagramBtn.Text = Encoding.UTF8.GetString(Encoding.Default.GetBytes(software_lang.TSReadLangs("SoftwareAbout", "sa_instagram_page").Trim()));
                 About_GitHubBtn.Text = Encoding.UTF8.GetString(Encoding.Default.GetBytes(software_lang.TSReadLangs("SoftwareAbout", "sa_github_page").Trim()));
             }catch (Exception){ }
         }
@@ -75,7 +81,13 @@ namespace Vimera{
                 Process.Start(TS_LinkSystem.twitter_link);
             }catch (Exception){ }
         }
-        // GITHUB LINK
+        // INSTAGRAM LINK
+        // ======================================================================================================
+        private void About_InstagramBtn_Click(object sender, EventArgs e){
+            try{
+                Process.Start(TS_LinkSystem.instagram_link);
+            }catch (Exception){ }
+        }
         // ======================================================================================================
         private void About_GitHubBtn_Click(object sender, EventArgs e){
             try{
