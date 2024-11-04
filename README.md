@@ -4,7 +4,9 @@
 
 [Click here](https://www.turkaysoftware.com/vimera) for full specifications.
 
-![Vimera UI](https://github.com/user-attachments/assets/4a3849cb-9093-4a91-926a-e5c3e03ef848)
+![Vimera UI Dark](https://github.com/user-attachments/assets/b64f3612-f07d-4906-9313-2d8330066030)
+
+![Vimera UI Light](https://github.com/user-attachments/assets/e8383fa5-12a3-41e5-9172-d0067d9be0c9)
 
 # Download Vimera
 
