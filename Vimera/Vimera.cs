@@ -39,11 +39,6 @@ namespace Vimera {
         // HASH COMPARE
         // ======================================================================================================
         int hash_compare_status;
-        // GITHUB WEBSITE & GITHUB LINK
-        // ======================================================================================================
-        // MEDIA LINK SYSTEM
-        static TS_VersionEngine TS_SoftwareVersion = new TS_VersionEngine();
-        TS_LinkSystem TS_LinkSystem = new TS_LinkSystem();
         // ======================================================================================================
         // COLOR MODES / Index Mode | 0 = Dark - 1 = Light
         List<Color> btn_colors_active = new List<Color>(){ Color.Transparent };
@@ -124,7 +119,6 @@ namespace Vimera {
             theme_engine(theme_mode);
             darkThemeToolStripMenuItem.Checked = theme_mode == 0;
             lightThemeToolStripMenuItem.Checked = theme_mode == 1;
-            //
             string lang_mode = TS_String_Encoder(software_read_settings.TSReadSettings(ts_settings_container, "LanguageStatus"));
             var languageFiles = new Dictionary<string, (object langResource, ToolStripMenuItem menuItem, bool fileExists)>{
                 { "en", (ts_lang_en, englishToolStripMenuItem, File.Exists(ts_lang_en)) },
@@ -144,8 +138,8 @@ namespace Vimera {
         // VIMERA LOAD
         // ====================================================================================================== 
         private void Vimera_Load(object sender, EventArgs e){
-            Text = TS_SoftwareVersion.TS_SofwareVersion(0, Program.ts_version_mode);
-            HeaderMenu.Cursor = Cursors.Hand; 
+            Text = TS_VersionEngine.TS_SofwareVersion(0, Program.ts_version_mode);
+            HeaderMenu.Cursor = Cursors.Hand;
             RunSoftwareEngine();
             //
             Task softwareUpdateCheck = Task.Run(() => software_update_check(0));
@@ -343,24 +337,24 @@ namespace Vimera {
         // FILE HASH PROCESS CHANGED
         // ======================================================================================================
         private void FileHash_BG_Worker_ProgressChanged(object sender, ProgressChangedEventArgs e){
-            Text = TS_SoftwareVersion.TS_SofwareVersion(0, Program.ts_version_mode) + " - " + "%" + e.ProgressPercentage;
+            Text = TS_VersionEngine.TS_SofwareVersion(0, Program.ts_version_mode) + " - " + "%" + e.ProgressPercentage;
             FileHashLoadFE_Panel.Width = e.ProgressPercentage * FileHashLoadBG_Panel.Width / 100;
         }
         // FILE HASH PROCESS RUNWORKER COMPLETED
         // ======================================================================================================
         private void FileHash_BG_Worker_RunWorkerCompleted(object sender, RunWorkerCompletedEventArgs e){
             TSGetLangs software_lang = new TSGetLangs(lang_path);
-            Text = TS_SoftwareVersion.TS_SofwareVersion(0, Program.ts_version_mode);
+            Text = TS_VersionEngine.TS_SofwareVersion(0, Program.ts_version_mode);
             //
             FileProgressList = null;
             FileHashTotalFiles = 0;
             //
             if (file_hash_cancel_async == 1){
                 file_hash_disabled_ui_cancel_async();
-                MessageBox.Show(TS_String_Encoder(software_lang.TSReadLangs("FileHashTool", "fht_hash_cancel")), Application.ProductName, MessageBoxButtons.OK, MessageBoxIcon.Information);
+                TS_MessageBoxEngine.TS_MessageBox(this, 1, TS_String_Encoder(software_lang.TSReadLangs("FileHashTool", "fht_hash_cancel")));
             }else{
                 file_hash_enabled_ui();
-                MessageBox.Show(TS_String_Encoder(software_lang.TSReadLangs("FileHashTool", "fht_hash_success")), Application.ProductName, MessageBoxButtons.OK, MessageBoxIcon.Information);
+                TS_MessageBoxEngine.TS_MessageBox(this, 1, TS_String_Encoder(software_lang.TSReadLangs("FileHashTool", "fht_hash_success")));
             }
         }
         // FILE HASH STRING GENERATE
@@ -472,7 +466,7 @@ namespace Vimera {
                     if (Clipboard.GetText() != FileHashDGV.Rows[e.RowIndex].Cells[2].Value.ToString()){
                         Clipboard.SetText(FileHashDGV.Rows[e.RowIndex].Cells[2].Value.ToString());
                         //FileHashDGV.ClearSelection();
-                        MessageBox.Show(TS_String_Encoder(software_lang.TSReadLangs("FileHashTool", "fht_hash_value_copy_success")), Application.ProductName, MessageBoxButtons.OK, MessageBoxIcon.Information);
+                        TS_MessageBoxEngine.TS_MessageBox(this, 1, TS_String_Encoder(software_lang.TSReadLangs("FileHashTool", "fht_hash_value_copy_success")));
                     }
                 }
             }catch (Exception){ }
@@ -495,13 +489,13 @@ namespace Vimera {
                     string generate_hash_value = FileHashDGV.Rows[FileHashDGV.CurrentCell.RowIndex].Cells[2].Value.ToString().ToLower();
                     string original_value = FileHashCompareTextBox.Text.Trim().ToLower();
                     if (original_value == generate_hash_value){
-                        MessageBox.Show(TS_String_Encoder(software_lang.TSReadLangs("FileHashTool", "fht_hash_match")), Application.ProductName, MessageBoxButtons.OK, MessageBoxIcon.Information);
+                        TS_MessageBoxEngine.TS_MessageBox(this, 1, TS_String_Encoder(software_lang.TSReadLangs("FileHashTool", "fht_hash_match")));
                     }else{
-                        MessageBox.Show(TS_String_Encoder(software_lang.TSReadLangs("FileHashTool", "fht_hash_not_match")), Application.ProductName, MessageBoxButtons.OK, MessageBoxIcon.Error);
+                        TS_MessageBoxEngine.TS_MessageBox(this, 3, TS_String_Encoder(software_lang.TSReadLangs("FileHashTool", "fht_hash_not_match")));
                     }
                     FileHashDGV.ClearSelection();
                 }else{
-                    MessageBox.Show(TS_String_Encoder(software_lang.TSReadLangs("FileHashTool", "fht_hash_select_notification")), Application.ProductName, MessageBoxButtons.OK, MessageBoxIcon.Warning);
+                    TS_MessageBoxEngine.TS_MessageBox(this, 2, TS_String_Encoder(software_lang.TSReadLangs("FileHashTool", "fht_hash_select_notification")));
                 }
             }catch (Exception){ }
         }
@@ -558,7 +552,7 @@ namespace Vimera {
                 if (save_engine.ShowDialog() == DialogResult.OK){
                     String combinedText = String.Join(Environment.NewLine, PrintEngineList);
                     File.WriteAllText(save_engine.FileName, combinedText);
-                    DialogResult vimera_print_engine_query = MessageBox.Show(string.Format(TS_String_Encoder(software_lang.TSReadLangs("FileHashPrintEngine", "fhpe_save_hash_report_success_notification")), Application.ProductName, save_engine.FileName, "\n\n"), Application.ProductName, MessageBoxButtons.YesNo, MessageBoxIcon.Information);
+                    DialogResult vimera_print_engine_query = TS_MessageBoxEngine.TS_MessageBox(this, 5, string.Format(TS_String_Encoder(software_lang.TSReadLangs("FileHashPrintEngine", "fhpe_save_hash_report_success_notification")), Application.ProductName, save_engine.FileName, "\n\n"));
                     if (vimera_print_engine_query == DialogResult.Yes){
                         Process.Start(save_engine.FileName);
                     }
@@ -589,7 +583,7 @@ namespace Vimera {
                     TSGetLangs software_lang = new TSGetLangs(lang_path);
                     var selectedFiles = (string[])e.Data.GetData(DataFormats.FileDrop);
                     if (selectedFiles.Length > 1){
-                        MessageBox.Show(TS_String_Encoder(software_lang.TSReadLangs("TextHashTool", "tht_one_file_select")), Application.ProductName, MessageBoxButtons.OK, MessageBoxIcon.Warning);
+                        TS_MessageBoxEngine.TS_MessageBox(this, 2, TS_String_Encoder(software_lang.TSReadLangs("TextHashTool", "tht_one_file_select")));
                         return;
                     }
                     //
@@ -601,7 +595,7 @@ namespace Vimera {
                         if (validExtensions.Contains(fileExtension)){
                             TextHashOriginalTextBox.Text = TS_String_Encoder(File.ReadAllText(get_file));
                         }else{
-                            MessageBox.Show(string.Format(TS_String_Encoder(software_lang.TSReadLangs("TextHashTool", "tht_one_file_select_valid")), "\n\n" ,string.Join(", ", validExtensions)), Application.ProductName, MessageBoxButtons.OK, MessageBoxIcon.Warning);
+                            TS_MessageBoxEngine.TS_MessageBox(this, 2, string.Format(TS_String_Encoder(software_lang.TSReadLangs("TextHashTool", "tht_one_file_select_valid")), "\n\n", string.Join(", ", validExtensions)));
                         }
                     }
                 }catch (Exception){ }
@@ -718,7 +712,7 @@ namespace Vimera {
                 TSGetLangs software_lang = new TSGetLangs(lang_path);
                 if (Clipboard.GetText() != TextHashResultTextBox.Text){
                     Clipboard.SetText(TextHashResultTextBox.Text);
-                    MessageBox.Show(TS_String_Encoder(software_lang.TSReadLangs("TextHashTool", "tht_hash_copy_notiftication")), Application.ProductName, MessageBoxButtons.OK, MessageBoxIcon.Information);
+                    TS_MessageBoxEngine.TS_MessageBox(this, 1, TS_String_Encoder(software_lang.TSReadLangs("TextHashTool", "tht_hash_copy_notiftication")));
                 }
             }catch (Exception){ }
         }
@@ -873,7 +867,7 @@ namespace Vimera {
             catch (Exception) { }
             // LANG CHANGE NOTIFICATION
             TSGetLangs software_lang = new TSGetLangs(lang_path);
-            DialogResult lang_change_message = MessageBox.Show(string.Format(TS_String_Encoder(software_lang.TSReadLangs("LangChange", "lang_change_notification")), "\n\n", "\n\n"), Application.ProductName, MessageBoxButtons.YesNo, MessageBoxIcon.Information);
+            DialogResult lang_change_message = TS_MessageBoxEngine.TS_MessageBox(this, 5, string.Format(TS_String_Encoder(software_lang.TSReadLangs("LangChange", "lang_change_notification")), "\n\n", "\n\n"));
             if (lang_change_message == DialogResult.Yes){ Application.Restart(); }
         }
         private void lang_engine(string lang_type, string lang_code){
@@ -1232,24 +1226,26 @@ namespace Vimera {
             software_update_check(1);
         }
         public bool IsNetworkCheck(){
-            Ping ping = new Ping();
+            Ping check_ping = new Ping();
             try{
-                PingReply reply = ping.Send("www.google.com");
-                if (reply.Status == IPStatus.Success){
+                PingReply check_ping_reply = check_ping.Send("www.google.com");
+                if (check_ping_reply.Status == IPStatus.Success){
                     return true;
                 }
             }catch (PingException){ }
             return false;
         }
         public void software_update_check(int _check_update_ui){
-            if (!IsNetworkCheck()){
-                return;
-            }
-            using (WebClient webClient = new WebClient()){
-                try{
-                    TSGetLangs software_lang = new TSGetLangs(lang_path);
-                    //
-                    string client_version = TS_SoftwareVersion.TS_SofwareVersion(2, Program.ts_version_mode).Trim();
+            try{
+                TSGetLangs software_lang = new TSGetLangs(lang_path);
+                if (!IsNetworkCheck()){
+                    if (_check_update_ui == 1){
+                        TS_MessageBoxEngine.TS_MessageBox(this, 2, string.Format(TS_String_Encoder(software_lang.TSReadLangs("SoftwareUpdate", "su_not_connection")), "\n\n"), string.Format(TS_String_Encoder(software_lang.TSReadLangs("SoftwareUpdate", "su_title")), Application.ProductName));
+                    }
+                    return;
+                }
+                using (WebClient webClient = new WebClient()){
+                    string client_version = TS_VersionEngine.TS_SofwareVersion(2, Program.ts_version_mode).Trim();
                     int client_num_version = Convert.ToInt32(client_version.Replace(".", string.Empty));
                     //
                     string[] version_content = webClient.DownloadString(TS_LinkSystem.github_link_lt).Split('=');
@@ -1258,16 +1254,21 @@ namespace Vimera {
                     //
                     if (client_num_version < last_num_version){
                         // Update available
-                        string message = string.Format(TS_String_Encoder(software_lang.TSReadLangs("SoftwareUpdate", "su_message")), Application.ProductName, "\n\n", client_version, "\n", last_version, "\n\n");
-                        DialogResult info_update = MessageBox.Show(message, string.Format(TS_String_Encoder(software_lang.TSReadLangs("SoftwareUpdate", "su_title")), Application.ProductName), MessageBoxButtons.YesNo, MessageBoxIcon.Information);
+                        DialogResult info_update = TS_MessageBoxEngine.TS_MessageBox(this, 5, string.Format(TS_String_Encoder(software_lang.TSReadLangs("SoftwareUpdate", "su_available")), Application.ProductName, "\n\n", client_version, "\n", last_version, "\n\n"), string.Format(TS_String_Encoder(software_lang.TSReadLangs("SoftwareUpdate", "su_title")), Application.ProductName));
                         if (info_update == DialogResult.Yes){
-                            Process.Start(TS_LinkSystem.github_link_lr);
+                            Process.Start(new ProcessStartInfo(TS_LinkSystem.github_link_lr){ UseShellExecute = true });
                         }
                     }else if (_check_update_ui == 1 && client_num_version == last_num_version){
                         // No update available
-                        MessageBox.Show(string.Format(TS_String_Encoder(software_lang.TSReadLangs("SoftwareUpdate", "su_no_update")), Application.ProductName, "\n", client_version), string.Format(TS_String_Encoder(software_lang.TSReadLangs("SoftwareUpdate", "su_title")), Application.ProductName), MessageBoxButtons.OK, MessageBoxIcon.Information);
+                        TS_MessageBoxEngine.TS_MessageBox(this, 1, string.Format(TS_String_Encoder(software_lang.TSReadLangs("SoftwareUpdate", "su_not_available")), Application.ProductName, "\n", client_version), string.Format(TS_String_Encoder(software_lang.TSReadLangs("SoftwareUpdate", "su_title")), Application.ProductName));
+                    }else if (_check_update_ui == 1 && client_num_version > last_num_version){
+                        // Access before public use
+                        TS_MessageBoxEngine.TS_MessageBox(this, 1, string.Format(TS_String_Encoder(software_lang.TSReadLangs("SoftwareUpdate", "su_newer")), "\n\n", string.Format("v{0}", client_version)), string.Format(TS_String_Encoder(software_lang.TSReadLangs("SoftwareUpdate", "su_title")), Application.ProductName));
                     }
-                }catch (WebException){ }
+                }
+            }catch (Exception ex){
+                TSGetLangs software_lang = new TSGetLangs(lang_path);
+                TS_MessageBoxEngine.TS_MessageBox(this, 3, string.Format(TS_String_Encoder(software_lang.TSReadLangs("SoftwareUpdate", "su_error")), "\n\n", ex.Message), string.Format(TS_String_Encoder(software_lang.TSReadLangs("SoftwareUpdate", "su_title")), Application.ProductName));
             }
         }
         // VIMERA ABOUT
@@ -1285,7 +1286,7 @@ namespace Vimera {
                         Application.OpenForms[vimera_about_name].WindowState = FormWindowState.Normal;
                     }
                     Application.OpenForms[vimera_about_name].Activate();
-                    MessageBox.Show(string.Format(TS_String_Encoder(software_lang.TSReadLangs("HeaderHelp", "header_help_info_notification")), TS_String_Encoder(software_lang.TSReadLangs("HeaderMenu", "header_menu_about"))), Application.ProductName, MessageBoxButtons.OK, MessageBoxIcon.Information);
+                    TS_MessageBoxEngine.TS_MessageBox(this, 1, string.Format(TS_String_Encoder(software_lang.TSReadLangs("HeaderHelp", "header_help_info_notification")), TS_String_Encoder(software_lang.TSReadLangs("HeaderMenu", "header_menu_about"))));
                 }
             }catch (Exception){ }
         }
