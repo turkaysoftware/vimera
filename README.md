@@ -1,5 +1,7 @@
 # Vimera - Hash Analysis Software
 
+>_**Note:** We are releasing the final Vimera update of 2024. Thank you for your continued support, and we are excited to announce that new versions will be available starting from the second quarter of 2025._
+
 **Vimera** is a **hash analysis software** developed by **Eray Türkay**. It has advanced features such as File Hash, Text Hash and Hash Comparison. It is programmed only in **C# and .NET Framework**. And it's **completely free**!
 
 [Click here](https://www.turkaysoftware.com/vimera) for full specifications.
