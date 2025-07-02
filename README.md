@@ -1,7 +1,5 @@
 # Vimera - Hash Analysis Software
 
->_**Note:** We are releasing the final Vimera update of 2024. Thank you for your continued support, and we are excited to announce that new versions will be available starting from the second quarter of 2025._
-
 **Vimera** is a **hash analysis software** developed by **Eray Türkay**. It has advanced features such as File Hash, Text Hash and Hash Comparison. It is programmed only in **C# and .NET Framework**. And it's **completely free**!
 
 [Click here](https://www.turkaysoftware.com/vimera) for full specifications.
@@ -61,3 +59,18 @@ With these instructions, you can download and use the correct version of Vimera 
 | OS: | Windows 10 x64 | Windows 10 22H2 x64|
 | RAM: | 50 MB Free RAM | 75 MB Free RAM |
 | .NET: | .NET Framework 4.8.1 | .NET Framework 4.8.1 |
+
+# Shortcut Key Layouts
+
+| Main Features | Key |
+| -- | :--: |
+| **Theme:** Light | F1 |
+| **Theme:** Dark | F2 |
+| **Start:** Windowed | F3 |
+| **Start:** Full Screen | F4 |
+
+| Extras | Key |
+| -- | :--: |
+| **Check Update** | F11 |
+| **About** | F12 |
+| **TS Wizard** | CTRL + Shift + S |
