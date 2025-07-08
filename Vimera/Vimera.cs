@@ -1,21 +1,31 @@
-﻿using System;
-using System.IO;
-using System.Net;
-using System.Linq;
-using System.Text;
-using System.Drawing;
-using System.Threading;
-using System.Reflection;
-using System.Diagnostics;
-using System.Globalization;
-using System.Windows.Forms;
-using System.ComponentModel;
-using System.Threading.Tasks;
+﻿// ======================================================================================================
+// Vimera - Hash Analysis Software
+// © Copyright 2023-2025, Eray Türkay.
+// Project Type: Open Source
+// License: MIT License
+// Website: https://www.turkaysoftware.com/vimera
+// GitHub: https://github.com/turkaysoftware/vimera
+// ======================================================================================================
+
+using System;
 using System.Collections.Generic;
+using System.ComponentModel;
+using System.Diagnostics;
+using System.Drawing;
+using System.Drawing.Drawing2D;
+using System.Globalization;
+using System.IO;
+using System.Linq;
+using System.Net;
+using System.Reflection;
+using System.Runtime.InteropServices;
 using System.Security.Cryptography;
-using System.Net.NetworkInformation;
+using System.Text;
 using System.Text.RegularExpressions;
-//
+using System.Threading;
+using System.Threading.Tasks;
+using System.Windows.Forms;
+// TS MODULES
 using static Vimera.TSModules;
 
 namespace Vimera {
@@ -28,6 +38,7 @@ namespace Vimera {
         // VARIABLES
         // ======================================================================================================
         int menu_btns = 1, menu_rp = 1, initial_status;
+        string ts_wizard_name = "TS Wizard";
         // FILE HASH
         // ======================================================================================================
         int file_hash_algorithm_mode, file_hash_process_end, file_hash_preloader = 0, file_hash_cancel_async = 0;
@@ -42,12 +53,23 @@ namespace Vimera {
         // ======================================================================================================
         // COLOR MODES / Index Mode | 0 = Dark - 1 = Light
         List<Color> btn_colors_active = new List<Color>(){ Color.Transparent };
-        static List<Color> header_colors = new List<Color>(){ Color.Transparent, Color.Transparent };
+        static List<Color> header_colors = new List<Color>(){ Color.Transparent, Color.Transparent, Color.Transparent };
         // HEADER SETTINGS
         // ======================================================================================================
         private class HeaderMenuColors : ToolStripProfessionalRenderer{
             public HeaderMenuColors() : base(new HeaderColors()){ }
             protected override void OnRenderArrow(ToolStripArrowRenderEventArgs e){ e.ArrowColor = header_colors[1]; base.OnRenderArrow(e); }
+            protected override void OnRenderItemCheck(ToolStripItemImageRenderEventArgs e){
+                // e.Graphics.FillRectangle(new SolidBrush(header_colors[0]), e.ImageRectangle); // BG Color Check
+                using (Pen anti_alias_pen = new Pen(header_colors[2], 3))
+                {
+                    Point p1 = new Point(e.ImageRectangle.Left + 3, e.ImageRectangle.Top + e.ImageRectangle.Height / 2);
+                    Point p2 = new Point(e.ImageRectangle.Left + 7, e.ImageRectangle.Bottom - 4);
+                    Point p3 = new Point(e.ImageRectangle.Right - 2, e.ImageRectangle.Top + 3);
+                    e.Graphics.SmoothingMode = SmoothingMode.AntiAlias;
+                    e.Graphics.DrawLines(anti_alias_pen, new Point[] { p1, p2, p3 });
+                }
+            }
         }
         private class HeaderColors : ProfessionalColorTable{
             public override Color MenuItemSelected => header_colors[0];
@@ -900,6 +922,10 @@ namespace Vimera {
                 fullScreenToolStripMenuItem.Text = TS_String_Encoder(software_lang.TSReadLangs("HeaderViewMode", "header_viev_mode_full_screen"));
                 // UPDATE
                 checkForUpdateToolStripMenuItem.Text = TS_String_Encoder(software_lang.TSReadLangs("HeaderMenu", "header_menu_update"));
+                // TS WIZARD
+                tSWizardToolStripMenuItem.Text = TS_String_Encoder(software_lang.TSReadLangs("HeaderMenu", "header_menu_ts_wizard"));
+                // BMAC
+                bmacToolStripMenuItem.Text = TS_String_Encoder(software_lang.TSReadLangs("HeaderMenu", "header_menu_bmac"));
                 // ABOUT
                 aboutToolStripMenuItem.Text = TS_String_Encoder(software_lang.TSReadLangs("HeaderMenu", "header_menu_about"));
                 // MENU
@@ -980,6 +1006,10 @@ namespace Vimera {
                     languageToolStripMenuItem.Image = Properties.Resources.tm_lang_light;
                     initialViewToolStripMenuItem.Image = Properties.Resources.tm_start_light;
                     checkForUpdateToolStripMenuItem.Image = Properties.Resources.tm_update_light;
+                    // TS WIZARD
+                    tSWizardToolStripMenuItem.Image = Properties.Resources.tm_tswizard_light;
+                    // BMAC
+                    bmacToolStripMenuItem.Image = Properties.Resources.tm_bmac_light;
                     // ABOUT
                     aboutToolStripMenuItem.Image = Properties.Resources.tm_about_light;
                 }else if (theme == 0){
@@ -993,6 +1023,10 @@ namespace Vimera {
                     languageToolStripMenuItem.Image = Properties.Resources.tm_lang_dark;
                     initialViewToolStripMenuItem.Image = Properties.Resources.tm_start_dark;
                     checkForUpdateToolStripMenuItem.Image = Properties.Resources.tm_update_dark;
+                    // TS WIZARD
+                    tSWizardToolStripMenuItem.Image = Properties.Resources.tm_tswizard_dark;
+                    // BMAC
+                    bmacToolStripMenuItem.Image = Properties.Resources.tm_bmac_dark;
                     // ABOUT
                     aboutToolStripMenuItem.Image = Properties.Resources.tm_about_dark;
                 }
@@ -1002,6 +1036,7 @@ namespace Vimera {
                 header_image_reloader(menu_btns);
                 header_colors[0] = TS_ThemeEngine.ColorMode(theme, "HeaderBGColorMain");
                 header_colors[1] = TS_ThemeEngine.ColorMode(theme, "HeaderFEColorMain");
+                header_colors[2] = TS_ThemeEngine.ColorMode(theme, "MainAccentColor");
                 HeaderMenu.Renderer = new HeaderMenuColors();
                 // ACTIVE BTN 
                 btn_colors_active[0] = TS_ThemeEngine.ColorMode(theme, "BtnActiveColor");
@@ -1040,6 +1075,12 @@ namespace Vimera {
                 // UPDATE
                 checkForUpdateToolStripMenuItem.BackColor = TS_ThemeEngine.ColorMode(theme, "HeaderBGColor");
                 checkForUpdateToolStripMenuItem.ForeColor = TS_ThemeEngine.ColorMode(theme, "HeaderFEColor");
+                // TS WIZARD
+                tSWizardToolStripMenuItem.BackColor = TS_ThemeEngine.ColorMode(theme, "HeaderBGColor");
+                tSWizardToolStripMenuItem.ForeColor = TS_ThemeEngine.ColorMode(theme, "HeaderFEColor");
+                // BMAC
+                bmacToolStripMenuItem.BackColor = TS_ThemeEngine.ColorMode(theme, "HeaderBGColor");
+                bmacToolStripMenuItem.ForeColor = TS_ThemeEngine.ColorMode(theme, "HeaderFEColor");
                 // ABOUT
                 aboutToolStripMenuItem.BackColor = TS_ThemeEngine.ColorMode(theme, "HeaderBGColor");
                 aboutToolStripMenuItem.ForeColor = TS_ThemeEngine.ColorMode(theme, "HeaderFEColor");
@@ -1220,20 +1261,41 @@ namespace Vimera {
                 software_setting_save.TSWriteSettings(ts_settings_container, "InitialStatus", get_inital_value);
             }catch (Exception){ }
         }
+        // SOFTWARE OPERATION CONTROLLER MODULE
+        // ======================================================================================================
+        private static bool software_operation_controller(string __target_software_path){
+            var exeFiles = Directory.GetFiles(__target_software_path, "*.exe");
+            var runned_process = Process.GetProcesses();
+            foreach (var exe_path in exeFiles){
+                string exe_name = Path.GetFileNameWithoutExtension(exe_path);
+                if (runned_process.Any(p => {
+                    try{
+                        return string.Equals(p.ProcessName, exe_name, StringComparison.OrdinalIgnoreCase);
+                    }catch{
+                        return false;
+                    }
+                })){
+                    return true;
+                }
+            }
+            return false;
+        }
+        // TS WIZARD STARTER MODE
+        // ======================================================================================================
+        private string[] ts_wizard_starter_mode(){
+            string[] ts_wizard_exe_files = { "TSWizard_arm64.exe", "TSWizard_x64.exe", "TSWizard.exe" };
+            if (RuntimeInformation.OSArchitecture == Architecture.Arm64){
+                return new[] { ts_wizard_exe_files[0], ts_wizard_exe_files[1], ts_wizard_exe_files[2] }; // arm64 > x64 > default
+            }else if (Environment.Is64BitOperatingSystem){
+                return new[] { ts_wizard_exe_files[1], ts_wizard_exe_files[0], ts_wizard_exe_files[2] }; // x64 > arm64 > default
+            }else{
+                return new[] { ts_wizard_exe_files[2], ts_wizard_exe_files[1], ts_wizard_exe_files[0] }; // default > x64 > arm64
+            }
+        }
         // CHECK UPDATE
         // ======================================================================================================
         private void checkForUpdateToolStripMenuItem_Click(object sender, EventArgs e){
             software_update_check(1);
-        }
-        public bool IsNetworkCheck(){
-            Ping check_ping = new Ping();
-            try{
-                PingReply check_ping_reply = check_ping.Send("www.google.com");
-                if (check_ping_reply.Status == IPStatus.Success){
-                    return true;
-                }
-            }catch (PingException){ }
-            return false;
         }
         public void software_update_check(int _check_update_ui){
             try{
@@ -1253,11 +1315,28 @@ namespace Vimera {
                     int last_num_version = Convert.ToInt32(last_version.Replace(".", string.Empty));
                     //
                     if (client_num_version < last_num_version){
-                        // Update available
-                        DialogResult info_update = TS_MessageBoxEngine.TS_MessageBox(this, 5, string.Format(TS_String_Encoder(software_lang.TSReadLangs("SoftwareUpdate", "su_available")), Application.ProductName, "\n\n", client_version, "\n", last_version, "\n\n"), string.Format(TS_String_Encoder(software_lang.TSReadLangs("SoftwareUpdate", "su_title")), Application.ProductName));
-                        if (info_update == DialogResult.Yes){
-                            Process.Start(new ProcessStartInfo(TS_LinkSystem.github_link_lr){ UseShellExecute = true });
-                        }
+                        try{
+                            string baseDir = Path.Combine(Directory.GetParent(Directory.GetParent(Path.GetDirectoryName(Assembly.GetExecutingAssembly().Location)).FullName).FullName);
+                            string ts_wizard_path = ts_wizard_starter_mode().Select(name => Path.Combine(baseDir, name)).FirstOrDefault(File.Exists);
+                            //
+                            if (ts_wizard_path != null){
+                                if (!software_operation_controller(Path.GetDirectoryName(ts_wizard_path))){
+                                    // Update available
+                                    DialogResult info_update = TS_MessageBoxEngine.TS_MessageBox(this, 5, string.Format(TS_String_Encoder(software_lang.TSReadLangs("SoftwareUpdate", "su_available_ts_wizard")), Application.ProductName, "\n\n", client_version, "\n", last_version, "\n\n", ts_wizard_name), string.Format(TS_String_Encoder(software_lang.TSReadLangs("SoftwareUpdate", "su_title")), Application.ProductName));
+                                    if (info_update == DialogResult.Yes){
+                                        Process.Start(new ProcessStartInfo { FileName = ts_wizard_path, WorkingDirectory = Path.GetDirectoryName(ts_wizard_path) });
+                                    }
+                                }else{
+                                    TS_MessageBoxEngine.TS_MessageBox(this, 1, string.Format(TS_String_Encoder(software_lang.TSReadLangs("HeaderHelp", "header_help_info_notification")), ts_wizard_name));
+                                }
+                            }else{
+                                // Update available
+                                DialogResult info_update = TS_MessageBoxEngine.TS_MessageBox(this, 5, string.Format(TS_String_Encoder(software_lang.TSReadLangs("SoftwareUpdate", "su_available")), Application.ProductName, "\n\n", client_version, "\n", last_version, "\n\n"), string.Format(TS_String_Encoder(software_lang.TSReadLangs("SoftwareUpdate", "su_title")), Application.ProductName));
+                                if (info_update == DialogResult.Yes){
+                                    Process.Start(new ProcessStartInfo(TS_LinkSystem.github_link_lr) { UseShellExecute = true });
+                                }
+                            }
+                        }catch (Exception){ }
                     }else if (_check_update_ui == 1 && client_num_version == last_num_version){
                         // No update available
                         TS_MessageBoxEngine.TS_MessageBox(this, 1, string.Format(TS_String_Encoder(software_lang.TSReadLangs("SoftwareUpdate", "su_not_available")), Application.ProductName, "\n", client_version), string.Format(TS_String_Encoder(software_lang.TSReadLangs("SoftwareUpdate", "su_title")), Application.ProductName));
@@ -1270,6 +1349,36 @@ namespace Vimera {
                 TSGetLangs software_lang = new TSGetLangs(lang_path);
                 TS_MessageBoxEngine.TS_MessageBox(this, 3, string.Format(TS_String_Encoder(software_lang.TSReadLangs("SoftwareUpdate", "su_error")), "\n\n", ex.Message), string.Format(TS_String_Encoder(software_lang.TSReadLangs("SoftwareUpdate", "su_title")), Application.ProductName));
             }
+        }
+        // BUY ME A COFFEE LINK
+        // ======================================================================================================
+        private void bmacToolStripMenuItem_Click(object sender, EventArgs e){
+            try{
+                Process.Start(new ProcessStartInfo(TS_LinkSystem.ts_bmac) { UseShellExecute = true });
+            }catch (Exception){ }
+        }
+        // TS WIZARD
+        // ======================================================================================================
+        private void tSWizardToolStripMenuItem_Click(object sender, EventArgs e){
+            try{
+                string baseDir = Path.Combine(Directory.GetParent(Directory.GetParent(Path.GetDirectoryName(Assembly.GetExecutingAssembly().Location)).FullName).FullName);
+                string ts_wizard_path = ts_wizard_starter_mode().Select(name => Path.Combine(baseDir, name)).FirstOrDefault(File.Exists);
+                //
+                TSGetLangs software_lang = new TSGetLangs(lang_path);
+                //
+                if (ts_wizard_path != null){
+                    if (!software_operation_controller(Path.GetDirectoryName(ts_wizard_path))){
+                        Process.Start(new ProcessStartInfo { FileName = ts_wizard_path, WorkingDirectory = Path.GetDirectoryName(ts_wizard_path) });
+                    }else{
+                        TS_MessageBoxEngine.TS_MessageBox(this, 1, string.Format(TS_String_Encoder(software_lang.TSReadLangs("HeaderHelp", "header_help_info_notification")), ts_wizard_name));
+                    }
+                }else{
+                    DialogResult ts_wizard_query = TS_MessageBoxEngine.TS_MessageBox(this, 5, string.Format(TS_String_Encoder(software_lang.TSReadLangs("TSWizard", "tsw_content")), TS_String_Encoder(software_lang.TSReadLangs("HeaderMenu", "header_menu_ts_wizard")), Application.CompanyName, "\n\n", Application.ProductName, Application.CompanyName, "\n\n"), string.Format(TS_String_Encoder(software_lang.TSReadLangs("TSWizard", "tsw_title")), Application.ProductName));
+                    if (ts_wizard_query == DialogResult.Yes){
+                        Process.Start(new ProcessStartInfo(TS_LinkSystem.ts_wizard) { UseShellExecute = true });
+                    }
+                }
+            }catch (Exception){ }
         }
         // VIMERA ABOUT
         // ======================================================================================================

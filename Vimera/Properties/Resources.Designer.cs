@@ -143,6 +143,26 @@ namespace Vimera.Properties {
         /// <summary>
         ///   System.Drawing.Bitmap türünde yerelleştirilmiş bir kaynak arar.
         /// </summary>
+        internal static System.Drawing.Bitmap tm_bmac_dark {
+            get {
+                object obj = ResourceManager.GetObject("tm_bmac_dark", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   System.Drawing.Bitmap türünde yerelleştirilmiş bir kaynak arar.
+        /// </summary>
+        internal static System.Drawing.Bitmap tm_bmac_light {
+            get {
+                object obj = ResourceManager.GetObject("tm_bmac_light", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   System.Drawing.Bitmap türünde yerelleştirilmiş bir kaynak arar.
+        /// </summary>
         internal static System.Drawing.Bitmap tm_lang_dark {
             get {
                 object obj = ResourceManager.GetObject("tm_lang_dark", resourceCulture);
@@ -216,6 +236,26 @@ namespace Vimera.Properties {
         internal static System.Drawing.Bitmap tm_theme_light {
             get {
                 object obj = ResourceManager.GetObject("tm_theme_light", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   System.Drawing.Bitmap türünde yerelleştirilmiş bir kaynak arar.
+        /// </summary>
+        internal static System.Drawing.Bitmap tm_tswizard_dark {
+            get {
+                object obj = ResourceManager.GetObject("tm_tswizard_dark", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   System.Drawing.Bitmap türünde yerelleştirilmiş bir kaynak arar.
+        /// </summary>
+        internal static System.Drawing.Bitmap tm_tswizard_light {
+            get {
+                object obj = ResourceManager.GetObject("tm_tswizard_light", resourceCulture);
                 return ((System.Drawing.Bitmap)(obj));
             }
         }

@@ -25,7 +25,7 @@
     <UpdateRequired>false</UpdateRequired>
     <MapFileExtensions>true</MapFileExtensions>
     <ApplicationRevision>0</ApplicationRevision>
-    <ApplicationVersion>24.12.0.%2a</ApplicationVersion>
+    <ApplicationVersion>25.07.0.%2a</ApplicationVersion>
     <UseApplicationTrust>false</UseApplicationTrust>
     <BootstrapperEnabled>true</BootstrapperEnabled>
   </PropertyGroup>
@@ -176,6 +176,10 @@
   </ItemGroup>
   <ItemGroup>
     <Content Include="VimeraLogo.ico" />
+    <None Include="vimera_images\vimera_interface\dark_theme\tm_bmac_dark.png" />
+    <None Include="vimera_images\vimera_interface\light_theme\tm_bmac_light.png" />
+    <None Include="vimera_images\vimera_interface\dark_theme\tm_tswizard_dark.png" />
+    <None Include="vimera_images\vimera_interface\light_theme\tm_tswizard_light.png" />
     <None Include="vimera_images\ts_preloader\ts_preloader.jpg" />
     <None Include="vimera_images\vimera_interface\dark_theme\tm_update_dark.png" />
     <None Include="vimera_images\vimera_interface\dark_theme\tm_theme_dark.png" />

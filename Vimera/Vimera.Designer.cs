@@ -53,6 +53,7 @@
             this.windowedToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.fullScreenToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.checkForUpdateToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.tSWizardToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.aboutToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.MainContent = new System.Windows.Forms.TabControl();
             this.FileHash = new System.Windows.Forms.TabPage();
@@ -100,6 +101,7 @@
             this.SecondHashValueTextBox = new System.Windows.Forms.TextBox();
             this.FileHash_BG_Worker = new System.ComponentModel.BackgroundWorker();
             this.HeaderPanel = new System.Windows.Forms.TableLayoutPanel();
+            this.bmacToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.LeftPanel.SuspendLayout();
             this.HeaderInPanel.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.HeaderImage)).BeginInit();
@@ -267,10 +269,12 @@
             this.HeaderMenu.Dock = System.Windows.Forms.DockStyle.None;
             this.HeaderMenu.Items.AddRange(new System.Windows.Forms.ToolStripItem[] {
             this.settingsToolStripMenuItem,
+            this.tSWizardToolStripMenuItem,
+            this.bmacToolStripMenuItem,
             this.aboutToolStripMenuItem});
-            this.HeaderMenu.Location = new System.Drawing.Point(679, 9);
+            this.HeaderMenu.Location = new System.Drawing.Point(442, 9);
             this.HeaderMenu.Name = "HeaderMenu";
-            this.HeaderMenu.Size = new System.Drawing.Size(121, 24);
+            this.HeaderMenu.Size = new System.Drawing.Size(358, 24);
             this.HeaderMenu.TabIndex = 1;
             this.HeaderMenu.Text = "menuStrip1";
             // 
@@ -366,6 +370,16 @@
             this.checkForUpdateToolStripMenuItem.Size = new System.Drawing.Size(173, 22);
             this.checkForUpdateToolStripMenuItem.Text = "Check Update";
             this.checkForUpdateToolStripMenuItem.Click += new System.EventHandler(this.checkForUpdateToolStripMenuItem_Click);
+            // 
+            // tSWizardToolStripMenuItem
+            // 
+            this.tSWizardToolStripMenuItem.ImageAlign = System.Drawing.ContentAlignment.MiddleRight;
+            this.tSWizardToolStripMenuItem.Name = "tSWizardToolStripMenuItem";
+            this.tSWizardToolStripMenuItem.ShortcutKeys = ((System.Windows.Forms.Keys)(((System.Windows.Forms.Keys.Control | System.Windows.Forms.Keys.Shift) 
+            | System.Windows.Forms.Keys.S)));
+            this.tSWizardToolStripMenuItem.Size = new System.Drawing.Size(68, 20);
+            this.tSWizardToolStripMenuItem.Text = "TSWizard";
+            this.tSWizardToolStripMenuItem.Click += new System.EventHandler(this.tSWizardToolStripMenuItem_Click);
             // 
             // aboutToolStripMenuItem
             // 
@@ -1121,6 +1135,16 @@
             this.HeaderPanel.Size = new System.Drawing.Size(808, 42);
             this.HeaderPanel.TabIndex = 1;
             // 
+            // bmacToolStripMenuItem
+            // 
+            this.bmacToolStripMenuItem.ImageAlign = System.Drawing.ContentAlignment.MiddleRight;
+            this.bmacToolStripMenuItem.Name = "bmacToolStripMenuItem";
+            this.bmacToolStripMenuItem.ShortcutKeys = ((System.Windows.Forms.Keys)(((System.Windows.Forms.Keys.Control | System.Windows.Forms.Keys.Shift) 
+            | System.Windows.Forms.Keys.D)));
+            this.bmacToolStripMenuItem.Size = new System.Drawing.Size(49, 20);
+            this.bmacToolStripMenuItem.Text = "Bmac";
+            this.bmacToolStripMenuItem.Click += new System.EventHandler(this.bmacToolStripMenuItem_Click);
+            // 
             // Vimera
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(96F, 96F);
@@ -1243,6 +1267,8 @@
         private System.Windows.Forms.ToolStripMenuItem fullScreenToolStripMenuItem;
         private System.Windows.Forms.Button FileHashStopBtn;
         private System.Windows.Forms.Label FileHashSizer;
+        private System.Windows.Forms.ToolStripMenuItem tSWizardToolStripMenuItem;
+        private System.Windows.Forms.ToolStripMenuItem bmacToolStripMenuItem;
     }
 }
 

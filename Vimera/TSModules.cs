@@ -1,11 +1,12 @@
 ﻿using System;
-using System.IO;
-using System.Text;
-using System.Drawing;
-using System.Windows.Forms;
 using System.Collections.Generic;
+using System.Drawing;
+using System.IO;
+using System.Net;
 using System.Runtime.InteropServices;
+using System.Text;
 using System.Text.RegularExpressions;
+using System.Windows.Forms;
 
 namespace Vimera{
     internal class TSModules{
@@ -19,7 +20,11 @@ namespace Vimera{
             github_link         = "https://github.com/turkaysoftware",
             //
             github_link_lt      = "https://raw.githubusercontent.com/turkaysoftware/vimera/main/Vimera/SoftwareVersion.txt",
-            github_link_lr      = "https://github.com/turkaysoftware/vimera/releases/latest";
+            github_link_lr      = "https://github.com/turkaysoftware/vimera/releases/latest",
+            //
+            ts_wizard           = "https://www.turkaysoftware.com/ts-wizard",
+            //
+            ts_bmac             = "https://buymeacoffee.com/turkaysoftware";
         }
         // VERSIONS
         // ======================================================================================================
@@ -264,6 +269,20 @@ namespace Vimera{
         // ======================================================================================================
         public static string TS_NaturalSortKey(string get_name){
             return Regex.Replace(get_name, @"\d+", new_match => new_match.Value.PadLeft(30, '0'));
+        }
+        // INTERNET CONNECTION STATUS
+        // ======================================================================================================
+        public static bool IsNetworkCheck(){
+            try{
+                HttpWebRequest server_request = (HttpWebRequest)WebRequest.Create("http://clients3.google.com/generate_204");
+                server_request.KeepAlive = false;
+                server_request.Timeout = 2500;
+                using (var server_response = (HttpWebResponse)server_request.GetResponse()){
+                    return server_response.StatusCode == HttpStatusCode.NoContent;
+                }
+            }catch{
+                return false;
+            }
         }
         // TITLE BAR SETTINGS DWM API
         // ======================================================================================================
