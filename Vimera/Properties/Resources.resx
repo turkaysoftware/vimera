@@ -118,73 +118,154 @@
     <value>System.Resources.ResXResourceWriter, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </resheader>
   <assembly alias="System.Windows.Forms" name="System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089" />
+  <data name="ct_compare_dark" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\vimera_images\vimera_ui\theme_dark\ct_compare_dark.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
+  <data name="ct_compare_failed_dark" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\vimera_images\vimera_ui\theme_dark\ct_compare_failed_dark.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
+  <data name="ct_compare_failed_light" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\vimera_images\vimera_ui\theme_light\ct_compare_failed_light.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
+  <data name="ct_compare_light" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\vimera_images\vimera_ui\theme_light\ct_compare_light.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
+  <data name="ct_compare_success_dark" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\vimera_images\vimera_ui\theme_dark\ct_compare_success_dark.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
+  <data name="ct_compare_success_light" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\vimera_images\vimera_ui\theme_light\ct_compare_success_light.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
+  <data name="ct_copy_dark" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\vimera_images\vimera_ui\theme_dark\ct_copy_dark.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
+  <data name="ct_copy_light" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\vimera_images\vimera_ui\theme_light\ct_copy_light.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
+  <data name="ct_export_dark" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\vimera_images\vimera_ui\theme_dark\ct_export_dark.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
+  <data name="ct_export_light" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\vimera_images\vimera_ui\theme_light\ct_export_light.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
+  <data name="ct_file_select_dark" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\vimera_images\vimera_ui\theme_dark\ct_file_select_dark.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
+  <data name="ct_file_select_light" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\vimera_images\vimera_ui\theme_light\ct_file_select_light.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
+  <data name="ct_github_dark" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\vimera_images\vimera_ui\theme_dark\ct_github_dark.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
+  <data name="ct_github_light" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\vimera_images\vimera_ui\theme_light\ct_github_light.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
+  <data name="ct_instagram_dark" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\vimera_images\vimera_ui\theme_dark\ct_instagram_dark.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
+  <data name="ct_instagram_light" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\vimera_images\vimera_ui\theme_light\ct_instagram_light.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
+  <data name="ct_start_dark" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\vimera_images\vimera_ui\theme_dark\ct_start_dark.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
+  <data name="ct_start_light" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\vimera_images\vimera_ui\theme_light\ct_start_light.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
+  <data name="ct_stop_dark" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\vimera_images\vimera_ui\theme_dark\ct_stop_dark.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
+  <data name="ct_stop_light" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\vimera_images\vimera_ui\theme_light\ct_stop_light.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
+  <data name="ct_website_dark" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\vimera_images\vimera_ui\theme_dark\ct_website_dark.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
+  <data name="ct_website_light" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\vimera_images\vimera_ui\theme_light\ct_website_light.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
+  <data name="ct_x_dark" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\vimera_images\vimera_ui\theme_dark\ct_x_dark.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
+  <data name="ct_x_light" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\vimera_images\vimera_ui\theme_light\ct_x_light.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
+  <data name="ct_youtube_dark" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\vimera_images\vimera_ui\theme_dark\ct_youtube_dark.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
+  <data name="ct_youtube_light" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\vimera_images\vimera_ui\theme_light\ct_youtube_light.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
   <data name="lm_file_hash_dark" type="System.Resources.ResXFileRef, System.Windows.Forms">
-    <value>..\vimera_images\vimera_interface\dark_theme\lm_file_hash_dark.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+    <value>..\vimera_images\vimera_ui\theme_dark\lm_file_hash_dark.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
   </data>
   <data name="lm_file_hash_light" type="System.Resources.ResXFileRef, System.Windows.Forms">
-    <value>..\vimera_images\vimera_interface\light_theme\lm_file_hash_light.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+    <value>..\vimera_images\vimera_ui\theme_light\lm_file_hash_light.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
   </data>
   <data name="lm_hash_compare_dark" type="System.Resources.ResXFileRef, System.Windows.Forms">
-    <value>..\vimera_images\vimera_interface\dark_theme\lm_hash_compare_dark.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+    <value>..\vimera_images\vimera_ui\theme_dark\lm_hash_compare_dark.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
   </data>
   <data name="lm_hash_compare_light" type="System.Resources.ResXFileRef, System.Windows.Forms">
-    <value>..\vimera_images\vimera_interface\light_theme\lm_hash_compare_light.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+    <value>..\vimera_images\vimera_ui\theme_light\lm_hash_compare_light.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
   </data>
   <data name="lm_text_hash_dark" type="System.Resources.ResXFileRef, System.Windows.Forms">
-    <value>..\vimera_images\vimera_interface\dark_theme\lm_text_hash_dark.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+    <value>..\vimera_images\vimera_ui\theme_dark\lm_text_hash_dark.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
   </data>
   <data name="lm_text_hash_light" type="System.Resources.ResXFileRef, System.Windows.Forms">
-    <value>..\vimera_images\vimera_interface\light_theme\lm_text_hash_light.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+    <value>..\vimera_images\vimera_ui\theme_light\lm_text_hash_light.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
   </data>
   <data name="tm_about_dark" type="System.Resources.ResXFileRef, System.Windows.Forms">
-    <value>..\vimera_images\vimera_interface\dark_theme\tm_about_dark.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+    <value>..\vimera_images\vimera_ui\theme_dark\tm_about_dark.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
   </data>
   <data name="tm_about_light" type="System.Resources.ResXFileRef, System.Windows.Forms">
-    <value>..\vimera_images\vimera_interface\light_theme\tm_about_light.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+    <value>..\vimera_images\vimera_ui\theme_light\tm_about_light.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
   </data>
   <data name="tm_bmac_dark" type="System.Resources.ResXFileRef, System.Windows.Forms">
-    <value>..\vimera_images\vimera_interface\dark_theme\tm_bmac_dark.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+    <value>..\vimera_images\vimera_ui\theme_dark\tm_bmac_dark.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
   </data>
   <data name="tm_bmac_light" type="System.Resources.ResXFileRef, System.Windows.Forms">
-    <value>..\vimera_images\vimera_interface\light_theme\tm_bmac_light.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+    <value>..\vimera_images\vimera_ui\theme_light\tm_bmac_light.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
   </data>
-  <data name="tm_lang_dark" type="System.Resources.ResXFileRef, System.Windows.Forms">
-    <value>..\vimera_images\vimera_interface\dark_theme\tm_lang_dark.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  <data name="tm_language_dark" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\vimera_images\vimera_ui\theme_dark\tm_language_dark.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
   </data>
-  <data name="tm_lang_light" type="System.Resources.ResXFileRef, System.Windows.Forms">
-    <value>..\vimera_images\vimera_interface\light_theme\tm_lang_light.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  <data name="tm_language_light" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\vimera_images\vimera_ui\theme_light\tm_language_light.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
   </data>
   <data name="tm_settings_dark" type="System.Resources.ResXFileRef, System.Windows.Forms">
-    <value>..\vimera_images\vimera_interface\dark_theme\tm_settings_dark.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+    <value>..\vimera_images\vimera_ui\theme_dark\tm_settings_dark.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
   </data>
   <data name="tm_settings_light" type="System.Resources.ResXFileRef, System.Windows.Forms">
-    <value>..\vimera_images\vimera_interface\light_theme\tm_settings_light.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+    <value>..\vimera_images\vimera_ui\theme_light\tm_settings_light.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
   </data>
-  <data name="tm_start_dark" type="System.Resources.ResXFileRef, System.Windows.Forms">
-    <value>..\vimera_images\vimera_interface\dark_theme\tm_start_dark.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  <data name="tm_startup_dark" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\vimera_images\vimera_ui\theme_dark\tm_startup_dark.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
   </data>
-  <data name="tm_start_light" type="System.Resources.ResXFileRef, System.Windows.Forms">
-    <value>..\vimera_images\vimera_interface\light_theme\tm_start_light.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  <data name="tm_startup_light" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\vimera_images\vimera_ui\theme_light\tm_startup_light.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
   </data>
   <data name="tm_theme_dark" type="System.Resources.ResXFileRef, System.Windows.Forms">
-    <value>..\vimera_images\vimera_interface\dark_theme\tm_theme_dark.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+    <value>..\vimera_images\vimera_ui\theme_dark\tm_theme_dark.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
   </data>
   <data name="tm_theme_light" type="System.Resources.ResXFileRef, System.Windows.Forms">
-    <value>..\vimera_images\vimera_interface\light_theme\tm_theme_light.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+    <value>..\vimera_images\vimera_ui\theme_light\tm_theme_light.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
   </data>
-  <data name="tm_tswizard_dark" type="System.Resources.ResXFileRef, System.Windows.Forms">
-    <value>..\vimera_images\vimera_interface\dark_theme\tm_tswizard_dark.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  <data name="tm_ts_wizard_dark" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\vimera_images\vimera_ui\theme_dark\tm_ts_wizard_dark.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
   </data>
-  <data name="tm_tswizard_light" type="System.Resources.ResXFileRef, System.Windows.Forms">
-    <value>..\vimera_images\vimera_interface\light_theme\tm_tswizard_light.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  <data name="tm_ts_wizard_light" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\vimera_images\vimera_ui\theme_light\tm_ts_wizard_light.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
   </data>
   <data name="tm_update_dark" type="System.Resources.ResXFileRef, System.Windows.Forms">
-    <value>..\vimera_images\vimera_interface\dark_theme\tm_update_dark.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+    <value>..\vimera_images\vimera_ui\theme_dark\tm_update_dark.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
   </data>
   <data name="tm_update_light" type="System.Resources.ResXFileRef, System.Windows.Forms">
-    <value>..\vimera_images\vimera_interface\light_theme\tm_update_light.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+    <value>..\vimera_images\vimera_ui\theme_light\tm_update_light.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
   </data>
-  <data name="ts_preloader" type="System.Resources.ResXFileRef, System.Windows.Forms">
-    <value>..\vimera_images\ts_preloader\ts_preloader.jpg;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  <data name="ts_close" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\vimera_images\vimera_ui\ts_material\ts_close.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
+  <data name="ts_preloader_release" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\vimera_images\ts_preloader\ts_preloader_release.jpg;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
   </data>
 </root>

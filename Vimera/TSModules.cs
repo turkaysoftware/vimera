@@ -1,6 +1,8 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Drawing;
+using System.Drawing.Drawing2D;
+using System.Drawing.Imaging;
 using System.IO;
 using System.Net;
 using System.Runtime.InteropServices;
@@ -13,17 +15,18 @@ namespace Vimera{
         // LINK SYSTEM
         // ======================================================================================================
         public class TS_LinkSystem{
-            public static string
+            public const string
+            // Main Control Links
+            github_link_lv      = "https://raw.githubusercontent.com/turkaysoftware/vimera/main/Vimera/SoftwareVersion.txt",
+            github_link_lr      = "https://github.com/turkaysoftware/vimera/releases/latest",
+            // Social Links
             website_link        = "https://www.turkaysoftware.com",
             twitter_x_link      = "https://x.com/turkaysoftware",
             instagram_link      = "https://www.instagram.com/erayturkayy/",
             github_link         = "https://github.com/turkaysoftware",
-            //
-            github_link_lt      = "https://raw.githubusercontent.com/turkaysoftware/vimera/main/Vimera/SoftwareVersion.txt",
-            github_link_lr      = "https://github.com/turkaysoftware/vimera/releases/latest",
-            //
+            youtube_link        = "https://www.youtube.com/@turkaysoftware",
+            // Other Links
             ts_wizard           = "https://www.turkaysoftware.com/ts-wizard",
-            //
             ts_bmac             = "https://buymeacoffee.com/turkaysoftware";
         }
         // VERSIONS
@@ -63,7 +66,11 @@ namespace Vimera{
                 { 9, new KeyValuePair<MessageBoxButtons, MessageBoxIcon>(MessageBoxButtons.YesNoCancel, MessageBoxIcon.Question) }  // Yes/No/Cancel ve Soru
             };
             public static DialogResult TS_MessageBox(Form m_form, int m_mode, string m_message, string m_title = ""){
-                m_form.BringToFront();
+                if (m_form.InvokeRequired){
+                    m_form.Invoke((Action)(() => BringFormToFront(m_form)));
+                }else{
+                    BringFormToFront(m_form);
+                }
                 //
                 string m_box_title = string.IsNullOrEmpty(m_title) ? Application.ProductName : m_title;
                 //
@@ -77,6 +84,12 @@ namespace Vimera{
                 }
                 //
                 return MessageBox.Show(m_form, m_message, m_box_title, m_button, m_icon);
+            }
+            private static void BringFormToFront(Form m_form){
+                if (m_form.WindowState == FormWindowState.Minimized)
+                    m_form.WindowState = FormWindowState.Normal;
+                m_form.BringToFront();
+                m_form.Activate();
             }
         }
         // TS SOFTWARE COPYRIGHT DATE
@@ -152,10 +165,11 @@ namespace Vimera{
                 // TS PRELOADER
                 { "TSBT_BGColor", Color.FromArgb(236, 242, 248) },
                 { "TSBT_BGColor2", Color.White },
-                { "TSBT_AccentColor", Color.FromArgb(105, 81, 147) },
+                { "TSBT_AccentColor", Color.FromArgb(126, 27, 156) },
                 { "TSBT_LabelColor1", Color.FromArgb(51, 51, 51) },
                 { "TSBT_LabelColor2", Color.FromArgb(100, 100, 100) },
-                { "TSBT_CloseBG", Color.FromArgb(200, 255, 255, 255) },
+                { "TSBT_CloseBG", Color.FromArgb(25, 255, 255, 255) },
+                { "TSBT_CloseBGHover", Color.FromArgb(50, 255, 255, 255) },
                 // HEADER MENU COLOR MODE
                 { "HeaderBGColorMain", Color.White },
                 { "HeaderFEColorMain", Color.FromArgb(51, 51, 51) },
@@ -165,6 +179,10 @@ namespace Vimera{
                 // UI COLOR
                 { "HeaderFEColor", Color.FromArgb(51, 51, 51) },
                 { "HeaderBGColor", Color.FromArgb(236, 242, 248) },
+                // ACCENT COLOR
+                { "AccentColor", Color.FromArgb(126, 27, 156) },
+                { "AccentColorHover", Color.FromArgb(168, 38, 207) },
+                //
                 { "LeftMenuBGAndBorderColor", Color.FromArgb(236, 242, 248) },
                 { "LeftMenuButtonHoverAndMouseDownColor", Color.White },
                 { "LeftMenuButtonFEColor", Color.FromArgb(51, 51, 51) },
@@ -175,13 +193,11 @@ namespace Vimera{
                 { "DataGridColor", Color.FromArgb(226, 226, 226) },
                 { "DataGridAlternatingColor", Color.FromArgb(236, 242, 248) },
                 { "DataGridSelectionColor", Color.White },
-                { "MainAccentColor", Color.FromArgb(105, 81, 147) },
-                { "MainAccentColorHover", Color.FromArgb(120, 93, 167) },
                 { "TextBoxBGColor", Color.White },
                 { "TextBoxFEColor", Color.FromArgb(51, 51, 51) },
                 { "DynamicThemeActiveBtnBG", Color.White },
-                { "HashCompareSuccess", Color.FromArgb(18, 119, 69) },
-                { "HashCompareFailed", Color.FromArgb(156, 37, 77) },
+                { "AccentGreen", Color.FromArgb(28, 122, 25) },
+                { "AccentRed", Color.FromArgb(207, 24, 0) },
                 { "HashCompareResultFE", Color.White }
             };
             // DARK THEME COLORS
@@ -190,10 +206,11 @@ namespace Vimera{
                 // TS PRELOADER
                 { "TSBT_BGColor", Color.FromArgb(21, 23, 32) },
                 { "TSBT_BGColor2", Color.FromArgb(25, 31, 42) },
-                { "TSBT_AccentColor", Color.FromArgb(159, 126, 216) },
+                { "TSBT_AccentColor", Color.FromArgb(229, 33, 255) },
                 { "TSBT_LabelColor1", Color.WhiteSmoke },
                 { "TSBT_LabelColor2", Color.FromArgb(176, 184, 196) },
-                { "TSBT_CloseBG", Color.FromArgb(210, 25, 31, 42) },
+                { "TSBT_CloseBG", Color.FromArgb(75, 25, 31, 42) },
+                { "TSBT_CloseBGHover", Color.FromArgb(100, 25, 31, 42) },
                 // HEADER MENU COLOR MODE
                 { "HeaderBGColorMain", Color.FromArgb(25, 31, 42) },
                 { "HeaderFEColorMain", Color.FromArgb(222, 222, 222) },
@@ -203,6 +220,10 @@ namespace Vimera{
                 // UI COLOR
                 { "HeaderFEColor", Color.WhiteSmoke },
                 { "HeaderBGColor", Color.FromArgb(21, 23, 32) },
+                // ACCENT COLOR
+                { "AccentColor", Color.FromArgb(229, 33, 255) },
+                { "AccentColorHover", Color.FromArgb(234, 77, 255) },
+                //
                 { "LeftMenuBGAndBorderColor", Color.FromArgb(21, 23, 32) },
                 { "LeftMenuButtonHoverAndMouseDownColor", Color.FromArgb(25, 31, 42) },
                 { "LeftMenuButtonFEColor", Color.WhiteSmoke },
@@ -212,15 +233,13 @@ namespace Vimera{
                 { "DataGridFEColor", Color.WhiteSmoke },
                 { "DataGridColor", Color.FromArgb(36, 45, 61) },
                 { "DataGridAlternatingColor", Color.FromArgb(21, 23, 32) },
-                { "DataGridSelectionColor", Color.WhiteSmoke },
-                { "MainAccentColor", Color.FromArgb(113, 88, 157) },
-                { "MainAccentColorHover", Color.FromArgb(131, 103, 180) },
+                { "DataGridSelectionColor", Color.FromArgb(21, 23, 32) },
                 { "TextBoxBGColor", Color.FromArgb(25, 31, 42) },
                 { "TextBoxFEColor", Color.WhiteSmoke },
-                { "DynamicThemeActiveBtnBG", Color.WhiteSmoke },
-                { "HashCompareSuccess", Color.FromArgb(18, 119, 69) },
-                { "HashCompareFailed", Color.FromArgb(156, 37, 77) },
-                { "HashCompareResultFE", Color.WhiteSmoke }
+                { "DynamicThemeActiveBtnBG", Color.FromArgb(21, 23, 32) },
+                { "AccentGreen", Color.FromArgb(38, 187, 33) },
+                { "AccentRed", Color.FromArgb(255, 51, 51) },
+                { "HashCompareResultFE", Color.FromArgb(21, 23, 32) }
             };
             // THEME SWITCHER
             // ====================================
@@ -232,6 +251,56 @@ namespace Vimera{
                 }
                 return Color.Transparent;
             }
+        }
+        // DPI SENSITIVE DYNAMIC IMAGE RENDERER
+        // ======================================================================================================
+        public static void TSImageRenderer(object baseTarget, Image sourceImage, int basePadding, ContentAlignment imageAlign = ContentAlignment.MiddleCenter){
+            if (sourceImage == null || baseTarget == null) return;
+            const int minImageSize = 16;
+            try{
+                int calculatedSize;
+                Image previousImage = null;
+                Image ResizeImage(Image targetImg, int targetSize){
+                    Bitmap resizedEngine = new Bitmap(targetSize, targetSize, PixelFormat.Format32bppArgb);
+                    using (Graphics renderGraphics = Graphics.FromImage(resizedEngine)){
+                        renderGraphics.InterpolationMode = InterpolationMode.HighQualityBicubic;
+                        renderGraphics.SmoothingMode = SmoothingMode.AntiAlias;
+                        renderGraphics.PixelOffsetMode = PixelOffsetMode.HighQuality;
+                        renderGraphics.CompositingQuality = CompositingQuality.HighQuality;
+                        renderGraphics.DrawImage(targetImg, 0, 0, targetSize, targetSize);
+                    }
+                    return resizedEngine;
+                }
+                if (baseTarget is Control targetControl){
+                    float dpi = targetControl.DeviceDpi > 0 ? targetControl.DeviceDpi : 96f;
+                    float dpiScaleFactor = dpi / 96f;
+                    int paddingWithScale = (int)Math.Round(basePadding * dpiScaleFactor);
+                    //
+                    calculatedSize = targetControl.Height - paddingWithScale;
+                    if (calculatedSize <= 0) { calculatedSize = minImageSize; }
+                    Image resizedImage = ResizeImage(sourceImage, calculatedSize);
+                    if (targetControl is Button buttonMode){
+                        previousImage = buttonMode.Image;
+                        buttonMode.Image = resizedImage;
+                        buttonMode.ImageAlign = imageAlign;
+                    }else if (targetControl is PictureBox pictureBoxMode){
+                        previousImage = pictureBoxMode.Image;
+                        pictureBoxMode.Image = resizedImage;
+                        pictureBoxMode.SizeMode = PictureBoxSizeMode.Zoom;
+                    }else{
+                        resizedImage.Dispose();
+                    }
+                }else if (baseTarget is ToolStripItem toolStripItemMode){
+                    calculatedSize = toolStripItemMode.Height - basePadding;
+                    if (calculatedSize <= 0) { calculatedSize = minImageSize; }
+                    Image resizedImage = ResizeImage(sourceImage, calculatedSize);
+                    previousImage = toolStripItemMode.Image;
+                    toolStripItemMode.Image = resizedImage;
+                }else{
+                    return;
+                }
+                if (previousImage != null && previousImage != sourceImage) { previousImage.Dispose(); }
+            }catch (Exception){ }
         }
         // DYNAMIC SIZE COUNT ALGORITHM
         // ======================================================================================================
@@ -288,9 +357,9 @@ namespace Vimera{
         // ======================================================================================================
         [DllImport("DwmApi")]
         public static extern int DwmSetWindowAttribute(IntPtr hwnd, int attr, int[] attrValue, int attrSize);
+        // DPI AWARE V2
         // ======================================================================================================
-        // DPI AWARE
         [DllImport("user32.dll")]
-        public static extern bool SetProcessDPIAware();
+        public static extern bool SetProcessDpiAwarenessContext(IntPtr dpiFlag);
     }
 }
