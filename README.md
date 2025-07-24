@@ -12,9 +12,9 @@ Every little bit helps—it keeps me motivated and gives me more time to improve
 
 [Click here](https://www.turkaysoftware.com/vimera) for full specifications.
 
-![Vimera UI - Dark](https://github.com/user-attachments/assets/abb087d7-fd25-4f8a-8763-cb5d7a88a8ab)
+![Vimera UI - Dark](https://github.com/user-attachments/assets/81143f42-c6dc-4433-9000-61167839d9e2)
 
-![Vimera UI - Light](https://github.com/user-attachments/assets/1906e6a1-0092-4805-96aa-19211ec39389)
+![Vimera UI - Light](https://github.com/user-attachments/assets/127e65ee-a35f-4252-a55e-9bcd0a35728e)
 
 # Download Vimera
 
