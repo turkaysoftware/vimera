@@ -81,3 +81,4 @@ With these instructions, you can download and use the correct version of Vimera 
 | **Check Update** | F11 |
 | **About** | F12 |
 | **TS Wizard** | CTRL + Shift + S |
+| **Buy Me a Coffee** | CTRL + Shift + D |
