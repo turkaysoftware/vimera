@@ -1,0 +1,242 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project ToolsVersion="15.0" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <Import Project="$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props" Condition="Exists('$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props')" />
+  <PropertyGroup>
+    <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
+    <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
+    <ProjectGuid>{C30DE29A-3773-46A1-8C7E-7175255F3550}</ProjectGuid>
+    <OutputType>WinExe</OutputType>
+    <RootNamespace>Vimera</RootNamespace>
+    <AssemblyName>Vimera</AssemblyName>
+    <TargetFrameworkVersion>v4.8.1</TargetFrameworkVersion>
+    <FileAlignment>512</FileAlignment>
+    <AutoGenerateBindingRedirects>true</AutoGenerateBindingRedirects>
+    <Deterministic>true</Deterministic>
+    <IsWebBootstrapper>false</IsWebBootstrapper>
+    <TargetFrameworkProfile />
+    <PublishUrl>publish\</PublishUrl>
+    <Install>true</Install>
+    <InstallFrom>Disk</InstallFrom>
+    <UpdateEnabled>false</UpdateEnabled>
+    <UpdateMode>Foreground</UpdateMode>
+    <UpdateInterval>7</UpdateInterval>
+    <UpdateIntervalUnits>Days</UpdateIntervalUnits>
+    <UpdatePeriodically>false</UpdatePeriodically>
+    <UpdateRequired>false</UpdateRequired>
+    <MapFileExtensions>true</MapFileExtensions>
+    <ApplicationRevision>0</ApplicationRevision>
+    <ApplicationVersion>25.09.0.%2a</ApplicationVersion>
+    <UseApplicationTrust>false</UseApplicationTrust>
+    <BootstrapperEnabled>true</BootstrapperEnabled>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
+    <PlatformTarget>AnyCPU</PlatformTarget>
+    <DebugSymbols>true</DebugSymbols>
+    <DebugType>full</DebugType>
+    <Optimize>false</Optimize>
+    <OutputPath>bin\Debug\</OutputPath>
+    <DefineConstants>DEBUG;TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|AnyCPU' ">
+    <PlatformTarget>AnyCPU</PlatformTarget>
+    <DebugType>pdbonly</DebugType>
+    <Optimize>true</Optimize>
+    <OutputPath>bin\Release\</OutputPath>
+    <DefineConstants>TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+  </PropertyGroup>
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)' == 'Debug|x64'">
+    <DebugSymbols>true</DebugSymbols>
+    <OutputPath>bin\x64\Debug\</OutputPath>
+    <DefineConstants>DEBUG;TRACE</DefineConstants>
+    <DebugType>full</DebugType>
+    <PlatformTarget>x64</PlatformTarget>
+    <LangVersion>7.3</LangVersion>
+    <ErrorReport>prompt</ErrorReport>
+    <Prefer32Bit>true</Prefer32Bit>
+  </PropertyGroup>
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)' == 'Release|x64'">
+    <OutputPath>bin\x64\Release\</OutputPath>
+    <DefineConstants>TRACE</DefineConstants>
+    <Optimize>true</Optimize>
+    <DebugType>pdbonly</DebugType>
+    <PlatformTarget>x64</PlatformTarget>
+    <LangVersion>7.3</LangVersion>
+    <ErrorReport>prompt</ErrorReport>
+    <Prefer32Bit>true</Prefer32Bit>
+  </PropertyGroup>
+  <PropertyGroup>
+    <ApplicationIcon>VimeraLogo.ico</ApplicationIcon>
+  </PropertyGroup>
+  <PropertyGroup />
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)' == 'Debug|ARM64'">
+    <DebugSymbols>true</DebugSymbols>
+    <OutputPath>bin\ARM64\Debug\</OutputPath>
+    <DefineConstants>DEBUG;TRACE</DefineConstants>
+    <DebugType>full</DebugType>
+    <PlatformTarget>ARM64</PlatformTarget>
+    <LangVersion>7.3</LangVersion>
+    <ErrorReport>prompt</ErrorReport>
+    <Prefer32Bit>true</Prefer32Bit>
+  </PropertyGroup>
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)' == 'Release|ARM64'">
+    <OutputPath>bin\ARM64\Release\</OutputPath>
+    <DefineConstants>TRACE</DefineConstants>
+    <Optimize>true</Optimize>
+    <DebugType>pdbonly</DebugType>
+    <PlatformTarget>ARM64</PlatformTarget>
+    <LangVersion>7.3</LangVersion>
+    <ErrorReport>prompt</ErrorReport>
+    <Prefer32Bit>true</Prefer32Bit>
+  </PropertyGroup>
+  <PropertyGroup>
+    <ApplicationManifest>app.manifest</ApplicationManifest>
+  </PropertyGroup>
+  <ItemGroup>
+    <Reference Include="System" />
+    <Reference Include="System.Configuration" />
+    <Reference Include="System.Core" />
+    <Reference Include="System.Web.Extensions" />
+    <Reference Include="System.Xml.Linq" />
+    <Reference Include="System.Data.DataSetExtensions" />
+    <Reference Include="Microsoft.CSharp" />
+    <Reference Include="System.Data" />
+    <Reference Include="System.Deployment" />
+    <Reference Include="System.Drawing" />
+    <Reference Include="System.Net.Http" />
+    <Reference Include="System.Windows.Forms" />
+    <Reference Include="System.Xml" />
+  </ItemGroup>
+  <ItemGroup>
+    <Compile Include="TSCRCChecksumModule.cs" />
+    <Compile Include="TSCustomControls.cs">
+      <SubType>Component</SubType>
+    </Compile>
+    <Compile Include="TSModules.cs" />
+    <Compile Include="TSPreloader.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="TSPreloader.Designer.cs">
+      <DependentUpon>TSPreloader.cs</DependentUpon>
+    </Compile>
+    <Compile Include="VimeraMain.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="VimeraMain.Designer.cs">
+      <DependentUpon>VimeraMain.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Program.cs" />
+    <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="VimeraAbout.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="VimeraAbout.Designer.cs">
+      <DependentUpon>VimeraAbout.cs</DependentUpon>
+    </Compile>
+    <EmbeddedResource Include="TSPreloader.resx">
+      <DependentUpon>TSPreloader.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="VimeraMain.resx">
+      <DependentUpon>VimeraMain.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Properties\Resources.resx">
+      <Generator>ResXFileCodeGenerator</Generator>
+      <LastGenOutput>Resources.Designer.cs</LastGenOutput>
+      <SubType>Designer</SubType>
+    </EmbeddedResource>
+    <Compile Include="Properties\Resources.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DependentUpon>Resources.resx</DependentUpon>
+      <DesignTime>True</DesignTime>
+    </Compile>
+    <EmbeddedResource Include="VimeraAbout.resx">
+      <DependentUpon>VimeraAbout.cs</DependentUpon>
+    </EmbeddedResource>
+    <None Include="app.manifest" />
+    <None Include="Properties\Settings.settings">
+      <Generator>SettingsSingleFileGenerator</Generator>
+      <LastGenOutput>Settings.Designer.cs</LastGenOutput>
+    </None>
+    <Compile Include="Properties\Settings.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DependentUpon>Settings.settings</DependentUpon>
+      <DesignTimeSharedInput>True</DesignTimeSharedInput>
+    </Compile>
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="App.config" />
+  </ItemGroup>
+  <ItemGroup>
+    <BootstrapperPackage Include=".NETFramework,Version=v4.8">
+      <Visible>False</Visible>
+      <ProductName>Microsoft .NET Framework 4.8 %28x86 ve x64%29</ProductName>
+      <Install>true</Install>
+    </BootstrapperPackage>
+    <BootstrapperPackage Include="Microsoft.Net.Framework.3.5.SP1">
+      <Visible>False</Visible>
+      <ProductName>.NET Framework 3.5 SP1 </ProductName>
+      <Install>false</Install>
+    </BootstrapperPackage>
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="vimera_images\vimera_ui\theme_light\ct_bmac_mc_light.png" />
+    <None Include="vimera_images\vimera_ui\theme_dark\ct_bmac_mc_dark.png" />
+    <None Include="vimera_images\vimera_ui\theme_dark\ct_stop_dark.png" />
+    <None Include="vimera_images\vimera_ui\theme_dark\ct_start_dark.png" />
+    <None Include="vimera_images\vimera_ui\theme_dark\ct_file_select_dark.png" />
+    <None Include="vimera_images\vimera_ui\theme_dark\ct_export_dark.png" />
+    <None Include="vimera_images\vimera_ui\theme_dark\ct_copy_dark.png" />
+    <None Include="vimera_images\vimera_ui\theme_dark\ct_compare_success_dark.png" />
+    <None Include="vimera_images\vimera_ui\theme_dark\ct_compare_failed_dark.png" />
+    <None Include="vimera_images\vimera_ui\theme_dark\ct_compare_dark.png" />
+    <None Include="vimera_images\vimera_ui\theme_light\ct_stop_light.png" />
+    <None Include="vimera_images\vimera_ui\theme_light\ct_start_light.png" />
+    <None Include="vimera_images\vimera_ui\theme_light\ct_file_select_light.png" />
+    <None Include="vimera_images\vimera_ui\theme_light\ct_export_light.png" />
+    <None Include="vimera_images\vimera_ui\theme_light\ct_copy_light.png" />
+    <None Include="vimera_images\vimera_ui\theme_light\ct_compare_success_light.png" />
+    <None Include="vimera_images\vimera_ui\theme_light\ct_compare_light.png" />
+    <None Include="vimera_images\vimera_ui\theme_light\ct_compare_failed_light.png" />
+    <None Include="vimera_images\vimera_ui\ts_material\ts_close.png" />
+    <None Include="vimera_images\vimera_ui\theme_light\ct_youtube_light.png" />
+    <None Include="vimera_images\vimera_ui\theme_light\ct_x_light.png" />
+    <None Include="vimera_images\vimera_ui\theme_light\ct_website_light.png" />
+    <None Include="vimera_images\vimera_ui\theme_light\ct_instagram_light.png" />
+    <None Include="vimera_images\vimera_ui\theme_light\ct_github_light.png" />
+    <None Include="vimera_images\vimera_ui\theme_dark\ct_youtube_dark.png" />
+    <None Include="vimera_images\vimera_ui\theme_dark\ct_x_dark.png" />
+    <None Include="vimera_images\vimera_ui\theme_dark\ct_website_dark.png" />
+    <None Include="vimera_images\vimera_ui\theme_dark\ct_instagram_dark.png" />
+    <None Include="vimera_images\vimera_ui\theme_dark\ct_github_dark.png" />
+    <None Include="vimera_images\ts_preloader\ts_preloader_release.jpg" />
+  </ItemGroup>
+  <ItemGroup>
+    <Content Include="VimeraLogo.ico" />
+    <None Include="vimera_images\vimera_ui\theme_light\tm_update_light.png" />
+    <None Include="vimera_images\vimera_ui\theme_light\tm_ts_wizard_light.png" />
+    <None Include="vimera_images\vimera_ui\theme_light\tm_theme_light.png" />
+    <None Include="vimera_images\vimera_ui\theme_light\tm_startup_light.png" />
+    <None Include="vimera_images\vimera_ui\theme_light\tm_settings_light.png" />
+    <None Include="vimera_images\vimera_ui\theme_light\tm_language_light.png" />
+    <None Include="vimera_images\vimera_ui\theme_light\tm_bmac_light.png" />
+    <None Include="vimera_images\vimera_ui\theme_light\tm_about_light.png" />
+    <None Include="vimera_images\vimera_ui\theme_light\lm_text_hash_light.png" />
+    <None Include="vimera_images\vimera_ui\theme_light\lm_hash_compare_light.png" />
+    <None Include="vimera_images\vimera_ui\theme_light\lm_file_hash_light.png" />
+    <None Include="vimera_images\vimera_ui\theme_dark\tm_update_dark.png" />
+    <None Include="vimera_images\vimera_ui\theme_dark\tm_ts_wizard_dark.png" />
+    <None Include="vimera_images\vimera_ui\theme_dark\tm_theme_dark.png" />
+    <None Include="vimera_images\vimera_ui\theme_dark\tm_startup_dark.png" />
+    <None Include="vimera_images\vimera_ui\theme_dark\tm_settings_dark.png" />
+    <None Include="vimera_images\vimera_ui\theme_dark\tm_language_dark.png" />
+    <None Include="vimera_images\vimera_ui\theme_dark\tm_bmac_dark.png" />
+    <None Include="vimera_images\vimera_ui\theme_dark\tm_about_dark.png" />
+    <None Include="vimera_images\vimera_ui\theme_dark\lm_text_hash_dark.png" />
+    <None Include="vimera_images\vimera_ui\theme_dark\lm_hash_compare_dark.png" />
+    <None Include="vimera_images\vimera_ui\theme_dark\lm_file_hash_dark.png" />
+  </ItemGroup>
+  <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
+</Project>
