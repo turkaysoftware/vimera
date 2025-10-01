@@ -11,9 +11,9 @@
 
 [Click here](https://www.turkaysoftware.com/vimera) for full specifications.
 
-<img width="1010" height="633" alt="Vimera UI - Dark" src="https://github.com/user-attachments/assets/49844ef6-bcc3-4de0-b014-4c09cad8239d" />
+<img width="1010" height="633" alt="Vimera UI - Dark" src="https://github.com/user-attachments/assets/f135f127-9994-4181-bd4c-ac1a90d765a4" />
 
-<img width="1010" height="633" alt="Vimera UI - Light" src="https://github.com/user-attachments/assets/e3ee3f90-e1f5-4ad0-bafc-8bfc201629c8" />
+<img width="1010" height="633" alt="Vimera UI - Light" src="https://github.com/user-attachments/assets/28a5839e-7d34-4e55-9c5d-ff459167466b" />
 
 # Download Vimera
 
@@ -73,8 +73,9 @@ With these instructions, you can download and use the correct version of Vimera 
 | -- | :--: |
 | **Theme:** Light | F1 |
 | **Theme:** Dark | F2 |
-| **Start:** Windowed | F3 |
-| **Start:** Full Screen | F4 |
+| **Theme:** System | F3 |
+| **Start:** Windowed | F4 |
+| **Start:** Full Screen | F5 |
 
 | Extras | Key |
 | -- | :--: |
