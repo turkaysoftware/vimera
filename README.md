@@ -43,6 +43,7 @@ With these instructions, you can download and use the correct version of Vimera 
 
 - English
 - Turkish
+- **For translation support: [Translation Guide for Vimera](https://github.com/turkaysoftware/vimera/discussions/2)**
 
 # Supported Themes
 
