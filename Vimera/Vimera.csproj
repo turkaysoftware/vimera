@@ -25,7 +25,7 @@
     <UpdateRequired>false</UpdateRequired>
     <MapFileExtensions>true</MapFileExtensions>
     <ApplicationRevision>0</ApplicationRevision>
-    <ApplicationVersion>25.10.0.%2a</ApplicationVersion>
+    <ApplicationVersion>25.11.0.%2a</ApplicationVersion>
     <UseApplicationTrust>false</UseApplicationTrust>
     <BootstrapperEnabled>true</BootstrapperEnabled>
   </PropertyGroup>
@@ -185,8 +185,6 @@
     </BootstrapperPackage>
   </ItemGroup>
   <ItemGroup>
-    <None Include="vimera_images\vimera_ui\theme_light\ct_bmac_mc_light.png" />
-    <None Include="vimera_images\vimera_ui\theme_dark\ct_bmac_mc_dark.png" />
     <None Include="vimera_images\vimera_ui\theme_dark\ct_stop_dark.png" />
     <None Include="vimera_images\vimera_ui\theme_dark\ct_start_dark.png" />
     <None Include="vimera_images\vimera_ui\theme_dark\ct_file_select_dark.png" />
@@ -214,17 +212,20 @@
     <None Include="vimera_images\vimera_ui\theme_dark\ct_website_dark.png" />
     <None Include="vimera_images\vimera_ui\theme_dark\ct_instagram_dark.png" />
     <None Include="vimera_images\vimera_ui\theme_dark\ct_github_dark.png" />
-    <None Include="vimera_images\ts_preloader\ts_preloader_release.jpg" />
   </ItemGroup>
   <ItemGroup>
     <Content Include="VimeraLogo.ico" />
+    <None Include="vimera_images\vimera_ui\theme_light\tm_donate_mc_light.png" />
+    <None Include="vimera_images\vimera_ui\theme_light\tm_donate_light.png" />
+    <None Include="vimera_images\vimera_ui\theme_dark\tm_donate_mc_dark.png" />
+    <None Include="vimera_images\vimera_ui\theme_dark\tm_donate_dark.png" />
+    <None Include="vimera_images\ts_preloader\ts_preloader.jpg" />
     <None Include="vimera_images\vimera_ui\theme_light\tm_update_light.png" />
     <None Include="vimera_images\vimera_ui\theme_light\tm_ts_wizard_light.png" />
     <None Include="vimera_images\vimera_ui\theme_light\tm_theme_light.png" />
     <None Include="vimera_images\vimera_ui\theme_light\tm_startup_light.png" />
     <None Include="vimera_images\vimera_ui\theme_light\tm_settings_light.png" />
     <None Include="vimera_images\vimera_ui\theme_light\tm_language_light.png" />
-    <None Include="vimera_images\vimera_ui\theme_light\tm_bmac_light.png" />
     <None Include="vimera_images\vimera_ui\theme_light\tm_about_light.png" />
     <None Include="vimera_images\vimera_ui\theme_light\lm_text_hash_light.png" />
     <None Include="vimera_images\vimera_ui\theme_light\lm_hash_compare_light.png" />
@@ -235,7 +236,6 @@
     <None Include="vimera_images\vimera_ui\theme_dark\tm_startup_dark.png" />
     <None Include="vimera_images\vimera_ui\theme_dark\tm_settings_dark.png" />
     <None Include="vimera_images\vimera_ui\theme_dark\tm_language_dark.png" />
-    <None Include="vimera_images\vimera_ui\theme_dark\tm_bmac_dark.png" />
     <None Include="vimera_images\vimera_ui\theme_dark\tm_about_dark.png" />
     <None Include="vimera_images\vimera_ui\theme_dark\lm_text_hash_dark.png" />
     <None Include="vimera_images\vimera_ui\theme_dark\lm_hash_compare_dark.png" />

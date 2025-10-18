@@ -63,26 +63,6 @@ namespace Vimera.Properties {
         /// <summary>
         ///   System.Drawing.Bitmap türünde yerelleştirilmiş bir kaynak arar.
         /// </summary>
-        internal static System.Drawing.Bitmap ct_bmac_mc_dark {
-            get {
-                object obj = ResourceManager.GetObject("ct_bmac_mc_dark", resourceCulture);
-                return ((System.Drawing.Bitmap)(obj));
-            }
-        }
-        
-        /// <summary>
-        ///   System.Drawing.Bitmap türünde yerelleştirilmiş bir kaynak arar.
-        /// </summary>
-        internal static System.Drawing.Bitmap ct_bmac_mc_light {
-            get {
-                object obj = ResourceManager.GetObject("ct_bmac_mc_light", resourceCulture);
-                return ((System.Drawing.Bitmap)(obj));
-            }
-        }
-        
-        /// <summary>
-        ///   System.Drawing.Bitmap türünde yerelleştirilmiş bir kaynak arar.
-        /// </summary>
         internal static System.Drawing.Bitmap ct_compare_dark {
             get {
                 object obj = ResourceManager.GetObject("ct_compare_dark", resourceCulture);
@@ -423,9 +403,9 @@ namespace Vimera.Properties {
         /// <summary>
         ///   System.Drawing.Bitmap türünde yerelleştirilmiş bir kaynak arar.
         /// </summary>
-        internal static System.Drawing.Bitmap tm_bmac_dark {
+        internal static System.Drawing.Bitmap tm_donate_dark {
             get {
-                object obj = ResourceManager.GetObject("tm_bmac_dark", resourceCulture);
+                object obj = ResourceManager.GetObject("tm_donate_dark", resourceCulture);
                 return ((System.Drawing.Bitmap)(obj));
             }
         }
@@ -433,9 +413,29 @@ namespace Vimera.Properties {
         /// <summary>
         ///   System.Drawing.Bitmap türünde yerelleştirilmiş bir kaynak arar.
         /// </summary>
-        internal static System.Drawing.Bitmap tm_bmac_light {
+        internal static System.Drawing.Bitmap tm_donate_light {
             get {
-                object obj = ResourceManager.GetObject("tm_bmac_light", resourceCulture);
+                object obj = ResourceManager.GetObject("tm_donate_light", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   System.Drawing.Bitmap türünde yerelleştirilmiş bir kaynak arar.
+        /// </summary>
+        internal static System.Drawing.Bitmap tm_donate_mc_dark {
+            get {
+                object obj = ResourceManager.GetObject("tm_donate_mc_dark", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   System.Drawing.Bitmap türünde yerelleştirilmiş bir kaynak arar.
+        /// </summary>
+        internal static System.Drawing.Bitmap tm_donate_mc_light {
+            get {
+                object obj = ResourceManager.GetObject("tm_donate_mc_light", resourceCulture);
                 return ((System.Drawing.Bitmap)(obj));
             }
         }
@@ -573,9 +573,9 @@ namespace Vimera.Properties {
         /// <summary>
         ///   System.Drawing.Bitmap türünde yerelleştirilmiş bir kaynak arar.
         /// </summary>
-        internal static System.Drawing.Bitmap ts_preloader_release {
+        internal static System.Drawing.Bitmap ts_preloader {
             get {
-                object obj = ResourceManager.GetObject("ts_preloader_release", resourceCulture);
+                object obj = ResourceManager.GetObject("ts_preloader", resourceCulture);
                 return ((System.Drawing.Bitmap)(obj));
             }
         }

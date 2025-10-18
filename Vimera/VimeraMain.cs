@@ -111,6 +111,9 @@ namespace Vimera {
         private void RunSoftwareEngine(){
             try{
                 TSGetLangs software_lang = new TSGetLangs(lang_path);
+                // PAGE ARROW BYPASS
+                MainContent.SelectedTab = TextHash;
+                MainContent.SelectedTab = FileHash;
                 // BUTTONS DPI AWARE SETTINGS
                 int btn_dpi_height = FileHashAlgorithmSelect.Height + 2;
                 FileHashExportHashsBtn.Height = btn_dpi_height;
@@ -861,7 +864,7 @@ namespace Vimera {
             HashCompareResult.FlatAppearance.BorderColor = accentColor;
             HashCompareResult.FlatAppearance.MouseDownBackColor = accentColor;
             HashCompareResult.FlatAppearance.MouseOverBackColor = accentColor;
-            TSImageRenderer(HashCompareResult, resultImage, 20, ContentAlignment.MiddleRight);
+            TSImageRenderer(HashCompareResult, resultImage, 22, ContentAlignment.MiddleRight);
         }
         private void UpdateHashCompareText(bool hashesMatch){
             TSGetLangs software_lang = new TSGetLangs(lang_path);
@@ -904,12 +907,10 @@ namespace Vimera {
                     { 1, TextHashBtn },
                     { 2, HashCompareBtn }
                 };
-                if (tabButtons.TryGetValue(MainContent.SelectedIndex, out var button)){
-                    if (!e.TabPage.Enabled){
-                        e.Cancel = true;
-                    }else{
-                        button.PerformClick();
-                    }
+                if (!e.TabPage.Enabled){
+                    e.Cancel = true;
+                }else if (tabButtons.TryGetValue(MainContent.SelectedIndex, out var button)){
+                    button.PerformClick();
                 }
             }catch (Exception) { }
         }
@@ -1004,8 +1005,8 @@ namespace Vimera {
                 checkForUpdateToolStripMenuItem.Text = software_lang.TSReadLangs("HeaderMenu", "header_menu_update");
                 // TS WIZARD
                 tSWizardToolStripMenuItem.Text = software_lang.TSReadLangs("HeaderMenu", "header_menu_ts_wizard");
-                // BMAC
-                bmacToolStripMenuItem.Text = software_lang.TSReadLangs("HeaderMenu", "header_menu_bmac");
+                // DONATE
+                donateToolStripMenuItem.Text = software_lang.TSReadLangs("HeaderMenu", "header_menu_donate");
                 // ABOUT
                 aboutToolStripMenuItem.Text = software_lang.TSReadLangs("HeaderMenu", "header_menu_about");
                 // MENU
@@ -1096,20 +1097,20 @@ namespace Vimera {
                     TSImageRenderer(startupToolStripMenuItem, Properties.Resources.tm_startup_light, 0, ContentAlignment.MiddleRight);
                     TSImageRenderer(checkForUpdateToolStripMenuItem, Properties.Resources.tm_update_light, 0, ContentAlignment.MiddleRight);
                     TSImageRenderer(tSWizardToolStripMenuItem, Properties.Resources.tm_ts_wizard_light, 0, ContentAlignment.MiddleRight);
-                    TSImageRenderer(bmacToolStripMenuItem, Properties.Resources.tm_bmac_light, 0, ContentAlignment.MiddleRight);
+                    TSImageRenderer(donateToolStripMenuItem, Properties.Resources.tm_donate_light, 0, ContentAlignment.MiddleRight);
                     TSImageRenderer(aboutToolStripMenuItem, Properties.Resources.tm_about_light, 0, ContentAlignment.MiddleRight);
                     // THEME LOGOS
                     TSImageRenderer(FileHashBtn, Properties.Resources.lm_file_hash_light, 15, ContentAlignment.MiddleLeft);
                     TSImageRenderer(TextHashBtn, Properties.Resources.lm_text_hash_light, 15, ContentAlignment.MiddleLeft);
                     TSImageRenderer(HashCompareBtn, Properties.Resources.lm_hash_compare_light, 15, ContentAlignment.MiddleLeft);
                     // UI
-                    TSImageRenderer(FileHashSelectFileBtn, Properties.Resources.ct_file_select_light, 10, ContentAlignment.MiddleRight);
-                    TSImageRenderer(FileHashExportHashsBtn, Properties.Resources.ct_export_light, 10, ContentAlignment.MiddleRight);
-                    TSImageRenderer(FileHashCompareBtn, Properties.Resources.ct_compare_light, 10, ContentAlignment.MiddleRight);
-                    TSImageRenderer(FileHashStartBtn, Properties.Resources.ct_start_light, 20, ContentAlignment.MiddleRight);
+                    TSImageRenderer(FileHashExportHashsBtn, Properties.Resources.ct_export_light, 12, ContentAlignment.MiddleRight);
+                    TSImageRenderer(FileHashSelectFileBtn, Properties.Resources.ct_file_select_light, 12, ContentAlignment.MiddleRight);
+                    TSImageRenderer(FileHashCompareBtn, Properties.Resources.ct_compare_light, 12, ContentAlignment.MiddleRight);
+                    TSImageRenderer(FileHashStartBtn, Properties.Resources.ct_start_light, 22, ContentAlignment.MiddleRight);
                     TSImageRenderer(FileHashStopBtn, Properties.Resources.ct_stop_light, 20, ContentAlignment.MiddleRight);
                     //
-                    TSImageRenderer(TextHashResultCopyBtn, Properties.Resources.ct_copy_light, 20, ContentAlignment.MiddleRight);
+                    TSImageRenderer(TextHashResultCopyBtn, Properties.Resources.ct_copy_light, 22, ContentAlignment.MiddleRight);
                 }else if (theme == 0){
                     // SETTINGS
                     TSImageRenderer(settingsToolStripMenuItem, Properties.Resources.tm_settings_dark, 0, ContentAlignment.MiddleRight);
@@ -1118,20 +1119,20 @@ namespace Vimera {
                     TSImageRenderer(startupToolStripMenuItem, Properties.Resources.tm_startup_dark, 0, ContentAlignment.MiddleRight);
                     TSImageRenderer(checkForUpdateToolStripMenuItem, Properties.Resources.tm_update_dark, 0, ContentAlignment.MiddleRight);
                     TSImageRenderer(tSWizardToolStripMenuItem, Properties.Resources.tm_ts_wizard_dark, 0, ContentAlignment.MiddleRight);
-                    TSImageRenderer(bmacToolStripMenuItem, Properties.Resources.tm_bmac_dark, 0, ContentAlignment.MiddleRight);
+                    TSImageRenderer(donateToolStripMenuItem, Properties.Resources.tm_donate_dark, 0, ContentAlignment.MiddleRight);
                     TSImageRenderer(aboutToolStripMenuItem, Properties.Resources.tm_about_dark, 0, ContentAlignment.MiddleRight);
                     // THEME LOGOS
                     TSImageRenderer(FileHashBtn, Properties.Resources.lm_file_hash_dark, 15, ContentAlignment.MiddleLeft);
                     TSImageRenderer(TextHashBtn, Properties.Resources.lm_text_hash_dark, 15, ContentAlignment.MiddleLeft);
                     TSImageRenderer(HashCompareBtn, Properties.Resources.lm_hash_compare_dark, 15, ContentAlignment.MiddleLeft);
                     // UI
-                    TSImageRenderer(FileHashSelectFileBtn, Properties.Resources.ct_file_select_dark, 10, ContentAlignment.MiddleRight);
-                    TSImageRenderer(FileHashExportHashsBtn, Properties.Resources.ct_export_dark, 10, ContentAlignment.MiddleRight);
-                    TSImageRenderer(FileHashCompareBtn, Properties.Resources.ct_compare_dark, 10, ContentAlignment.MiddleRight);
-                    TSImageRenderer(FileHashStartBtn, Properties.Resources.ct_start_dark, 20, ContentAlignment.MiddleRight);
+                    TSImageRenderer(FileHashExportHashsBtn, Properties.Resources.ct_export_dark, 12, ContentAlignment.MiddleRight);
+                    TSImageRenderer(FileHashSelectFileBtn, Properties.Resources.ct_file_select_dark, 12, ContentAlignment.MiddleRight);
+                    TSImageRenderer(FileHashCompareBtn, Properties.Resources.ct_compare_dark, 12, ContentAlignment.MiddleRight);
+                    TSImageRenderer(FileHashStartBtn, Properties.Resources.ct_start_dark, 22, ContentAlignment.MiddleRight);
                     TSImageRenderer(FileHashStopBtn, Properties.Resources.ct_stop_dark, 20, ContentAlignment.MiddleRight);
                     //
-                    TSImageRenderer(TextHashResultCopyBtn, Properties.Resources.ct_copy_dark, 20, ContentAlignment.MiddleRight);
+                    TSImageRenderer(TextHashResultCopyBtn, Properties.Resources.ct_copy_dark, 22, ContentAlignment.MiddleRight);
                 }
                 // OTHER PAGE DYNAMIC UI
                 Software_other_page_preloader();
@@ -1185,6 +1186,7 @@ namespace Vimera {
                 FileHashAlgorithmSelect.ForeColor = TS_ThemeEngine.ColorMode(theme, "SelectBoxFEColor");
                 FileHashAlgorithmSelect.HoverBackColor = TS_ThemeEngine.ColorMode(theme, "SelectBoxBGColor");
                 FileHashAlgorithmSelect.ButtonColor = TS_ThemeEngine.ColorMode(theme, "SelectBoxBGColor2");
+                FileHashAlgorithmSelect.ArrowColor = TS_ThemeEngine.ColorMode(theme, "SelectBoxFEColor");
                 FileHashAlgorithmSelect.HoverButtonColor = TS_ThemeEngine.ColorMode(theme, "SelectBoxBGColor2");
                 FileHashAlgorithmSelect.BorderColor = TS_ThemeEngine.ColorMode(theme, "SelectBoxBorderColor");
                 FileHashAlgorithmSelect.FocusedBorderColor = TS_ThemeEngine.ColorMode(theme, "SelectBoxBorderColor");
@@ -1241,6 +1243,7 @@ namespace Vimera {
                 TextHashAlgorithmSelect.ForeColor = TS_ThemeEngine.ColorMode(theme, "SelectBoxFEColor");
                 TextHashAlgorithmSelect.HoverBackColor = TS_ThemeEngine.ColorMode(theme, "SelectBoxBGColor");
                 TextHashAlgorithmSelect.ButtonColor = TS_ThemeEngine.ColorMode(theme, "SelectBoxBGColor2");
+                TextHashAlgorithmSelect.ArrowColor = TS_ThemeEngine.ColorMode(theme, "SelectBoxFEColor");
                 TextHashAlgorithmSelect.HoverButtonColor = TS_ThemeEngine.ColorMode(theme, "SelectBoxBGColor2");
                 TextHashAlgorithmSelect.BorderColor = TS_ThemeEngine.ColorMode(theme, "SelectBoxBorderColor");
                 TextHashAlgorithmSelect.FocusedBorderColor = TS_ThemeEngine.ColorMode(theme, "SelectBoxBorderColor");
@@ -1256,6 +1259,7 @@ namespace Vimera {
                 TextHashSaltingLocateMode.ForeColor = TS_ThemeEngine.ColorMode(theme, "SelectBoxFEColor");
                 TextHashSaltingLocateMode.HoverBackColor = TS_ThemeEngine.ColorMode(theme, "SelectBoxBGColor");
                 TextHashSaltingLocateMode.ButtonColor = TS_ThemeEngine.ColorMode(theme, "SelectBoxBGColor2");
+                TextHashSaltingLocateMode.ArrowColor = TS_ThemeEngine.ColorMode(theme, "SelectBoxFEColor");
                 TextHashSaltingLocateMode.HoverButtonColor = TS_ThemeEngine.ColorMode(theme, "SelectBoxBGColor2");
                 TextHashSaltingLocateMode.BorderColor = TS_ThemeEngine.ColorMode(theme, "SelectBoxBorderColor");
                 TextHashSaltingLocateMode.FocusedBorderColor = TS_ThemeEngine.ColorMode(theme, "SelectBoxBorderColor");
@@ -1459,11 +1463,11 @@ namespace Vimera {
                 TS_MessageBoxEngine.TS_MessageBox(this, 3, string.Format(software_lang.TSReadLangs("SoftwareUpdate", "su_error"), "\n\n", ex.Message), string.Format(software_lang.TSReadLangs("SoftwareUpdate", "su_title"), Application.ProductName));
             }
         }
-        // BUY ME A COFFEE LINK
+        // DONATE LINK
         // ======================================================================================================
-        private void BmacToolStripMenuItem_Click(object sender, EventArgs e){
+        private void DonateToolStripMenuItem_Click(object sender, EventArgs e){
             try{
-                Process.Start(new ProcessStartInfo(TS_LinkSystem.ts_bmac) { UseShellExecute = true });
+                Process.Start(new ProcessStartInfo(TS_LinkSystem.ts_donate){ UseShellExecute = true });
             }catch (Exception){ }
         }
         // TS WIZARD
