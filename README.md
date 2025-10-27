@@ -3,9 +3,7 @@
 > [!TIP]
 **_This program is completely free to use. I do not earn any income from its use. However, you can support me by donating to the address below so that I can continue my work 💚 Even if you cannot provide financial support, you can help spread the software and increase its visibility by sharing it._**
 
-**[Buy Me a Coffee - turkaysoftware](https://buymeacoffee.com/turkaysoftware)**
-
-<img width="150" height="150" alt="Buy Me a Coffee - turkaysoftware" src="https://github.com/user-attachments/assets/9987c7dc-f8dd-42ab-a7f9-d8a4fca2e3d5" />
+**[DONATE LINK](https://buymeacoffee.com/turkaysoftware)**
 
 **Vimera** is a **hash analysis software** developed by **Eray Türkay**. It has advanced features such as File Hash, Text Hash and Hash Comparison. It is programmed only in **C# and .NET Framework**. And it's **completely free**!
 
