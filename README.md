@@ -37,26 +37,13 @@ After downloading the Vimera application, you will find two options: **Vimera_x6
 
 With these instructions, you can download and use the correct version of Vimera for your device. If you need further assistance, please feel free to reach out!
 
-# Supported Languages
+# Advanced Features
+- **Multi-Architecture Support:** Fully compatible with x64-x86 and ARM processors.
+- **Multi-Language System:** Fully supports 14 or more languages. **Supported Languages:** _Arabic, Chinese, English, French, German, Hindi, Italian, Japanase, Korean, Polish, Portuguese, Russian, Spanish, Turkish_ | **For translation support: [Translation Guide for Vimera](https://github.com/turkaysoftware/vimera/discussions/2)**
+- Advanced interface features such as Light / Dark / System Theme.
+- [TS Wizard](https://www.turkaysoftware.com/ts-wizard) provides an automatic update and monitoring system.
 
-- English
-- Turkish
-- **For translation support: [Translation Guide for Vimera](https://github.com/turkaysoftware/vimera/discussions/2)**
-
-# Supported Themes
-
-- Light Theme
-- Dark Theme
-
-# Supported Operating Systems
-
-- Windows 11 x64
-- Windows 10 x64
-
-# Supported Architectures
-
-- 64 Bit (x64)
-- ARM64 (ARM CPU)
+<img width="396" height="334" alt="Vimera - Advanced Features" src="https://github.com/user-attachments/assets/b8405c88-effb-4214-bde3-e17b8e64059f" />
 
 # System Requirements
 
