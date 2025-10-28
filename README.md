@@ -11,8 +11,6 @@
 
 <img width="1010" height="633" alt="Vimera UI - Dark" src="https://github.com/user-attachments/assets/19c6b5ee-502a-43cf-8d24-f4fa66be3d09" />
 
-<img width="1010" height="633" alt="Vimera UI - Light" src="https://github.com/user-attachments/assets/080c5bb2-8814-4151-a1de-7ae26684352f" />
-
 # Download Vimera
 
 Download: [Vimera Latest Version](https://github.com/turkaysoftware/vimera/releases/latest)
