@@ -41,8 +41,6 @@ With these instructions, you can download and use the correct version of Vimera 
 - Advanced interface features such as Light / Dark / System Theme.
 - [TS Wizard](https://www.turkaysoftware.com/ts-wizard) provides an automatic update and monitoring system.
 
-<img width="396" height="334" alt="Vimera - Advanced Features" src="https://github.com/user-attachments/assets/b8405c88-effb-4214-bde3-e17b8e64059f" />
-
 # System Requirements
 
 |  | Minimum Requirements | Recommended Requirements |
@@ -50,20 +48,3 @@ With these instructions, you can download and use the correct version of Vimera 
 | OS: | Windows 10 x64 | Windows 10 22H2 x64|
 | RAM: | 50 MB Free RAM | 75 MB Free RAM |
 | .NET: | .NET Framework 4.8.1 | .NET Framework 4.8.1 |
-
-# Shortcut Key Layouts
-
-| Main Features | Key |
-| -- | :--: |
-| **Theme:** Light | F1 |
-| **Theme:** Dark | F2 |
-| **Theme:** System | F3 |
-| **Start:** Windowed | F4 |
-| **Start:** Full Screen | F5 |
-
-| Extras | Key |
-| -- | :--: |
-| **Check Update** | F11 |
-| **About** | F12 |
-| **TS Wizard** | CTRL + Shift + S |
-| **Donate** | CTRL + Shift + D |
