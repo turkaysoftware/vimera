@@ -1,6 +1,6 @@
 ﻿// ======================================================================================================
 // Vimera - Hash Analysis Software
-// © Copyright 2023-2025, Eray Türkay.
+// © Copyright 2023-2026, Eray Türkay.
 // Project Type: Open Source
 // License: MIT License
 // Website: https://www.turkaysoftware.com/vimera
@@ -40,6 +40,7 @@ namespace Vimera {
             arabicToolStripMenuItem.Tag = "ar";
             chineseToolStripMenuItem.Tag = "zh";
             englishToolStripMenuItem.Tag = "en";
+            dutchToolStripMenuItem.Tag = "nl";
             frenchToolStripMenuItem.Tag = "fr";
             germanToolStripMenuItem.Tag = "de";
             hindiToolStripMenuItem.Tag = "hi";
@@ -56,6 +57,7 @@ namespace Vimera {
             arabicToolStripMenuItem.Click += LanguageToolStripMenuItem_Click;
             chineseToolStripMenuItem.Click += LanguageToolStripMenuItem_Click;
             englishToolStripMenuItem.Click += LanguageToolStripMenuItem_Click;
+            dutchToolStripMenuItem.Click += LanguageToolStripMenuItem_Click;
             frenchToolStripMenuItem.Click += LanguageToolStripMenuItem_Click;
             germanToolStripMenuItem.Click += LanguageToolStripMenuItem_Click;
             hindiToolStripMenuItem.Click += LanguageToolStripMenuItem_Click;
@@ -100,14 +102,15 @@ namespace Vimera {
                 Graphics g = e.Graphics;
                 g.SmoothingMode = SmoothingMode.AntiAlias;
                 float dpiScale = g.DpiX / 96f;
-                // TICK BG
-                // using (SolidBrush bgBrush = new SolidBrush(header_colors[0])){ RectangleF bgRect = new RectangleF( e.ImageRectangle.Left, e.ImageRectangle.Top, e.ImageRectangle.Width,e.ImageRectangle.Height); g.FillRectangle(bgBrush, bgRect); }
-                using (Pen anti_alias_pen = new Pen(header_colors[2], 3 * dpiScale)){
-                    Rectangle rect = e.ImageRectangle;
-                    Point p1 = new Point((int)(rect.Left + 3 * dpiScale), (int)(rect.Top + rect.Height / 2));
-                    Point p2 = new Point((int)(rect.Left + 7 * dpiScale), (int)(rect.Bottom - 4 * dpiScale));
-                    Point p3 = new Point((int)(rect.Right - 2 * dpiScale), (int)(rect.Top + 3 * dpiScale));
-                    g.DrawLines(anti_alias_pen, new Point[] { p1, p2, p3 });
+                Rectangle rect = e.ImageRectangle;
+                using (Pen anti_alias_pen = new Pen(header_colors[2], 2.2f * dpiScale)){
+                    anti_alias_pen.StartCap = LineCap.Round;
+                    anti_alias_pen.EndCap = LineCap.Round;
+                    anti_alias_pen.LineJoin = LineJoin.Round;
+                    PointF p1 = new PointF(rect.Left + rect.Width * 0.18f, rect.Top + rect.Height * 0.52f);
+                    PointF p2 = new PointF(rect.Left + rect.Width * 0.38f, rect.Top + rect.Height * 0.72f);
+                    PointF p3 = new PointF(rect.Left + rect.Width * 0.78f, rect.Top + rect.Height * 0.28f);
+                    g.DrawLines(anti_alias_pen, new[] { p1, p2, p3 });
                 }
             }
         }
@@ -205,6 +208,7 @@ namespace Vimera {
                 { "ar", (ts_lang_ar, arabicToolStripMenuItem, File.Exists(ts_lang_ar)) },
                 { "zh", (ts_lang_zh, chineseToolStripMenuItem, File.Exists(ts_lang_zh)) },
                 { "en", (ts_lang_en, englishToolStripMenuItem, File.Exists(ts_lang_en)) },
+                { "nl", (ts_lang_nl, dutchToolStripMenuItem, File.Exists(ts_lang_nl)) },
                 { "fr", (ts_lang_fr, frenchToolStripMenuItem, File.Exists(ts_lang_fr)) },
                 { "de", (ts_lang_de, germanToolStripMenuItem, File.Exists(ts_lang_de)) },
                 { "hi", (ts_lang_hi, hindiToolStripMenuItem, File.Exists(ts_lang_hi)) },
@@ -1045,6 +1049,7 @@ namespace Vimera {
                 arabicToolStripMenuItem.Text = software_lang.TSReadLangs("HeaderLangs", "lang_ar");
                 chineseToolStripMenuItem.Text = software_lang.TSReadLangs("HeaderLangs", "lang_zh");
                 englishToolStripMenuItem.Text = software_lang.TSReadLangs("HeaderLangs", "lang_en");
+                dutchToolStripMenuItem.Text = software_lang.TSReadLangs("HeaderLangs", "lang_nl");
                 frenchToolStripMenuItem.Text = software_lang.TSReadLangs("HeaderLangs", "lang_fr");
                 germanToolStripMenuItem.Text = software_lang.TSReadLangs("HeaderLangs", "lang_de");
                 hindiToolStripMenuItem.Text = software_lang.TSReadLangs("HeaderLangs", "lang_hi");
@@ -1468,11 +1473,12 @@ namespace Vimera {
         // CHECK UPDATE
         // ======================================================================================================
         private void CheckForUpdateToolStripMenuItem_Click(object sender, EventArgs e){
-            Software_update_check(1);
+            Task.Run(() => Software_update_check(1));
         }
         public void Software_update_check(int _check_update_ui){
             try{
                 TSGetLangs software_lang = new TSGetLangs(lang_path);
+                SetUpdateMenuEnabled(false);
                 if (!IsNetworkCheck()){
                     if (_check_update_ui == 1){
                         TS_MessageBoxEngine.TS_MessageBox(this, 2, string.Format(software_lang.TSReadLangs("SoftwareUpdate", "su_not_connection"), "\n\n"), string.Format(software_lang.TSReadLangs("SoftwareUpdate", "su_title"), Application.ProductName));
@@ -1511,6 +1517,15 @@ namespace Vimera {
             }catch (Exception ex){
                 TSGetLangs software_lang = new TSGetLangs(lang_path);
                 TS_MessageBoxEngine.TS_MessageBox(this, 3, string.Format(software_lang.TSReadLangs("SoftwareUpdate", "su_error"), "\n\n", ex.Message), string.Format(software_lang.TSReadLangs("SoftwareUpdate", "su_title"), Application.ProductName));
+            }finally{
+                SetUpdateMenuEnabled(true);
+            }
+        }
+        private void SetUpdateMenuEnabled(bool enabled){
+            if (InvokeRequired){
+                BeginInvoke(new Action(() => checkForUpdateToolStripMenuItem.Enabled = enabled));
+            }else{
+                checkForUpdateToolStripMenuItem.Enabled = enabled;
             }
         }
         // DONATE LINK

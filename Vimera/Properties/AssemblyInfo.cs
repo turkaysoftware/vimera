@@ -11,7 +11,7 @@ using System.Runtime.InteropServices;
 [assembly: AssemblyConfiguration("")]
 [assembly: AssemblyCompany("Türkay Software")]
 [assembly: AssemblyProduct("Vimera")]
-[assembly: AssemblyCopyright("© 2023-2025, Eray Türkay.")]
+[assembly: AssemblyCopyright("© 2023-2026, Eray Türkay.")]
 [assembly: AssemblyTrademark("")]
 [assembly: AssemblyCulture("")]
 
@@ -30,9 +30,6 @@ using System.Runtime.InteropServices;
 //      Yapı Numarası
 //      Düzeltme
 //
-// Tüm değerleri belirtebilir veya varsayılan Derleme ve Düzeltme Numaralarını kullanmak için
-// aşağıda gösterildiği gibi '*' kullanabilirsiniz:
-// [assembly: AssemblyVersion("1.0.*")]
-[assembly: AssemblyVersion("25.12.0.0")]
-[assembly: AssemblyFileVersion("25.12.0.0")]
+[assembly: AssemblyVersion("26.1.0.0")]
+[assembly: AssemblyFileVersion("26.1.0.0")]
 [assembly: NeutralResourcesLanguage("tr-TR")]
