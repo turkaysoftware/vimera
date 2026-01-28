@@ -9,7 +9,7 @@
 
 [Click here](https://www.turkaysoftware.com/vimera) for full specifications.
 
-![Vimera UI](https://github.com/user-attachments/assets/611d713e-ac29-43d1-8c23-c191a1d19e88)
+<img width="1010" height="633" alt="Vimera UI" src="https://github.com/user-attachments/assets/e518f0d2-e292-4cd2-87de-22b561b6e875" />
 
 # Download Vimera
 
