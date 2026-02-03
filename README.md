@@ -10,7 +10,7 @@
 ---
 
 ### ☕ Support the Project
-Vimera is completely free to use. If you find it useful for your workflow, consider supporting the development!
+Vimera is free and will always be. If you find it useful, consider supporting the development!
 
 [![Buy Me A Coffee](https://img.shields.io/badge/Buy%20Me%20A%20Coffee-Donate-orange?style=for-the-badge&logo=buy-me-a-coffee)](https://buymeacoffee.com/turkaysoftware)
 
@@ -50,7 +50,6 @@ Vimera offers a specialized set of tools for comprehensive data verification:
 ## 📸 Interface Preview
 
 ![Vimera UI](https://github.com/user-attachments/assets/e518f0d2-e292-4cd2-87de-22b561b6e875)
-> *Verify your data integrity with Vimera's modern and intuitive hash analysis dashboard.*
 
 ---
 
@@ -68,21 +67,21 @@ Vimera offers a specialized set of tools for comprehensive data verification:
 
 1.  Navigate to the **[Releases](https://github.com/turkaysoftware/vimera/releases/latest)** page.
 2.  Download the latest ZIP file.
-3.  **Extract all files from the ZIP** (Important: Application requires its companion files to function correctly).
+3.  **Extract all files from the ZIP** (Important: Application requires all folder contents to run correctly).
 4.  Launch the executable corresponding to your architecture:
-    * `Vimera_x64.exe`: For standard 64-bit systems.
-    * `Vimera_arm64.exe`: For ARM-based Windows devices.
+    * `Vimera_x64.exe`: For standard 64-bit Intel/AMD systems.
+    * `Vimera_arm64.exe`: For ARM-based devices like Surface Pro.
 
 ---
 
-## 🛡️ Security & Integrity
+## 🛡️ Security
 
-* **Zero Dependencies:** Pure build ensures no security risks from third-party library vulnerabilities.
-* **Local Privacy:** All hash calculations are performed locally on your device; no data is ever uploaded.
-* **Open Source:** Transparent source code available for audit and community contribution.
+* **Zero Data Export Policy:** Your privacy is our priority; no data leaves your machine.
+* **No Dependencies:** Developed entirely from scratch using its own source code, there are no risks from security vulnerabilities in third-party libraries.
+* **Open Source:** All source code for the program is open and can be reviewed by anyone.
 
 ---
 
 ## 📄 License
 
-This software is provided for free as part of the Türkay Software utility suite.
+This software is offered free of charge as part of the **Türkay Software solutions package** and is protected under the [**MIT License**](https://github.com/turkaysoftware/vimera?tab=MIT-1-ov-file).
