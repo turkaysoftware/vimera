@@ -1,50 +1,83 @@
-# Vimera - Hash Analysis Software
+# 🔍 Vimera | Advanced Hash Analysis Software
 
-> [!TIP]
-**_This program is completely free to use. I do not earn any income from its use. However, you can support me by donating to the address below so that I can continue my work 💚 Even if you cannot provide financial support, you can help spread the software and increase its visibility by sharing it._**
+![GitHub Repo stars](https://img.shields.io/github/stars/turkaysoftware/vimera?style=for-the-badge&color=gold)
+![GitHub release (latest by date)](https://img.shields.io/github/v/release/turkaysoftware/vimera?style=for-the-badge&color=blue)
+![GitHub license](https://img.shields.io/github/license/turkaysoftware/vimera?style=for-the-badge)
+![Platform](https://img.shields.io/badge/platform-Windows-0078D4?style=for-the-badge&logo=windows)
 
-**[DONATE LINK](https://buymeacoffee.com/turkaysoftware)**
+**Vimera** is a professional-grade **hash analysis software** developed by **Eray Türkay**. Designed for data integrity and security verification, Vimera allows you to generate, analyze, and compare file and text hashes with extreme speed. Whether you are verifying a large download or comparing sensitive data, Vimera provides the precision you need.
 
-**Vimera** is a **hash analysis software** developed by **Eray Türkay**. It has advanced features such as File Hash, Text Hash and Hash Comparison. It is programmed only in **C# and .NET Framework**. And it's **completely free**!
+---
 
-[Click here](https://www.turkaysoftware.com/vimera) for full specifications.
+### ☕ Support the Project
+Vimera is completely free to use. If you find it useful for your workflow, consider supporting the development!
 
-<img width="1010" height="633" alt="Vimera UI" src="https://github.com/user-attachments/assets/e518f0d2-e292-4cd2-87de-22b561b6e875" />
+[![Buy Me A Coffee](https://img.shields.io/badge/Buy%20Me%20A%20Coffee-Donate-orange?style=for-the-badge&logo=buy-me-a-coffee)](https://buymeacoffee.com/turkaysoftware)
 
-# Download Vimera
+[Official Website](https://www.turkaysoftware.com/vimera) | [Report a Bug](https://github.com/turkaysoftware/vimera/issues)
 
-Download: [Vimera Latest Version](https://github.com/turkaysoftware/vimera/releases/latest)
+---
 
-# How to use Vimera?
+## ✨ Key Features
 
-After downloading the Vimera application, you will find two options: **Vimera_x64.exe** and **Vimera_arm64.exe**. Which file to choose depends on your computer’s processor architecture. Here’s a guide to help you decide which version is right for you:
+* 🛡️ **Integrity Focused:** Verify file and data authenticity with high-precision hash algorithms.
+* 🚀 **Pure Performance:** Developed exclusively in **C# and .NET Framework** with **zero external libraries** for maximum efficiency.
+* 🌓 **Modern UI:** Advanced interface featuring Light, Dark, and System theme support.
+* 🌍 **Multilingual:** Fully supports 15+ languages including Arabic, Chinese, English, Turkish, and more.
+* 📦 **Portable:** No installation required. Extract the ZIP and start analyzing immediately.
+* 🆓 **Truly Free:** Professional features provided at no cost, with no hidden paywalls.
 
-#### 1. Vimera_x64.exe
-- **Vimera_x64.exe** is designed for computers with an x64 (64-bit) processor architecture.
-- If you’re using a standard Windows PC or laptop, you likely need the x64 version.
-- Most devices with Intel or AMD processors use the x64 architecture.
+---
 
-#### 2. Vimera_arm64.exe
-- **Vimera_arm64.exe** is specifically developed for devices with an ARM64 architecture.
-- It’s suitable for Windows devices that use **ARM processors** (such as some Surface models).
-- ARM architecture is commonly found in devices that prioritize lower power consumption and portability.
+## 🛠️ Advanced Capabilities
 
-#### Usage Instructions
-1. **After downloading the ZIP file, make sure to extract all files from the ZIP**. The Vimera application is a portable software, so it doesn’t require installation, but all files must be in the same folder for it to run correctly.
-2. Once extracted, run the appropriate file for your device (**Vimera_x64.exe** or **Vimera_arm64.exe**) to start using the application immediately.
+Vimera offers a specialized set of tools for comprehensive data verification:
 
-With these instructions, you can download and use the correct version of Vimera for your device. If you need further assistance, please feel free to reach out!
+* **File Hash Analysis:** Generate multiple hash types for files of any size with lightning speed.
+* **Text Hash Generation:** Quickly create secure hashes for strings and text data.
+* **Hash Comparison Tool:** Compare two different hashes or files to ensure binary-level identity.
+* **Multi-Architecture Support:** Native compatibility for x64, x86, and ARM64 processor architectures.
+* **TS Wizard Integration:** Seamlessly works with [TS Wizard](https://www.turkaysoftware.com/ts-wizard) for automatic updates and system monitoring.
+* **Localization Support:** Community-driven translation via the official [Translation Guide](https://github.com/turkaysoftware/vimera/discussions/2).
 
-# Advanced Features
-- **Multi-Architecture Support:** Fully compatible with x64-x86 and ARM processors.
-- **Multi-Language System:** Fully supports 15 or more languages. **Supported Languages:** _Arabic, Chinese, English, Dutch, French, German, Hindi, Italian, Japanase, Korean, Polish, Portuguese, Russian, Spanish, Turkish_ | **For translation support: [Translation Guide for Vimera](https://github.com/turkaysoftware/vimera/discussions/2)**
-- Advanced interface features such as Light / Dark / System Theme.
-- [TS Wizard](https://www.turkaysoftware.com/ts-wizard) provides an automatic update and monitoring system.
+---
 
-# System Requirements
+## 📸 Interface Preview
 
-|  | Minimum Requirements | Recommended Requirements |
-| -- | :--: | :--: |
-| OS: | Windows 10 x64 | Windows 10 22H2 x64|
-| RAM: | 50 MB Free RAM | 75 MB Free RAM |
-| .NET: | .NET Framework 4.8.1 | .NET Framework 4.8.1 |
+![Vimera UI](https://github.com/user-attachments/assets/e518f0d2-e292-4cd2-87de-22b561b6e875)
+> *Verify your data integrity with Vimera's modern and intuitive hash analysis dashboard.*
+
+---
+
+## 💻 System Requirements
+
+| Feature | Minimum Requirements | Recommended Requirements |
+| :--- | :--- | :--- |
+| **OS** | Windows 10 x64 | Windows 10 22H2 x64 |
+| **RAM** | 50 MB Free RAM | 75 MB Free RAM |
+| **.NET** | .NET Framework 4.8.1 | .NET Framework 4.8.1 |
+
+---
+
+## 🚀 Getting Started
+
+1.  Navigate to the **[Releases](https://github.com/turkaysoftware/vimera/releases/latest)** page.
+2.  Download the latest ZIP file.
+3.  **Extract all files from the ZIP** (Important: Application requires its companion files to function correctly).
+4.  Launch the executable corresponding to your architecture:
+    * `Vimera_x64.exe`: For standard 64-bit systems.
+    * `Vimera_arm64.exe`: For ARM-based Windows devices.
+
+---
+
+## 🛡️ Security & Integrity
+
+* **Zero Dependencies:** Pure build ensures no security risks from third-party library vulnerabilities.
+* **Local Privacy:** All hash calculations are performed locally on your device; no data is ever uploaded.
+* **Open Source:** Transparent source code available for audit and community contribution.
+
+---
+
+## 📄 License
+
+This software is provided for free as part of the Türkay Software utility suite.
