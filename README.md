@@ -37,8 +37,13 @@ Vimera offers a specialized set of tools for comprehensive data verification:
 * **Text Hash Generation:** Quickly create secure hashes for strings and text data.
 * **Hash Comparison Tool:** Compare two different hashes or files to ensure binary-level identity.
 * **Multi-Architecture Support:** Native compatibility for x64, x86, and ARM64 processor architectures.
-* **TS Wizard Integration:** Seamlessly works with [TS Wizard](https://www.turkaysoftware.com/ts-wizard) for automatic updates and system monitoring.
-* **Localization Support:** Community-driven translation via the official [Translation Guide](https://github.com/turkaysoftware/vimera/discussions/2).
+
+---
+
+## 🛠️ Automatic Updates and Translation Support
+
+* **TS Wizard Integration:** Fully compatible with [TS Wizard](https://www.turkaysoftware.com/ts-wizard) for automatic updates and system monitoring.
+* **Translation Support:** Community-driven localization via the official [Translation Guide](https://github.com/turkaysoftware/vimera/discussions/2).
 
 ---
 
