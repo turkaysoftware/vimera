@@ -1,9 +1,10 @@
 # 🔍 Vimera | Advanced Hash Analysis Software
 
-![GitHub Repo stars](https://img.shields.io/github/stars/turkaysoftware/vimera?style=for-the-badge&color=gold)
-![GitHub release (latest by date)](https://img.shields.io/github/v/release/turkaysoftware/vimera?style=for-the-badge&color=blue)
-![GitHub license](https://img.shields.io/github/license/turkaysoftware/vimera?style=for-the-badge)
-![Platform](https://img.shields.io/badge/platform-Windows-0078D4?style=for-the-badge&logo=windows)
+![GitHub all releases](https://img.shields.io/github/downloads/turkaysoftware/vimera/total?style=for-the-badge&color=DF313F)
+![GitHub Repo stars](https://img.shields.io/github/stars/turkaysoftware/vimera?style=for-the-badge&color=167C33)
+![GitHub release (latest by date)](https://img.shields.io/github/v/release/turkaysoftware/vimera?style=for-the-badge&color=9A194C)
+![Platform](https://img.shields.io/badge/platform-Windows-366194?style=for-the-badge&logo=windows)
+![GitHub license](https://img.shields.io/github/license/turkaysoftware/vimera?style=for-the-badge&color=17796E)
 
 **Vimera** is a professional-grade **hash analysis software** developed by **Eray Türkay**. Designed for data integrity and security verification, Vimera allows you to generate, analyze, and compare file and text hashes with extreme speed. Whether you are verifying a large download or comparing sensitive data, Vimera provides the precision you need.
 
@@ -12,7 +13,7 @@
 ### ☕ Support the Project
 Vimera is free and will always be. If you find it useful, consider supporting the development!
 
-[![Buy Me A Coffee](https://img.shields.io/badge/Buy%20Me%20A%20Coffee-Donate-orange?style=for-the-badge&logo=buy-me-a-coffee)](https://buymeacoffee.com/turkaysoftware)
+[![Buy Me A Coffee](https://img.shields.io/badge/Buy%20Me%20A%20Coffee-Donate-DF313F?style=for-the-badge&logo=buy-me-a-coffee)](https://buymeacoffee.com/turkaysoftware)
 
 [Official Website](https://www.turkaysoftware.com/vimera) | [Report a Bug](https://github.com/turkaysoftware/vimera/issues)
 
