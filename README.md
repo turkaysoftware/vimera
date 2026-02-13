@@ -50,7 +50,7 @@ Vimera offers a specialized set of tools for comprehensive data verification:
 
 ## 📸 Interface Preview
 
-![Vimera UI](https://github.com/user-attachments/assets/e518f0d2-e292-4cd2-87de-22b561b6e875)
+<img width="1010" height="633" alt="Vimera UI" src="https://github.com/user-attachments/assets/6ad24bf1-cc03-4e5f-9d7a-432960822757" />
 
 ---
 
