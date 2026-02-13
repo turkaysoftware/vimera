@@ -28,10 +28,10 @@
         /// </summary>
         private void InitializeComponent()
         {
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle1 = new System.Windows.Forms.DataGridViewCellStyle();
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle2 = new System.Windows.Forms.DataGridViewCellStyle();
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle3 = new System.Windows.Forms.DataGridViewCellStyle();
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle4 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle5 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle6 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle7 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle8 = new System.Windows.Forms.DataGridViewCellStyle();
             this.LeftPanel = new System.Windows.Forms.Panel();
             this.HashCompareBtn = new System.Windows.Forms.Button();
             this.TextHashBtn = new System.Windows.Forms.Button();
@@ -50,6 +50,7 @@
             this.arabicToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.chineseToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.englishToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.dutchToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.frenchToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.germanToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.hindiToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
@@ -61,7 +62,6 @@
             this.russianToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.spanishToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.turkishToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
-            this.dutchToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.startupToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.windowedToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.fullScreenToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
@@ -74,37 +74,37 @@
             this.FileHashPanel = new System.Windows.Forms.Panel();
             this.FileHashDGV = new System.Windows.Forms.DataGridView();
             this.FileHashSizer = new System.Windows.Forms.Label();
-            this.FileHashStopBtn = new Vimera.TSCustomButton();
             this.FileHashLoadBG_Panel = new System.Windows.Forms.Panel();
             this.FileHashLoadFE_Panel = new System.Windows.Forms.Panel();
-            this.FileHashExportHashsBtn = new Vimera.TSCustomButton();
-            this.FileHashCompareBtn = new Vimera.TSCustomButton();
             this.FileHashCompareTextBox = new System.Windows.Forms.TextBox();
-            this.FileHashUpperHashMode = new System.Windows.Forms.CheckBox();
-            this.FileHashSelectFileBtn = new Vimera.TSCustomButton();
-            this.FileHashAlgorithmSelect = new Vimera.TSCustomComboBox();
-            this.FileHashStartBtn = new Vimera.TSCustomButton();
             this.TextHash = new System.Windows.Forms.TabPage();
             this.TextHashPanel = new System.Windows.Forms.Panel();
-            this.TextHashResultCopyBtn = new Vimera.TSCustomButton();
             this.TextHashL3 = new System.Windows.Forms.Label();
             this.TextHashResultTextBox = new System.Windows.Forms.TextBox();
             this.TextHashSaltingTextBox = new System.Windows.Forms.TextBox();
             this.TextHashL2 = new System.Windows.Forms.Label();
-            this.TextHashAlgorithmSelect = new Vimera.TSCustomComboBox();
-            this.TextHashSaltingLocateMode = new Vimera.TSCustomComboBox();
-            this.TextHashSaltingMode = new System.Windows.Forms.CheckBox();
             this.TextHashL1 = new System.Windows.Forms.Label();
             this.TextHashOriginalTextBox = new System.Windows.Forms.TextBox();
             this.HashCompare = new System.Windows.Forms.TabPage();
             this.HashComparePanel = new System.Windows.Forms.Panel();
-            this.HashCompareResult = new Vimera.TSCustomButton();
             this.SecondHashValueLabel = new System.Windows.Forms.Label();
             this.SecondHashValueTextBox = new System.Windows.Forms.TextBox();
             this.FirstHashValueLabel = new System.Windows.Forms.Label();
             this.FirstHashValueTextBox = new System.Windows.Forms.TextBox();
             this.FileHash_BG_Worker = new System.ComponentModel.BackgroundWorker();
             this.HeaderPanel = new System.Windows.Forms.TableLayoutPanel();
+            this.FileHashStopBtn = new Vimera.TSCustomButton();
+            this.FileHashExportHashsBtn = new Vimera.TSCustomButton();
+            this.FileHashCompareBtn = new Vimera.TSCustomButton();
+            this.FileHashUpperHashMode = new Vimera.TSCustomCheckBox();
+            this.FileHashSelectFileBtn = new Vimera.TSCustomButton();
+            this.FileHashAlgorithmSelect = new Vimera.TSCustomComboBox();
+            this.FileHashStartBtn = new Vimera.TSCustomButton();
+            this.TextHashResultCopyBtn = new Vimera.TSCustomButton();
+            this.TextHashAlgorithmSelect = new Vimera.TSCustomComboBox();
+            this.TextHashSaltingLocateMode = new Vimera.TSCustomComboBox();
+            this.TextHashSaltingMode = new Vimera.TSCustomCheckBox();
+            this.HashCompareResult = new Vimera.TSCustomButton();
             this.LeftPanel.SuspendLayout();
             this.HeaderInPanel.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.HeaderImage)).BeginInit();
@@ -290,7 +290,7 @@
             this.darkThemeToolStripMenuItem,
             this.systemThemeToolStripMenuItem});
             this.themeToolStripMenuItem.Name = "themeToolStripMenuItem";
-            this.themeToolStripMenuItem.Size = new System.Drawing.Size(180, 22);
+            this.themeToolStripMenuItem.Size = new System.Drawing.Size(173, 22);
             this.themeToolStripMenuItem.Text = "Theme";
             // 
             // lightThemeToolStripMenuItem
@@ -336,98 +336,98 @@
             this.spanishToolStripMenuItem,
             this.turkishToolStripMenuItem});
             this.languageToolStripMenuItem.Name = "languageToolStripMenuItem";
-            this.languageToolStripMenuItem.Size = new System.Drawing.Size(180, 22);
+            this.languageToolStripMenuItem.Size = new System.Drawing.Size(173, 22);
             this.languageToolStripMenuItem.Text = "Language";
             // 
             // arabicToolStripMenuItem
             // 
             this.arabicToolStripMenuItem.Name = "arabicToolStripMenuItem";
-            this.arabicToolStripMenuItem.Size = new System.Drawing.Size(180, 22);
+            this.arabicToolStripMenuItem.Size = new System.Drawing.Size(134, 22);
             this.arabicToolStripMenuItem.Text = "Arabic";
             // 
             // chineseToolStripMenuItem
             // 
             this.chineseToolStripMenuItem.Name = "chineseToolStripMenuItem";
-            this.chineseToolStripMenuItem.Size = new System.Drawing.Size(180, 22);
+            this.chineseToolStripMenuItem.Size = new System.Drawing.Size(134, 22);
             this.chineseToolStripMenuItem.Text = "Chinese";
             // 
             // englishToolStripMenuItem
             // 
             this.englishToolStripMenuItem.Name = "englishToolStripMenuItem";
-            this.englishToolStripMenuItem.Size = new System.Drawing.Size(180, 22);
+            this.englishToolStripMenuItem.Size = new System.Drawing.Size(134, 22);
             this.englishToolStripMenuItem.Text = "English";
+            // 
+            // dutchToolStripMenuItem
+            // 
+            this.dutchToolStripMenuItem.Name = "dutchToolStripMenuItem";
+            this.dutchToolStripMenuItem.Size = new System.Drawing.Size(134, 22);
+            this.dutchToolStripMenuItem.Text = "Dutch";
             // 
             // frenchToolStripMenuItem
             // 
             this.frenchToolStripMenuItem.Name = "frenchToolStripMenuItem";
-            this.frenchToolStripMenuItem.Size = new System.Drawing.Size(180, 22);
+            this.frenchToolStripMenuItem.Size = new System.Drawing.Size(134, 22);
             this.frenchToolStripMenuItem.Text = "French";
             // 
             // germanToolStripMenuItem
             // 
             this.germanToolStripMenuItem.Name = "germanToolStripMenuItem";
-            this.germanToolStripMenuItem.Size = new System.Drawing.Size(180, 22);
+            this.germanToolStripMenuItem.Size = new System.Drawing.Size(134, 22);
             this.germanToolStripMenuItem.Text = "German";
             // 
             // hindiToolStripMenuItem
             // 
             this.hindiToolStripMenuItem.Name = "hindiToolStripMenuItem";
-            this.hindiToolStripMenuItem.Size = new System.Drawing.Size(180, 22);
+            this.hindiToolStripMenuItem.Size = new System.Drawing.Size(134, 22);
             this.hindiToolStripMenuItem.Text = "Hindi";
             // 
             // italianToolStripMenuItem
             // 
             this.italianToolStripMenuItem.Name = "italianToolStripMenuItem";
-            this.italianToolStripMenuItem.Size = new System.Drawing.Size(180, 22);
+            this.italianToolStripMenuItem.Size = new System.Drawing.Size(134, 22);
             this.italianToolStripMenuItem.Text = "Italian";
             // 
             // japaneseToolStripMenuItem
             // 
             this.japaneseToolStripMenuItem.Name = "japaneseToolStripMenuItem";
-            this.japaneseToolStripMenuItem.Size = new System.Drawing.Size(180, 22);
+            this.japaneseToolStripMenuItem.Size = new System.Drawing.Size(134, 22);
             this.japaneseToolStripMenuItem.Text = "Japanese";
             // 
             // koreanToolStripMenuItem
             // 
             this.koreanToolStripMenuItem.Name = "koreanToolStripMenuItem";
-            this.koreanToolStripMenuItem.Size = new System.Drawing.Size(180, 22);
+            this.koreanToolStripMenuItem.Size = new System.Drawing.Size(134, 22);
             this.koreanToolStripMenuItem.Text = "Korean";
             // 
             // polishToolStripMenuItem
             // 
             this.polishToolStripMenuItem.Name = "polishToolStripMenuItem";
-            this.polishToolStripMenuItem.Size = new System.Drawing.Size(180, 22);
+            this.polishToolStripMenuItem.Size = new System.Drawing.Size(134, 22);
             this.polishToolStripMenuItem.Text = "Polish";
             // 
             // portugueseToolStripMenuItem
             // 
             this.portugueseToolStripMenuItem.Name = "portugueseToolStripMenuItem";
-            this.portugueseToolStripMenuItem.Size = new System.Drawing.Size(180, 22);
+            this.portugueseToolStripMenuItem.Size = new System.Drawing.Size(134, 22);
             this.portugueseToolStripMenuItem.Text = "Portuguese";
             // 
             // russianToolStripMenuItem
             // 
             this.russianToolStripMenuItem.Name = "russianToolStripMenuItem";
-            this.russianToolStripMenuItem.Size = new System.Drawing.Size(180, 22);
+            this.russianToolStripMenuItem.Size = new System.Drawing.Size(134, 22);
             this.russianToolStripMenuItem.Text = "Russian";
             // 
             // spanishToolStripMenuItem
             // 
             this.spanishToolStripMenuItem.Name = "spanishToolStripMenuItem";
-            this.spanishToolStripMenuItem.Size = new System.Drawing.Size(180, 22);
+            this.spanishToolStripMenuItem.Size = new System.Drawing.Size(134, 22);
             this.spanishToolStripMenuItem.Text = "Spanish";
             // 
             // turkishToolStripMenuItem
             // 
             this.turkishToolStripMenuItem.Name = "turkishToolStripMenuItem";
-            this.turkishToolStripMenuItem.Size = new System.Drawing.Size(180, 22);
+            this.turkishToolStripMenuItem.Size = new System.Drawing.Size(134, 22);
             this.turkishToolStripMenuItem.Text = "Turkish";
-            // 
-            // dutchToolStripMenuItem
-            // 
-            this.dutchToolStripMenuItem.Name = "dutchToolStripMenuItem";
-            this.dutchToolStripMenuItem.Size = new System.Drawing.Size(180, 22);
-            this.dutchToolStripMenuItem.Text = "Dutch";
             // 
             // startupToolStripMenuItem
             // 
@@ -435,7 +435,7 @@
             this.windowedToolStripMenuItem,
             this.fullScreenToolStripMenuItem});
             this.startupToolStripMenuItem.Name = "startupToolStripMenuItem";
-            this.startupToolStripMenuItem.Size = new System.Drawing.Size(180, 22);
+            this.startupToolStripMenuItem.Size = new System.Drawing.Size(173, 22);
             this.startupToolStripMenuItem.Text = "Startup";
             // 
             // windowedToolStripMenuItem
@@ -458,7 +458,7 @@
             // 
             this.checkForUpdateToolStripMenuItem.Name = "checkForUpdateToolStripMenuItem";
             this.checkForUpdateToolStripMenuItem.ShortcutKeys = System.Windows.Forms.Keys.F11;
-            this.checkForUpdateToolStripMenuItem.Size = new System.Drawing.Size(180, 22);
+            this.checkForUpdateToolStripMenuItem.Size = new System.Drawing.Size(173, 22);
             this.checkForUpdateToolStripMenuItem.Text = "Check Update";
             this.checkForUpdateToolStripMenuItem.Click += new System.EventHandler(this.CheckForUpdateToolStripMenuItem_Click);
             // 
@@ -547,8 +547,8 @@
             this.FileHashDGV.AllowUserToAddRows = false;
             this.FileHashDGV.AllowUserToDeleteRows = false;
             this.FileHashDGV.AllowUserToResizeRows = false;
-            dataGridViewCellStyle1.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(237)))), ((int)(((byte)(237)))), ((int)(((byte)(237)))));
-            this.FileHashDGV.AlternatingRowsDefaultCellStyle = dataGridViewCellStyle1;
+            dataGridViewCellStyle5.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(237)))), ((int)(((byte)(237)))), ((int)(((byte)(237)))));
+            this.FileHashDGV.AlternatingRowsDefaultCellStyle = dataGridViewCellStyle5;
             this.FileHashDGV.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
             | System.Windows.Forms.AnchorStyles.Left) 
             | System.Windows.Forms.AnchorStyles.Right)));
@@ -556,39 +556,39 @@
             this.FileHashDGV.BackgroundColor = System.Drawing.Color.White;
             this.FileHashDGV.BorderStyle = System.Windows.Forms.BorderStyle.None;
             this.FileHashDGV.ColumnHeadersBorderStyle = System.Windows.Forms.DataGridViewHeaderBorderStyle.Single;
-            dataGridViewCellStyle2.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
-            dataGridViewCellStyle2.BackColor = System.Drawing.Color.SlateBlue;
-            dataGridViewCellStyle2.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F);
-            dataGridViewCellStyle2.ForeColor = System.Drawing.Color.White;
-            dataGridViewCellStyle2.Padding = new System.Windows.Forms.Padding(0, 3, 0, 3);
-            dataGridViewCellStyle2.SelectionBackColor = System.Drawing.Color.SlateBlue;
-            dataGridViewCellStyle2.SelectionForeColor = System.Drawing.Color.White;
-            dataGridViewCellStyle2.WrapMode = System.Windows.Forms.DataGridViewTriState.False;
-            this.FileHashDGV.ColumnHeadersDefaultCellStyle = dataGridViewCellStyle2;
+            dataGridViewCellStyle6.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
+            dataGridViewCellStyle6.BackColor = System.Drawing.Color.SlateBlue;
+            dataGridViewCellStyle6.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F);
+            dataGridViewCellStyle6.ForeColor = System.Drawing.Color.White;
+            dataGridViewCellStyle6.Padding = new System.Windows.Forms.Padding(0, 3, 0, 3);
+            dataGridViewCellStyle6.SelectionBackColor = System.Drawing.Color.SlateBlue;
+            dataGridViewCellStyle6.SelectionForeColor = System.Drawing.Color.White;
+            dataGridViewCellStyle6.WrapMode = System.Windows.Forms.DataGridViewTriState.False;
+            this.FileHashDGV.ColumnHeadersDefaultCellStyle = dataGridViewCellStyle6;
             this.FileHashDGV.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
             this.FileHashDGV.Cursor = System.Windows.Forms.Cursors.Hand;
-            dataGridViewCellStyle3.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
-            dataGridViewCellStyle3.BackColor = System.Drawing.Color.White;
-            dataGridViewCellStyle3.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(162)));
-            dataGridViewCellStyle3.ForeColor = System.Drawing.SystemColors.ControlText;
-            dataGridViewCellStyle3.SelectionBackColor = System.Drawing.Color.SlateBlue;
-            dataGridViewCellStyle3.SelectionForeColor = System.Drawing.Color.White;
-            dataGridViewCellStyle3.WrapMode = System.Windows.Forms.DataGridViewTriState.False;
-            this.FileHashDGV.DefaultCellStyle = dataGridViewCellStyle3;
+            dataGridViewCellStyle7.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
+            dataGridViewCellStyle7.BackColor = System.Drawing.Color.White;
+            dataGridViewCellStyle7.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(162)));
+            dataGridViewCellStyle7.ForeColor = System.Drawing.SystemColors.ControlText;
+            dataGridViewCellStyle7.SelectionBackColor = System.Drawing.Color.SlateBlue;
+            dataGridViewCellStyle7.SelectionForeColor = System.Drawing.Color.White;
+            dataGridViewCellStyle7.WrapMode = System.Windows.Forms.DataGridViewTriState.False;
+            this.FileHashDGV.DefaultCellStyle = dataGridViewCellStyle7;
             this.FileHashDGV.EnableHeadersVisualStyles = false;
             this.FileHashDGV.GridColor = System.Drawing.Color.Gray;
             this.FileHashDGV.Location = new System.Drawing.Point(8, 52);
             this.FileHashDGV.MultiSelect = false;
             this.FileHashDGV.Name = "FileHashDGV";
             this.FileHashDGV.ReadOnly = true;
-            dataGridViewCellStyle4.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
-            dataGridViewCellStyle4.BackColor = System.Drawing.SystemColors.Control;
-            dataGridViewCellStyle4.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(162)));
-            dataGridViewCellStyle4.ForeColor = System.Drawing.SystemColors.WindowText;
-            dataGridViewCellStyle4.SelectionBackColor = System.Drawing.Color.SlateBlue;
-            dataGridViewCellStyle4.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
-            dataGridViewCellStyle4.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
-            this.FileHashDGV.RowHeadersDefaultCellStyle = dataGridViewCellStyle4;
+            dataGridViewCellStyle8.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
+            dataGridViewCellStyle8.BackColor = System.Drawing.SystemColors.Control;
+            dataGridViewCellStyle8.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(162)));
+            dataGridViewCellStyle8.ForeColor = System.Drawing.SystemColors.WindowText;
+            dataGridViewCellStyle8.SelectionBackColor = System.Drawing.Color.SlateBlue;
+            dataGridViewCellStyle8.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
+            dataGridViewCellStyle8.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
+            this.FileHashDGV.RowHeadersDefaultCellStyle = dataGridViewCellStyle8;
             this.FileHashDGV.RowHeadersVisible = false;
             this.FileHashDGV.ScrollBars = System.Windows.Forms.ScrollBars.Vertical;
             this.FileHashDGV.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
@@ -610,35 +610,6 @@
             this.FileHashSizer.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
             this.FileHashSizer.Visible = false;
             // 
-            // FileHashStopBtn
-            // 
-            this.FileHashStopBtn.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Right)));
-            this.FileHashStopBtn.BackColor = System.Drawing.Color.SlateBlue;
-            this.FileHashStopBtn.BackgroundColor = System.Drawing.Color.SlateBlue;
-            this.FileHashStopBtn.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Zoom;
-            this.FileHashStopBtn.BorderColor = System.Drawing.Color.SlateBlue;
-            this.FileHashStopBtn.BorderRadius = 5;
-            this.FileHashStopBtn.BorderSize = 0;
-            this.FileHashStopBtn.Cursor = System.Windows.Forms.Cursors.Hand;
-            this.FileHashStopBtn.Enabled = false;
-            this.FileHashStopBtn.FlatAppearance.BorderSize = 0;
-            this.FileHashStopBtn.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.FileHashStopBtn.Font = new System.Drawing.Font("Segoe UI Semibold", 11F, System.Drawing.FontStyle.Bold);
-            this.FileHashStopBtn.ForeColor = System.Drawing.Color.White;
-            this.FileHashStopBtn.ImageAlign = System.Drawing.ContentAlignment.MiddleRight;
-            this.FileHashStopBtn.Location = new System.Drawing.Point(544, 506);
-            this.FileHashStopBtn.Margin = new System.Windows.Forms.Padding(1, 3, 3, 3);
-            this.FileHashStopBtn.Name = "FileHashStopBtn";
-            this.FileHashStopBtn.Padding = new System.Windows.Forms.Padding(5, 0, 5, 0);
-            this.FileHashStopBtn.Size = new System.Drawing.Size(225, 39);
-            this.FileHashStopBtn.TabIndex = 11;
-            this.FileHashStopBtn.Text = "DURDUR";
-            this.FileHashStopBtn.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
-            this.FileHashStopBtn.TextColor = System.Drawing.Color.White;
-            this.FileHashStopBtn.TextImageRelation = System.Windows.Forms.TextImageRelation.ImageBeforeText;
-            this.FileHashStopBtn.UseVisualStyleBackColor = false;
-            this.FileHashStopBtn.Click += new System.EventHandler(this.FileHashStopBtn_Click);
-            // 
             // FileHashLoadBG_Panel
             // 
             this.FileHashLoadBG_Panel.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
@@ -659,63 +630,6 @@
             this.FileHashLoadFE_Panel.Size = new System.Drawing.Size(137, 5);
             this.FileHashLoadFE_Panel.TabIndex = 0;
             // 
-            // FileHashExportHashsBtn
-            // 
-            this.FileHashExportHashsBtn.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
-            this.FileHashExportHashsBtn.BackColor = System.Drawing.Color.SlateBlue;
-            this.FileHashExportHashsBtn.BackgroundColor = System.Drawing.Color.SlateBlue;
-            this.FileHashExportHashsBtn.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Zoom;
-            this.FileHashExportHashsBtn.BorderColor = System.Drawing.Color.SlateBlue;
-            this.FileHashExportHashsBtn.BorderRadius = 5;
-            this.FileHashExportHashsBtn.BorderSize = 0;
-            this.FileHashExportHashsBtn.Cursor = System.Windows.Forms.Cursors.Hand;
-            this.FileHashExportHashsBtn.FlatAppearance.BorderSize = 0;
-            this.FileHashExportHashsBtn.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.FileHashExportHashsBtn.Font = new System.Drawing.Font("Segoe UI Semibold", 9.75F, System.Drawing.FontStyle.Bold);
-            this.FileHashExportHashsBtn.ForeColor = System.Drawing.Color.White;
-            this.FileHashExportHashsBtn.ImageAlign = System.Drawing.ContentAlignment.MiddleRight;
-            this.FileHashExportHashsBtn.Location = new System.Drawing.Point(418, 8);
-            this.FileHashExportHashsBtn.Name = "FileHashExportHashsBtn";
-            this.FileHashExportHashsBtn.Padding = new System.Windows.Forms.Padding(5, 0, 5, 0);
-            this.FileHashExportHashsBtn.Size = new System.Drawing.Size(185, 27);
-            this.FileHashExportHashsBtn.TabIndex = 2;
-            this.FileHashExportHashsBtn.Text = "DIŞA AKTAR";
-            this.FileHashExportHashsBtn.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
-            this.FileHashExportHashsBtn.TextColor = System.Drawing.Color.White;
-            this.FileHashExportHashsBtn.TextImageRelation = System.Windows.Forms.TextImageRelation.ImageBeforeText;
-            this.FileHashExportHashsBtn.UseVisualStyleBackColor = false;
-            this.FileHashExportHashsBtn.Visible = false;
-            this.FileHashExportHashsBtn.Click += new System.EventHandler(this.FileHashExportHashsBtn_Click);
-            // 
-            // FileHashCompareBtn
-            // 
-            this.FileHashCompareBtn.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Right)));
-            this.FileHashCompareBtn.BackColor = System.Drawing.Color.SlateBlue;
-            this.FileHashCompareBtn.BackgroundColor = System.Drawing.Color.SlateBlue;
-            this.FileHashCompareBtn.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Zoom;
-            this.FileHashCompareBtn.BorderColor = System.Drawing.Color.SlateBlue;
-            this.FileHashCompareBtn.BorderRadius = 5;
-            this.FileHashCompareBtn.BorderSize = 0;
-            this.FileHashCompareBtn.Cursor = System.Windows.Forms.Cursors.Hand;
-            this.FileHashCompareBtn.Enabled = false;
-            this.FileHashCompareBtn.FlatAppearance.BorderSize = 0;
-            this.FileHashCompareBtn.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.FileHashCompareBtn.Font = new System.Drawing.Font("Segoe UI Semibold", 9.75F, System.Drawing.FontStyle.Bold);
-            this.FileHashCompareBtn.ForeColor = System.Drawing.Color.White;
-            this.FileHashCompareBtn.ImageAlign = System.Drawing.ContentAlignment.MiddleRight;
-            this.FileHashCompareBtn.Location = new System.Drawing.Point(609, 474);
-            this.FileHashCompareBtn.Name = "FileHashCompareBtn";
-            this.FileHashCompareBtn.Padding = new System.Windows.Forms.Padding(5, 0, 5, 0);
-            this.FileHashCompareBtn.Size = new System.Drawing.Size(160, 27);
-            this.FileHashCompareBtn.TabIndex = 9;
-            this.FileHashCompareBtn.Text = "SINA";
-            this.FileHashCompareBtn.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
-            this.FileHashCompareBtn.TextColor = System.Drawing.Color.White;
-            this.FileHashCompareBtn.TextImageRelation = System.Windows.Forms.TextImageRelation.ImageBeforeText;
-            this.FileHashCompareBtn.UseVisualStyleBackColor = false;
-            this.FileHashCompareBtn.Visible = false;
-            this.FileHashCompareBtn.Click += new System.EventHandler(this.FileHashCompareBtn_Click);
-            // 
             // FileHashCompareTextBox
             // 
             this.FileHashCompareTextBox.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Left) 
@@ -732,106 +646,6 @@
             this.FileHashCompareTextBox.TabIndex = 8;
             this.FileHashCompareTextBox.Visible = false;
             this.FileHashCompareTextBox.TextChanged += new System.EventHandler(this.FileHashCompareTextBox_TextChanged);
-            // 
-            // FileHashUpperHashMode
-            // 
-            this.FileHashUpperHashMode.AutoSize = true;
-            this.FileHashUpperHashMode.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(224)))), ((int)(((byte)(224)))), ((int)(((byte)(224)))));
-            this.FileHashUpperHashMode.Cursor = System.Windows.Forms.Cursors.Hand;
-            this.FileHashUpperHashMode.Font = new System.Drawing.Font("Segoe UI Semibold", 9F, System.Drawing.FontStyle.Bold);
-            this.FileHashUpperHashMode.Location = new System.Drawing.Point(114, 9);
-            this.FileHashUpperHashMode.Name = "FileHashUpperHashMode";
-            this.FileHashUpperHashMode.Padding = new System.Windows.Forms.Padding(7, 3, 5, 3);
-            this.FileHashUpperHashMode.Size = new System.Drawing.Size(166, 25);
-            this.FileHashUpperHashMode.TabIndex = 1;
-            this.FileHashUpperHashMode.Text = "Büyük harf karma modu";
-            this.FileHashUpperHashMode.UseVisualStyleBackColor = false;
-            this.FileHashUpperHashMode.Visible = false;
-            this.FileHashUpperHashMode.CheckedChanged += new System.EventHandler(this.FileHashUpperHashMode_CheckedChanged);
-            // 
-            // FileHashSelectFileBtn
-            // 
-            this.FileHashSelectFileBtn.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
-            this.FileHashSelectFileBtn.BackColor = System.Drawing.Color.SlateBlue;
-            this.FileHashSelectFileBtn.BackgroundColor = System.Drawing.Color.SlateBlue;
-            this.FileHashSelectFileBtn.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Zoom;
-            this.FileHashSelectFileBtn.BorderColor = System.Drawing.Color.SlateBlue;
-            this.FileHashSelectFileBtn.BorderRadius = 5;
-            this.FileHashSelectFileBtn.BorderSize = 0;
-            this.FileHashSelectFileBtn.Cursor = System.Windows.Forms.Cursors.Hand;
-            this.FileHashSelectFileBtn.FlatAppearance.BorderSize = 0;
-            this.FileHashSelectFileBtn.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.FileHashSelectFileBtn.Font = new System.Drawing.Font("Segoe UI Semibold", 9.75F, System.Drawing.FontStyle.Bold);
-            this.FileHashSelectFileBtn.ForeColor = System.Drawing.Color.White;
-            this.FileHashSelectFileBtn.ImageAlign = System.Drawing.ContentAlignment.MiddleRight;
-            this.FileHashSelectFileBtn.Location = new System.Drawing.Point(609, 8);
-            this.FileHashSelectFileBtn.Name = "FileHashSelectFileBtn";
-            this.FileHashSelectFileBtn.Padding = new System.Windows.Forms.Padding(5, 0, 5, 0);
-            this.FileHashSelectFileBtn.Size = new System.Drawing.Size(160, 27);
-            this.FileHashSelectFileBtn.TabIndex = 3;
-            this.FileHashSelectFileBtn.Text = "SEÇ";
-            this.FileHashSelectFileBtn.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
-            this.FileHashSelectFileBtn.TextColor = System.Drawing.Color.White;
-            this.FileHashSelectFileBtn.TextImageRelation = System.Windows.Forms.TextImageRelation.ImageBeforeText;
-            this.FileHashSelectFileBtn.UseVisualStyleBackColor = false;
-            this.FileHashSelectFileBtn.Click += new System.EventHandler(this.FileHashSelectFileBtn_Click);
-            // 
-            // FileHashAlgorithmSelect
-            // 
-            this.FileHashAlgorithmSelect.ArrowColor = System.Drawing.Color.White;
-            this.FileHashAlgorithmSelect.BackColor = System.Drawing.Color.SlateBlue;
-            this.FileHashAlgorithmSelect.BorderColor = System.Drawing.SystemColors.ControlDark;
-            this.FileHashAlgorithmSelect.ButtonColor = System.Drawing.Color.SlateBlue;
-            this.FileHashAlgorithmSelect.Cursor = System.Windows.Forms.Cursors.Hand;
-            this.FileHashAlgorithmSelect.DisabledArrowColor = System.Drawing.SystemColors.GrayText;
-            this.FileHashAlgorithmSelect.DisabledBackColor = System.Drawing.SystemColors.Control;
-            this.FileHashAlgorithmSelect.DisabledButtonColor = System.Drawing.SystemColors.ControlDark;
-            this.FileHashAlgorithmSelect.DisabledForeColor = System.Drawing.SystemColors.GrayText;
-            this.FileHashAlgorithmSelect.DrawMode = System.Windows.Forms.DrawMode.OwnerDrawFixed;
-            this.FileHashAlgorithmSelect.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
-            this.FileHashAlgorithmSelect.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.FileHashAlgorithmSelect.FocusedBorderColor = System.Drawing.Color.DodgerBlue;
-            this.FileHashAlgorithmSelect.Font = new System.Drawing.Font("Segoe UI Semibold", 9.75F, System.Drawing.FontStyle.Bold);
-            this.FileHashAlgorithmSelect.ForeColor = System.Drawing.Color.White;
-            this.FileHashAlgorithmSelect.FormattingEnabled = true;
-            this.FileHashAlgorithmSelect.HoverBackColor = System.Drawing.SystemColors.Window;
-            this.FileHashAlgorithmSelect.HoverButtonColor = System.Drawing.SystemColors.ControlDark;
-            this.FileHashAlgorithmSelect.Location = new System.Drawing.Point(8, 8);
-            this.FileHashAlgorithmSelect.Margin = new System.Windows.Forms.Padding(3, 3, 3, 10);
-            this.FileHashAlgorithmSelect.Name = "FileHashAlgorithmSelect";
-            this.FileHashAlgorithmSelect.Size = new System.Drawing.Size(100, 26);
-            this.FileHashAlgorithmSelect.TabIndex = 0;
-            this.FileHashAlgorithmSelect.SelectedIndexChanged += new System.EventHandler(this.FileHashAlgorithmSelect_SelectedIndexChanged);
-            // 
-            // FileHashStartBtn
-            // 
-            this.FileHashStartBtn.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Left) 
-            | System.Windows.Forms.AnchorStyles.Right)));
-            this.FileHashStartBtn.BackColor = System.Drawing.Color.SlateBlue;
-            this.FileHashStartBtn.BackgroundColor = System.Drawing.Color.SlateBlue;
-            this.FileHashStartBtn.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Zoom;
-            this.FileHashStartBtn.BorderColor = System.Drawing.Color.SlateBlue;
-            this.FileHashStartBtn.BorderRadius = 5;
-            this.FileHashStartBtn.BorderSize = 0;
-            this.FileHashStartBtn.Cursor = System.Windows.Forms.Cursors.Hand;
-            this.FileHashStartBtn.Enabled = false;
-            this.FileHashStartBtn.FlatAppearance.BorderSize = 0;
-            this.FileHashStartBtn.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.FileHashStartBtn.Font = new System.Drawing.Font("Segoe UI Semibold", 11F, System.Drawing.FontStyle.Bold);
-            this.FileHashStartBtn.ForeColor = System.Drawing.Color.White;
-            this.FileHashStartBtn.ImageAlign = System.Drawing.ContentAlignment.MiddleRight;
-            this.FileHashStartBtn.Location = new System.Drawing.Point(7, 506);
-            this.FileHashStartBtn.Margin = new System.Windows.Forms.Padding(3, 3, 1, 3);
-            this.FileHashStartBtn.Name = "FileHashStartBtn";
-            this.FileHashStartBtn.Padding = new System.Windows.Forms.Padding(5, 0, 5, 0);
-            this.FileHashStartBtn.Size = new System.Drawing.Size(535, 39);
-            this.FileHashStartBtn.TabIndex = 10;
-            this.FileHashStartBtn.Text = "BAŞLAT";
-            this.FileHashStartBtn.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
-            this.FileHashStartBtn.TextColor = System.Drawing.Color.White;
-            this.FileHashStartBtn.TextImageRelation = System.Windows.Forms.TextImageRelation.ImageBeforeText;
-            this.FileHashStartBtn.UseVisualStyleBackColor = false;
-            this.FileHashStartBtn.Click += new System.EventHandler(this.FileHashStartBtn_Click);
             // 
             // TextHash
             // 
@@ -866,35 +680,6 @@
             this.TextHashPanel.TabIndex = 0;
             this.TextHashPanel.DragDrop += new System.Windows.Forms.DragEventHandler(this.TextHashPanel_DragDrop);
             this.TextHashPanel.DragEnter += new System.Windows.Forms.DragEventHandler(this.TextHashPanel_DragEnter);
-            // 
-            // TextHashResultCopyBtn
-            // 
-            this.TextHashResultCopyBtn.BackColor = System.Drawing.Color.SlateBlue;
-            this.TextHashResultCopyBtn.BackgroundColor = System.Drawing.Color.SlateBlue;
-            this.TextHashResultCopyBtn.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Zoom;
-            this.TextHashResultCopyBtn.BorderColor = System.Drawing.Color.SlateBlue;
-            this.TextHashResultCopyBtn.BorderRadius = 5;
-            this.TextHashResultCopyBtn.BorderSize = 0;
-            this.TextHashResultCopyBtn.Cursor = System.Windows.Forms.Cursors.Hand;
-            this.TextHashResultCopyBtn.Dock = System.Windows.Forms.DockStyle.Bottom;
-            this.TextHashResultCopyBtn.Enabled = false;
-            this.TextHashResultCopyBtn.FlatAppearance.BorderSize = 0;
-            this.TextHashResultCopyBtn.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.TextHashResultCopyBtn.Font = new System.Drawing.Font("Segoe UI Semibold", 11F, System.Drawing.FontStyle.Bold);
-            this.TextHashResultCopyBtn.ForeColor = System.Drawing.Color.White;
-            this.TextHashResultCopyBtn.ImageAlign = System.Drawing.ContentAlignment.MiddleRight;
-            this.TextHashResultCopyBtn.Location = new System.Drawing.Point(5, 509);
-            this.TextHashResultCopyBtn.Margin = new System.Windows.Forms.Padding(7, 0, 8, 8);
-            this.TextHashResultCopyBtn.Name = "TextHashResultCopyBtn";
-            this.TextHashResultCopyBtn.Padding = new System.Windows.Forms.Padding(5, 0, 5, 0);
-            this.TextHashResultCopyBtn.Size = new System.Drawing.Size(767, 39);
-            this.TextHashResultCopyBtn.TabIndex = 9;
-            this.TextHashResultCopyBtn.Text = "KOPYALA";
-            this.TextHashResultCopyBtn.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
-            this.TextHashResultCopyBtn.TextColor = System.Drawing.Color.White;
-            this.TextHashResultCopyBtn.TextImageRelation = System.Windows.Forms.TextImageRelation.ImageBeforeText;
-            this.TextHashResultCopyBtn.UseVisualStyleBackColor = false;
-            this.TextHashResultCopyBtn.Click += new System.EventHandler(this.TextHashResultCopyBtn_Click);
             // 
             // TextHashL3
             // 
@@ -956,78 +741,6 @@
             this.TextHashL2.Text = "Tuzlama Değeri Giriniz:";
             this.TextHashL2.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
             // 
-            // TextHashAlgorithmSelect
-            // 
-            this.TextHashAlgorithmSelect.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
-            this.TextHashAlgorithmSelect.ArrowColor = System.Drawing.Color.White;
-            this.TextHashAlgorithmSelect.BackColor = System.Drawing.Color.SlateBlue;
-            this.TextHashAlgorithmSelect.BorderColor = System.Drawing.SystemColors.ControlDark;
-            this.TextHashAlgorithmSelect.ButtonColor = System.Drawing.Color.SlateBlue;
-            this.TextHashAlgorithmSelect.Cursor = System.Windows.Forms.Cursors.Hand;
-            this.TextHashAlgorithmSelect.DisabledArrowColor = System.Drawing.SystemColors.GrayText;
-            this.TextHashAlgorithmSelect.DisabledBackColor = System.Drawing.SystemColors.Control;
-            this.TextHashAlgorithmSelect.DisabledButtonColor = System.Drawing.SystemColors.ControlDark;
-            this.TextHashAlgorithmSelect.DisabledForeColor = System.Drawing.SystemColors.GrayText;
-            this.TextHashAlgorithmSelect.DrawMode = System.Windows.Forms.DrawMode.OwnerDrawFixed;
-            this.TextHashAlgorithmSelect.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
-            this.TextHashAlgorithmSelect.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.TextHashAlgorithmSelect.FocusedBorderColor = System.Drawing.Color.DodgerBlue;
-            this.TextHashAlgorithmSelect.Font = new System.Drawing.Font("Segoe UI Semibold", 9.75F, System.Drawing.FontStyle.Bold);
-            this.TextHashAlgorithmSelect.ForeColor = System.Drawing.Color.White;
-            this.TextHashAlgorithmSelect.FormattingEnabled = true;
-            this.TextHashAlgorithmSelect.HoverBackColor = System.Drawing.SystemColors.Window;
-            this.TextHashAlgorithmSelect.HoverButtonColor = System.Drawing.SystemColors.ControlDark;
-            this.TextHashAlgorithmSelect.Location = new System.Drawing.Point(644, 8);
-            this.TextHashAlgorithmSelect.Name = "TextHashAlgorithmSelect";
-            this.TextHashAlgorithmSelect.Size = new System.Drawing.Size(125, 26);
-            this.TextHashAlgorithmSelect.TabIndex = 1;
-            this.TextHashAlgorithmSelect.SelectedIndexChanged += new System.EventHandler(this.TextHashAlgorithmSelect_SelectedIndexChanged);
-            // 
-            // TextHashSaltingLocateMode
-            // 
-            this.TextHashSaltingLocateMode.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
-            this.TextHashSaltingLocateMode.ArrowColor = System.Drawing.Color.White;
-            this.TextHashSaltingLocateMode.BackColor = System.Drawing.Color.SlateBlue;
-            this.TextHashSaltingLocateMode.BorderColor = System.Drawing.SystemColors.ControlDark;
-            this.TextHashSaltingLocateMode.ButtonColor = System.Drawing.Color.SlateBlue;
-            this.TextHashSaltingLocateMode.Cursor = System.Windows.Forms.Cursors.Hand;
-            this.TextHashSaltingLocateMode.DisabledArrowColor = System.Drawing.SystemColors.GrayText;
-            this.TextHashSaltingLocateMode.DisabledBackColor = System.Drawing.SystemColors.Control;
-            this.TextHashSaltingLocateMode.DisabledButtonColor = System.Drawing.SystemColors.ControlDark;
-            this.TextHashSaltingLocateMode.DisabledForeColor = System.Drawing.SystemColors.GrayText;
-            this.TextHashSaltingLocateMode.DrawMode = System.Windows.Forms.DrawMode.OwnerDrawFixed;
-            this.TextHashSaltingLocateMode.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
-            this.TextHashSaltingLocateMode.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.TextHashSaltingLocateMode.FocusedBorderColor = System.Drawing.Color.DodgerBlue;
-            this.TextHashSaltingLocateMode.Font = new System.Drawing.Font("Segoe UI Semibold", 9.75F, System.Drawing.FontStyle.Bold);
-            this.TextHashSaltingLocateMode.ForeColor = System.Drawing.Color.White;
-            this.TextHashSaltingLocateMode.FormattingEnabled = true;
-            this.TextHashSaltingLocateMode.HoverBackColor = System.Drawing.SystemColors.Window;
-            this.TextHashSaltingLocateMode.HoverButtonColor = System.Drawing.SystemColors.ControlDark;
-            this.TextHashSaltingLocateMode.Location = new System.Drawing.Point(536, 245);
-            this.TextHashSaltingLocateMode.Margin = new System.Windows.Forms.Padding(3, 3, 3, 25);
-            this.TextHashSaltingLocateMode.Name = "TextHashSaltingLocateMode";
-            this.TextHashSaltingLocateMode.Size = new System.Drawing.Size(233, 26);
-            this.TextHashSaltingLocateMode.TabIndex = 5;
-            this.TextHashSaltingLocateMode.Visible = false;
-            this.TextHashSaltingLocateMode.SelectedIndexChanged += new System.EventHandler(this.TextHashSaltingLocateMode_SelectedIndexChanged);
-            // 
-            // TextHashSaltingMode
-            // 
-            this.TextHashSaltingMode.AutoSize = true;
-            this.TextHashSaltingMode.BackColor = System.Drawing.Color.Transparent;
-            this.TextHashSaltingMode.Cursor = System.Windows.Forms.Cursors.Hand;
-            this.TextHashSaltingMode.Enabled = false;
-            this.TextHashSaltingMode.Font = new System.Drawing.Font("Segoe UI Semibold", 9F, System.Drawing.FontStyle.Bold);
-            this.TextHashSaltingMode.Location = new System.Drawing.Point(8, 279);
-            this.TextHashSaltingMode.Margin = new System.Windows.Forms.Padding(3, 3, 3, 15);
-            this.TextHashSaltingMode.Name = "TextHashSaltingMode";
-            this.TextHashSaltingMode.Size = new System.Drawing.Size(106, 19);
-            this.TextHashSaltingMode.TabIndex = 6;
-            this.TextHashSaltingMode.Text = "Tuzlama Modu";
-            this.TextHashSaltingMode.UseVisualStyleBackColor = false;
-            this.TextHashSaltingMode.CheckedChanged += new System.EventHandler(this.TextHashSaltingMode_CheckedChanged);
-            // 
             // TextHashL1
             // 
             this.TextHashL1.AutoSize = true;
@@ -1085,34 +798,6 @@
             this.HashComparePanel.Padding = new System.Windows.Forms.Padding(5);
             this.HashComparePanel.Size = new System.Drawing.Size(777, 553);
             this.HashComparePanel.TabIndex = 0;
-            // 
-            // HashCompareResult
-            // 
-            this.HashCompareResult.BackColor = System.Drawing.Color.SlateBlue;
-            this.HashCompareResult.BackgroundColor = System.Drawing.Color.SlateBlue;
-            this.HashCompareResult.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Zoom;
-            this.HashCompareResult.BorderColor = System.Drawing.Color.SlateBlue;
-            this.HashCompareResult.BorderRadius = 5;
-            this.HashCompareResult.BorderSize = 0;
-            this.HashCompareResult.Cursor = System.Windows.Forms.Cursors.Default;
-            this.HashCompareResult.Dock = System.Windows.Forms.DockStyle.Bottom;
-            this.HashCompareResult.FlatAppearance.BorderSize = 0;
-            this.HashCompareResult.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.HashCompareResult.Font = new System.Drawing.Font("Segoe UI Semibold", 11F, System.Drawing.FontStyle.Bold);
-            this.HashCompareResult.ForeColor = System.Drawing.Color.White;
-            this.HashCompareResult.ImageAlign = System.Drawing.ContentAlignment.MiddleRight;
-            this.HashCompareResult.Location = new System.Drawing.Point(5, 509);
-            this.HashCompareResult.Margin = new System.Windows.Forms.Padding(7, 0, 8, 8);
-            this.HashCompareResult.Name = "HashCompareResult";
-            this.HashCompareResult.Padding = new System.Windows.Forms.Padding(5, 0, 5, 0);
-            this.HashCompareResult.Size = new System.Drawing.Size(767, 39);
-            this.HashCompareResult.TabIndex = 4;
-            this.HashCompareResult.Text = "KOPYALA";
-            this.HashCompareResult.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
-            this.HashCompareResult.TextColor = System.Drawing.Color.White;
-            this.HashCompareResult.TextImageRelation = System.Windows.Forms.TextImageRelation.ImageBeforeText;
-            this.HashCompareResult.UseVisualStyleBackColor = false;
-            this.HashCompareResult.Visible = false;
             // 
             // SecondHashValueLabel
             // 
@@ -1200,6 +885,348 @@
             this.HeaderPanel.Size = new System.Drawing.Size(783, 42);
             this.HeaderPanel.TabIndex = 1;
             // 
+            // FileHashStopBtn
+            // 
+            this.FileHashStopBtn.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Right)));
+            this.FileHashStopBtn.BackColor = System.Drawing.Color.SlateBlue;
+            this.FileHashStopBtn.BackgroundColor = System.Drawing.Color.SlateBlue;
+            this.FileHashStopBtn.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Zoom;
+            this.FileHashStopBtn.BorderColor = System.Drawing.Color.SlateBlue;
+            this.FileHashStopBtn.BorderRadius = 5;
+            this.FileHashStopBtn.BorderSize = 0;
+            this.FileHashStopBtn.Cursor = System.Windows.Forms.Cursors.Hand;
+            this.FileHashStopBtn.Enabled = false;
+            this.FileHashStopBtn.FlatAppearance.BorderSize = 0;
+            this.FileHashStopBtn.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.FileHashStopBtn.Font = new System.Drawing.Font("Segoe UI Semibold", 11F, System.Drawing.FontStyle.Bold);
+            this.FileHashStopBtn.ForeColor = System.Drawing.Color.White;
+            this.FileHashStopBtn.ImageAlign = System.Drawing.ContentAlignment.MiddleRight;
+            this.FileHashStopBtn.Location = new System.Drawing.Point(544, 506);
+            this.FileHashStopBtn.Margin = new System.Windows.Forms.Padding(1, 3, 3, 3);
+            this.FileHashStopBtn.Name = "FileHashStopBtn";
+            this.FileHashStopBtn.Padding = new System.Windows.Forms.Padding(5, 0, 5, 0);
+            this.FileHashStopBtn.Size = new System.Drawing.Size(225, 39);
+            this.FileHashStopBtn.TabIndex = 11;
+            this.FileHashStopBtn.Text = "DURDUR";
+            this.FileHashStopBtn.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
+            this.FileHashStopBtn.TextColor = System.Drawing.Color.White;
+            this.FileHashStopBtn.TextImageRelation = System.Windows.Forms.TextImageRelation.ImageBeforeText;
+            this.FileHashStopBtn.UseVisualStyleBackColor = false;
+            this.FileHashStopBtn.Click += new System.EventHandler(this.FileHashStopBtn_Click);
+            // 
+            // FileHashExportHashsBtn
+            // 
+            this.FileHashExportHashsBtn.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
+            this.FileHashExportHashsBtn.BackColor = System.Drawing.Color.SlateBlue;
+            this.FileHashExportHashsBtn.BackgroundColor = System.Drawing.Color.SlateBlue;
+            this.FileHashExportHashsBtn.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Zoom;
+            this.FileHashExportHashsBtn.BorderColor = System.Drawing.Color.SlateBlue;
+            this.FileHashExportHashsBtn.BorderRadius = 5;
+            this.FileHashExportHashsBtn.BorderSize = 0;
+            this.FileHashExportHashsBtn.Cursor = System.Windows.Forms.Cursors.Hand;
+            this.FileHashExportHashsBtn.FlatAppearance.BorderSize = 0;
+            this.FileHashExportHashsBtn.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.FileHashExportHashsBtn.Font = new System.Drawing.Font("Segoe UI Semibold", 9.75F, System.Drawing.FontStyle.Bold);
+            this.FileHashExportHashsBtn.ForeColor = System.Drawing.Color.White;
+            this.FileHashExportHashsBtn.ImageAlign = System.Drawing.ContentAlignment.MiddleRight;
+            this.FileHashExportHashsBtn.Location = new System.Drawing.Point(418, 8);
+            this.FileHashExportHashsBtn.Name = "FileHashExportHashsBtn";
+            this.FileHashExportHashsBtn.Padding = new System.Windows.Forms.Padding(5, 0, 5, 0);
+            this.FileHashExportHashsBtn.Size = new System.Drawing.Size(185, 27);
+            this.FileHashExportHashsBtn.TabIndex = 2;
+            this.FileHashExportHashsBtn.Text = "DIŞA AKTAR";
+            this.FileHashExportHashsBtn.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
+            this.FileHashExportHashsBtn.TextColor = System.Drawing.Color.White;
+            this.FileHashExportHashsBtn.TextImageRelation = System.Windows.Forms.TextImageRelation.ImageBeforeText;
+            this.FileHashExportHashsBtn.UseVisualStyleBackColor = false;
+            this.FileHashExportHashsBtn.Visible = false;
+            this.FileHashExportHashsBtn.Click += new System.EventHandler(this.FileHashExportHashsBtn_Click);
+            // 
+            // FileHashCompareBtn
+            // 
+            this.FileHashCompareBtn.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Right)));
+            this.FileHashCompareBtn.BackColor = System.Drawing.Color.SlateBlue;
+            this.FileHashCompareBtn.BackgroundColor = System.Drawing.Color.SlateBlue;
+            this.FileHashCompareBtn.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Zoom;
+            this.FileHashCompareBtn.BorderColor = System.Drawing.Color.SlateBlue;
+            this.FileHashCompareBtn.BorderRadius = 5;
+            this.FileHashCompareBtn.BorderSize = 0;
+            this.FileHashCompareBtn.Cursor = System.Windows.Forms.Cursors.Hand;
+            this.FileHashCompareBtn.Enabled = false;
+            this.FileHashCompareBtn.FlatAppearance.BorderSize = 0;
+            this.FileHashCompareBtn.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.FileHashCompareBtn.Font = new System.Drawing.Font("Segoe UI Semibold", 9.75F, System.Drawing.FontStyle.Bold);
+            this.FileHashCompareBtn.ForeColor = System.Drawing.Color.White;
+            this.FileHashCompareBtn.ImageAlign = System.Drawing.ContentAlignment.MiddleRight;
+            this.FileHashCompareBtn.Location = new System.Drawing.Point(609, 474);
+            this.FileHashCompareBtn.Name = "FileHashCompareBtn";
+            this.FileHashCompareBtn.Padding = new System.Windows.Forms.Padding(5, 0, 5, 0);
+            this.FileHashCompareBtn.Size = new System.Drawing.Size(160, 27);
+            this.FileHashCompareBtn.TabIndex = 9;
+            this.FileHashCompareBtn.Text = "SINA";
+            this.FileHashCompareBtn.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
+            this.FileHashCompareBtn.TextColor = System.Drawing.Color.White;
+            this.FileHashCompareBtn.TextImageRelation = System.Windows.Forms.TextImageRelation.ImageBeforeText;
+            this.FileHashCompareBtn.UseVisualStyleBackColor = false;
+            this.FileHashCompareBtn.Visible = false;
+            this.FileHashCompareBtn.Click += new System.EventHandler(this.FileHashCompareBtn_Click);
+            // 
+            // FileHashUpperHashMode
+            // 
+            this.FileHashUpperHashMode.AutoSize = true;
+            this.FileHashUpperHashMode.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(224)))), ((int)(((byte)(224)))), ((int)(((byte)(224)))));
+            this.FileHashUpperHashMode.BorderRadius = 2F;
+            this.FileHashUpperHashMode.BorderThickness = 1F;
+            this.FileHashUpperHashMode.CheckedColor = System.Drawing.Color.DodgerBlue;
+            this.FileHashUpperHashMode.CheckMarkColor = System.Drawing.Color.White;
+            this.FileHashUpperHashMode.Cursor = System.Windows.Forms.Cursors.Hand;
+            this.FileHashUpperHashMode.DrawUncheckedFill = false;
+            this.FileHashUpperHashMode.Font = new System.Drawing.Font("Segoe UI Semibold", 9F, System.Drawing.FontStyle.Bold);
+            this.FileHashUpperHashMode.Location = new System.Drawing.Point(114, 11);
+            this.FileHashUpperHashMode.MaxBorderRadius = 8F;
+            this.FileHashUpperHashMode.MaxBorderThickness = 4F;
+            this.FileHashUpperHashMode.Name = "FileHashUpperHashMode";
+            this.FileHashUpperHashMode.Padding = new System.Windows.Forms.Padding(5);
+            this.FileHashUpperHashMode.Size = new System.Drawing.Size(161, 20);
+            this.FileHashUpperHashMode.TabIndex = 1;
+            this.FileHashUpperHashMode.Text = "Büyük harf karma modu";
+            this.FileHashUpperHashMode.UncheckedBackColor = System.Drawing.Color.Transparent;
+            this.FileHashUpperHashMode.UncheckedBorderColor = System.Drawing.Color.Gray;
+            this.FileHashUpperHashMode.UseVisualStyleBackColor = false;
+            this.FileHashUpperHashMode.Visible = false;
+            this.FileHashUpperHashMode.CheckedChanged += new System.EventHandler(this.FileHashUpperHashMode_CheckedChanged);
+            // 
+            // FileHashSelectFileBtn
+            // 
+            this.FileHashSelectFileBtn.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
+            this.FileHashSelectFileBtn.BackColor = System.Drawing.Color.SlateBlue;
+            this.FileHashSelectFileBtn.BackgroundColor = System.Drawing.Color.SlateBlue;
+            this.FileHashSelectFileBtn.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Zoom;
+            this.FileHashSelectFileBtn.BorderColor = System.Drawing.Color.SlateBlue;
+            this.FileHashSelectFileBtn.BorderRadius = 5;
+            this.FileHashSelectFileBtn.BorderSize = 0;
+            this.FileHashSelectFileBtn.Cursor = System.Windows.Forms.Cursors.Hand;
+            this.FileHashSelectFileBtn.FlatAppearance.BorderSize = 0;
+            this.FileHashSelectFileBtn.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.FileHashSelectFileBtn.Font = new System.Drawing.Font("Segoe UI Semibold", 9.75F, System.Drawing.FontStyle.Bold);
+            this.FileHashSelectFileBtn.ForeColor = System.Drawing.Color.White;
+            this.FileHashSelectFileBtn.ImageAlign = System.Drawing.ContentAlignment.MiddleRight;
+            this.FileHashSelectFileBtn.Location = new System.Drawing.Point(609, 8);
+            this.FileHashSelectFileBtn.Name = "FileHashSelectFileBtn";
+            this.FileHashSelectFileBtn.Padding = new System.Windows.Forms.Padding(5, 0, 5, 0);
+            this.FileHashSelectFileBtn.Size = new System.Drawing.Size(160, 27);
+            this.FileHashSelectFileBtn.TabIndex = 3;
+            this.FileHashSelectFileBtn.Text = "SEÇ";
+            this.FileHashSelectFileBtn.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
+            this.FileHashSelectFileBtn.TextColor = System.Drawing.Color.White;
+            this.FileHashSelectFileBtn.TextImageRelation = System.Windows.Forms.TextImageRelation.ImageBeforeText;
+            this.FileHashSelectFileBtn.UseVisualStyleBackColor = false;
+            this.FileHashSelectFileBtn.Click += new System.EventHandler(this.FileHashSelectFileBtn_Click);
+            // 
+            // FileHashAlgorithmSelect
+            // 
+            this.FileHashAlgorithmSelect.ArrowColor = System.Drawing.Color.White;
+            this.FileHashAlgorithmSelect.BackColor = System.Drawing.Color.SlateBlue;
+            this.FileHashAlgorithmSelect.BorderColor = System.Drawing.SystemColors.ControlDark;
+            this.FileHashAlgorithmSelect.ButtonColor = System.Drawing.Color.SlateBlue;
+            this.FileHashAlgorithmSelect.Cursor = System.Windows.Forms.Cursors.Hand;
+            this.FileHashAlgorithmSelect.DisabledArrowColor = System.Drawing.SystemColors.GrayText;
+            this.FileHashAlgorithmSelect.DisabledBackColor = System.Drawing.SystemColors.Control;
+            this.FileHashAlgorithmSelect.DisabledButtonColor = System.Drawing.SystemColors.ControlDark;
+            this.FileHashAlgorithmSelect.DisabledForeColor = System.Drawing.SystemColors.GrayText;
+            this.FileHashAlgorithmSelect.DrawMode = System.Windows.Forms.DrawMode.OwnerDrawFixed;
+            this.FileHashAlgorithmSelect.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
+            this.FileHashAlgorithmSelect.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.FileHashAlgorithmSelect.FocusedBorderColor = System.Drawing.Color.DodgerBlue;
+            this.FileHashAlgorithmSelect.Font = new System.Drawing.Font("Segoe UI Semibold", 9.75F, System.Drawing.FontStyle.Bold);
+            this.FileHashAlgorithmSelect.ForeColor = System.Drawing.Color.White;
+            this.FileHashAlgorithmSelect.FormattingEnabled = true;
+            this.FileHashAlgorithmSelect.HoverBackColor = System.Drawing.SystemColors.Window;
+            this.FileHashAlgorithmSelect.HoverButtonColor = System.Drawing.SystemColors.ControlDark;
+            this.FileHashAlgorithmSelect.HoverForeColor = System.Drawing.SystemColors.WindowText;
+            this.FileHashAlgorithmSelect.Location = new System.Drawing.Point(8, 8);
+            this.FileHashAlgorithmSelect.Margin = new System.Windows.Forms.Padding(3, 3, 3, 10);
+            this.FileHashAlgorithmSelect.Name = "FileHashAlgorithmSelect";
+            this.FileHashAlgorithmSelect.SelectedBackColor = System.Drawing.SystemColors.Highlight;
+            this.FileHashAlgorithmSelect.SelectedForeColor = System.Drawing.SystemColors.HighlightText;
+            this.FileHashAlgorithmSelect.Size = new System.Drawing.Size(100, 26);
+            this.FileHashAlgorithmSelect.TabIndex = 0;
+            this.FileHashAlgorithmSelect.SelectedIndexChanged += new System.EventHandler(this.FileHashAlgorithmSelect_SelectedIndexChanged);
+            // 
+            // FileHashStartBtn
+            // 
+            this.FileHashStartBtn.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Left) 
+            | System.Windows.Forms.AnchorStyles.Right)));
+            this.FileHashStartBtn.BackColor = System.Drawing.Color.SlateBlue;
+            this.FileHashStartBtn.BackgroundColor = System.Drawing.Color.SlateBlue;
+            this.FileHashStartBtn.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Zoom;
+            this.FileHashStartBtn.BorderColor = System.Drawing.Color.SlateBlue;
+            this.FileHashStartBtn.BorderRadius = 5;
+            this.FileHashStartBtn.BorderSize = 0;
+            this.FileHashStartBtn.Cursor = System.Windows.Forms.Cursors.Hand;
+            this.FileHashStartBtn.Enabled = false;
+            this.FileHashStartBtn.FlatAppearance.BorderSize = 0;
+            this.FileHashStartBtn.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.FileHashStartBtn.Font = new System.Drawing.Font("Segoe UI Semibold", 11F, System.Drawing.FontStyle.Bold);
+            this.FileHashStartBtn.ForeColor = System.Drawing.Color.White;
+            this.FileHashStartBtn.ImageAlign = System.Drawing.ContentAlignment.MiddleRight;
+            this.FileHashStartBtn.Location = new System.Drawing.Point(7, 506);
+            this.FileHashStartBtn.Margin = new System.Windows.Forms.Padding(3, 3, 1, 3);
+            this.FileHashStartBtn.Name = "FileHashStartBtn";
+            this.FileHashStartBtn.Padding = new System.Windows.Forms.Padding(5, 0, 5, 0);
+            this.FileHashStartBtn.Size = new System.Drawing.Size(535, 39);
+            this.FileHashStartBtn.TabIndex = 10;
+            this.FileHashStartBtn.Text = "BAŞLAT";
+            this.FileHashStartBtn.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
+            this.FileHashStartBtn.TextColor = System.Drawing.Color.White;
+            this.FileHashStartBtn.TextImageRelation = System.Windows.Forms.TextImageRelation.ImageBeforeText;
+            this.FileHashStartBtn.UseVisualStyleBackColor = false;
+            this.FileHashStartBtn.Click += new System.EventHandler(this.FileHashStartBtn_Click);
+            // 
+            // TextHashResultCopyBtn
+            // 
+            this.TextHashResultCopyBtn.BackColor = System.Drawing.Color.SlateBlue;
+            this.TextHashResultCopyBtn.BackgroundColor = System.Drawing.Color.SlateBlue;
+            this.TextHashResultCopyBtn.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Zoom;
+            this.TextHashResultCopyBtn.BorderColor = System.Drawing.Color.SlateBlue;
+            this.TextHashResultCopyBtn.BorderRadius = 5;
+            this.TextHashResultCopyBtn.BorderSize = 0;
+            this.TextHashResultCopyBtn.Cursor = System.Windows.Forms.Cursors.Hand;
+            this.TextHashResultCopyBtn.Dock = System.Windows.Forms.DockStyle.Bottom;
+            this.TextHashResultCopyBtn.Enabled = false;
+            this.TextHashResultCopyBtn.FlatAppearance.BorderSize = 0;
+            this.TextHashResultCopyBtn.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.TextHashResultCopyBtn.Font = new System.Drawing.Font("Segoe UI Semibold", 11F, System.Drawing.FontStyle.Bold);
+            this.TextHashResultCopyBtn.ForeColor = System.Drawing.Color.White;
+            this.TextHashResultCopyBtn.ImageAlign = System.Drawing.ContentAlignment.MiddleRight;
+            this.TextHashResultCopyBtn.Location = new System.Drawing.Point(5, 509);
+            this.TextHashResultCopyBtn.Margin = new System.Windows.Forms.Padding(7, 0, 8, 8);
+            this.TextHashResultCopyBtn.Name = "TextHashResultCopyBtn";
+            this.TextHashResultCopyBtn.Padding = new System.Windows.Forms.Padding(5, 0, 5, 0);
+            this.TextHashResultCopyBtn.Size = new System.Drawing.Size(767, 39);
+            this.TextHashResultCopyBtn.TabIndex = 9;
+            this.TextHashResultCopyBtn.Text = "KOPYALA";
+            this.TextHashResultCopyBtn.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
+            this.TextHashResultCopyBtn.TextColor = System.Drawing.Color.White;
+            this.TextHashResultCopyBtn.TextImageRelation = System.Windows.Forms.TextImageRelation.ImageBeforeText;
+            this.TextHashResultCopyBtn.UseVisualStyleBackColor = false;
+            this.TextHashResultCopyBtn.Click += new System.EventHandler(this.TextHashResultCopyBtn_Click);
+            // 
+            // TextHashAlgorithmSelect
+            // 
+            this.TextHashAlgorithmSelect.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
+            this.TextHashAlgorithmSelect.ArrowColor = System.Drawing.Color.White;
+            this.TextHashAlgorithmSelect.BackColor = System.Drawing.Color.SlateBlue;
+            this.TextHashAlgorithmSelect.BorderColor = System.Drawing.SystemColors.ControlDark;
+            this.TextHashAlgorithmSelect.ButtonColor = System.Drawing.Color.SlateBlue;
+            this.TextHashAlgorithmSelect.Cursor = System.Windows.Forms.Cursors.Hand;
+            this.TextHashAlgorithmSelect.DisabledArrowColor = System.Drawing.SystemColors.GrayText;
+            this.TextHashAlgorithmSelect.DisabledBackColor = System.Drawing.SystemColors.Control;
+            this.TextHashAlgorithmSelect.DisabledButtonColor = System.Drawing.SystemColors.ControlDark;
+            this.TextHashAlgorithmSelect.DisabledForeColor = System.Drawing.SystemColors.GrayText;
+            this.TextHashAlgorithmSelect.DrawMode = System.Windows.Forms.DrawMode.OwnerDrawFixed;
+            this.TextHashAlgorithmSelect.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
+            this.TextHashAlgorithmSelect.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.TextHashAlgorithmSelect.FocusedBorderColor = System.Drawing.Color.DodgerBlue;
+            this.TextHashAlgorithmSelect.Font = new System.Drawing.Font("Segoe UI Semibold", 9.75F, System.Drawing.FontStyle.Bold);
+            this.TextHashAlgorithmSelect.ForeColor = System.Drawing.Color.White;
+            this.TextHashAlgorithmSelect.FormattingEnabled = true;
+            this.TextHashAlgorithmSelect.HoverBackColor = System.Drawing.SystemColors.Window;
+            this.TextHashAlgorithmSelect.HoverButtonColor = System.Drawing.SystemColors.ControlDark;
+            this.TextHashAlgorithmSelect.HoverForeColor = System.Drawing.SystemColors.WindowText;
+            this.TextHashAlgorithmSelect.Location = new System.Drawing.Point(644, 8);
+            this.TextHashAlgorithmSelect.Name = "TextHashAlgorithmSelect";
+            this.TextHashAlgorithmSelect.SelectedBackColor = System.Drawing.SystemColors.Highlight;
+            this.TextHashAlgorithmSelect.SelectedForeColor = System.Drawing.SystemColors.HighlightText;
+            this.TextHashAlgorithmSelect.Size = new System.Drawing.Size(125, 26);
+            this.TextHashAlgorithmSelect.TabIndex = 1;
+            this.TextHashAlgorithmSelect.SelectedIndexChanged += new System.EventHandler(this.TextHashAlgorithmSelect_SelectedIndexChanged);
+            // 
+            // TextHashSaltingLocateMode
+            // 
+            this.TextHashSaltingLocateMode.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
+            this.TextHashSaltingLocateMode.ArrowColor = System.Drawing.Color.White;
+            this.TextHashSaltingLocateMode.BackColor = System.Drawing.Color.SlateBlue;
+            this.TextHashSaltingLocateMode.BorderColor = System.Drawing.SystemColors.ControlDark;
+            this.TextHashSaltingLocateMode.ButtonColor = System.Drawing.Color.SlateBlue;
+            this.TextHashSaltingLocateMode.Cursor = System.Windows.Forms.Cursors.Hand;
+            this.TextHashSaltingLocateMode.DisabledArrowColor = System.Drawing.SystemColors.GrayText;
+            this.TextHashSaltingLocateMode.DisabledBackColor = System.Drawing.SystemColors.Control;
+            this.TextHashSaltingLocateMode.DisabledButtonColor = System.Drawing.SystemColors.ControlDark;
+            this.TextHashSaltingLocateMode.DisabledForeColor = System.Drawing.SystemColors.GrayText;
+            this.TextHashSaltingLocateMode.DrawMode = System.Windows.Forms.DrawMode.OwnerDrawFixed;
+            this.TextHashSaltingLocateMode.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
+            this.TextHashSaltingLocateMode.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.TextHashSaltingLocateMode.FocusedBorderColor = System.Drawing.Color.DodgerBlue;
+            this.TextHashSaltingLocateMode.Font = new System.Drawing.Font("Segoe UI Semibold", 9.75F, System.Drawing.FontStyle.Bold);
+            this.TextHashSaltingLocateMode.ForeColor = System.Drawing.Color.White;
+            this.TextHashSaltingLocateMode.FormattingEnabled = true;
+            this.TextHashSaltingLocateMode.HoverBackColor = System.Drawing.SystemColors.Window;
+            this.TextHashSaltingLocateMode.HoverButtonColor = System.Drawing.SystemColors.ControlDark;
+            this.TextHashSaltingLocateMode.HoverForeColor = System.Drawing.SystemColors.WindowText;
+            this.TextHashSaltingLocateMode.Location = new System.Drawing.Point(536, 245);
+            this.TextHashSaltingLocateMode.Margin = new System.Windows.Forms.Padding(3, 3, 3, 25);
+            this.TextHashSaltingLocateMode.Name = "TextHashSaltingLocateMode";
+            this.TextHashSaltingLocateMode.SelectedBackColor = System.Drawing.SystemColors.Highlight;
+            this.TextHashSaltingLocateMode.SelectedForeColor = System.Drawing.SystemColors.HighlightText;
+            this.TextHashSaltingLocateMode.Size = new System.Drawing.Size(233, 26);
+            this.TextHashSaltingLocateMode.TabIndex = 5;
+            this.TextHashSaltingLocateMode.Visible = false;
+            this.TextHashSaltingLocateMode.SelectedIndexChanged += new System.EventHandler(this.TextHashSaltingLocateMode_SelectedIndexChanged);
+            // 
+            // TextHashSaltingMode
+            // 
+            this.TextHashSaltingMode.AutoSize = true;
+            this.TextHashSaltingMode.BackColor = System.Drawing.Color.Transparent;
+            this.TextHashSaltingMode.BorderRadius = 2F;
+            this.TextHashSaltingMode.BorderThickness = 1F;
+            this.TextHashSaltingMode.CheckedColor = System.Drawing.Color.DodgerBlue;
+            this.TextHashSaltingMode.CheckMarkColor = System.Drawing.Color.White;
+            this.TextHashSaltingMode.Cursor = System.Windows.Forms.Cursors.Hand;
+            this.TextHashSaltingMode.DrawUncheckedFill = false;
+            this.TextHashSaltingMode.Enabled = false;
+            this.TextHashSaltingMode.Font = new System.Drawing.Font("Segoe UI Semibold", 9F, System.Drawing.FontStyle.Bold);
+            this.TextHashSaltingMode.Location = new System.Drawing.Point(8, 279);
+            this.TextHashSaltingMode.Margin = new System.Windows.Forms.Padding(3, 3, 3, 15);
+            this.TextHashSaltingMode.MaxBorderRadius = 8F;
+            this.TextHashSaltingMode.MaxBorderThickness = 4F;
+            this.TextHashSaltingMode.Name = "TextHashSaltingMode";
+            this.TextHashSaltingMode.Size = new System.Drawing.Size(113, 20);
+            this.TextHashSaltingMode.TabIndex = 6;
+            this.TextHashSaltingMode.Text = "Tuzlama Modu";
+            this.TextHashSaltingMode.UncheckedBackColor = System.Drawing.Color.Transparent;
+            this.TextHashSaltingMode.UncheckedBorderColor = System.Drawing.Color.Gray;
+            this.TextHashSaltingMode.UseVisualStyleBackColor = false;
+            this.TextHashSaltingMode.CheckedChanged += new System.EventHandler(this.TextHashSaltingMode_CheckedChanged);
+            // 
+            // HashCompareResult
+            // 
+            this.HashCompareResult.BackColor = System.Drawing.Color.SlateBlue;
+            this.HashCompareResult.BackgroundColor = System.Drawing.Color.SlateBlue;
+            this.HashCompareResult.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Zoom;
+            this.HashCompareResult.BorderColor = System.Drawing.Color.SlateBlue;
+            this.HashCompareResult.BorderRadius = 5;
+            this.HashCompareResult.BorderSize = 0;
+            this.HashCompareResult.Cursor = System.Windows.Forms.Cursors.Default;
+            this.HashCompareResult.Dock = System.Windows.Forms.DockStyle.Bottom;
+            this.HashCompareResult.FlatAppearance.BorderSize = 0;
+            this.HashCompareResult.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.HashCompareResult.Font = new System.Drawing.Font("Segoe UI Semibold", 11F, System.Drawing.FontStyle.Bold);
+            this.HashCompareResult.ForeColor = System.Drawing.Color.White;
+            this.HashCompareResult.ImageAlign = System.Drawing.ContentAlignment.MiddleRight;
+            this.HashCompareResult.Location = new System.Drawing.Point(5, 509);
+            this.HashCompareResult.Margin = new System.Windows.Forms.Padding(7, 0, 8, 8);
+            this.HashCompareResult.Name = "HashCompareResult";
+            this.HashCompareResult.Padding = new System.Windows.Forms.Padding(5, 0, 5, 0);
+            this.HashCompareResult.Size = new System.Drawing.Size(767, 39);
+            this.HashCompareResult.TabIndex = 4;
+            this.HashCompareResult.Text = "KOPYALA";
+            this.HashCompareResult.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
+            this.HashCompareResult.TextColor = System.Drawing.Color.White;
+            this.HashCompareResult.TextImageRelation = System.Windows.Forms.TextImageRelation.ImageBeforeText;
+            this.HashCompareResult.UseVisualStyleBackColor = false;
+            this.HashCompareResult.Visible = false;
+            // 
             // VimeraMain
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(96F, 96F);
@@ -1259,7 +1286,7 @@
         internal TSCustomComboBox FileHashAlgorithmSelect;
         private TSCustomButton FileHashSelectFileBtn;
         private System.Windows.Forms.DataGridView FileHashDGV;
-        private System.Windows.Forms.CheckBox FileHashUpperHashMode;
+        private TSCustomCheckBox FileHashUpperHashMode;
         private TSCustomButton FileHashCompareBtn;
         internal System.Windows.Forms.TextBox FileHashCompareTextBox;
         private System.ComponentModel.BackgroundWorker FileHash_BG_Worker;
@@ -1272,7 +1299,7 @@
         internal System.Windows.Forms.TextBox TextHashResultTextBox;
         private TSCustomButton TextHashResultCopyBtn;
         internal System.Windows.Forms.TextBox TextHashSaltingTextBox;
-        private System.Windows.Forms.CheckBox TextHashSaltingMode;
+        private TSCustomCheckBox TextHashSaltingMode;
         private System.Windows.Forms.Label TextHashL2;
         private System.Windows.Forms.Label TextHashL1;
         private System.Windows.Forms.Label TextHashL3;

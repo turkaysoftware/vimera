@@ -987,6 +987,21 @@ namespace Vimera {
                 Header_image_reloader(menu_btns);
             }catch (Exception){ }
         }
+        // INTERFACE NAVIGATION: Prevents focus traps and enables cyclic page switching with arrow keys
+        // ======================================================================================================
+        protected override bool ProcessCmdKey(ref Message msg, Keys keyData){
+            if (keyData == Keys.Right || keyData == Keys.Left){
+                int currentIndex = MainContent.SelectedIndex;
+                int totalTabs = MainContent.TabCount;
+                if (keyData == Keys.Right){
+                    MainContent.SelectedIndex = (currentIndex + 1) % totalTabs;
+                }else if (keyData == Keys.Left){
+                    MainContent.SelectedIndex = (currentIndex - 1 + totalTabs) % totalTabs;
+                }
+                return true;
+            }
+            return base.ProcessCmdKey(ref msg, keyData);
+        }
         // LANG MODE
         // ======================================================================================================
         private void Select_lang_active(object target_lang){
@@ -1247,6 +1262,7 @@ namespace Vimera {
                 HashCompare.BackColor = TS_ThemeEngine.ColorMode(theme, "PageContainerBGAndPageContentTotalColors");
                 // FILE HASH
                 FileHashPanel.BackColor = TS_ThemeEngine.ColorMode(theme, "ContentPanelBGColor");
+                //
                 FileHashAlgorithmSelect.BackColor = TS_ThemeEngine.ColorMode(theme, "SelectBoxBGColor");
                 FileHashAlgorithmSelect.ForeColor = TS_ThemeEngine.ColorMode(theme, "SelectBoxFEColor");
                 FileHashAlgorithmSelect.HoverBackColor = TS_ThemeEngine.ColorMode(theme, "SelectBoxBGColor");
@@ -1258,13 +1274,20 @@ namespace Vimera {
                 FileHashAlgorithmSelect.DisabledBackColor = TS_ThemeEngine.ColorMode(theme, "SelectBoxBGColor");
                 FileHashAlgorithmSelect.DisabledForeColor = TS_ThemeEngine.ColorMode(theme, "SelectBoxFEColor");
                 FileHashAlgorithmSelect.DisabledButtonColor = TS_ThemeEngine.ColorMode(theme, "SelectBoxBGColor2");
+                FileHashAlgorithmSelect.HoverForeColor = TS_ThemeEngine.ColorMode(theme, "SelectBoxFEColor");
+                FileHashAlgorithmSelect.SelectedBackColor = TS_ThemeEngine.ColorMode(theme, "AccentColor");
+                FileHashAlgorithmSelect.SelectedForeColor = TS_ThemeEngine.ColorMode(theme, "SelectBoxBGColor");
+                //
                 FileHashSelectFileBtn.BackColor = TS_ThemeEngine.ColorMode(theme, "AccentColor");
                 FileHashSelectFileBtn.FlatAppearance.BorderColor = TS_ThemeEngine.ColorMode(theme, "AccentColor");
                 FileHashSelectFileBtn.FlatAppearance.MouseDownBackColor = TS_ThemeEngine.ColorMode(theme, "AccentColor");
                 FileHashSelectFileBtn.FlatAppearance.MouseOverBackColor = TS_ThemeEngine.ColorMode(theme, "AccentColorHover");
                 FileHashSelectFileBtn.ForeColor = TS_ThemeEngine.ColorMode(theme, "DynamicThemeActiveBtnBG");
-                FileHashUpperHashMode.BackColor = TS_ThemeEngine.ColorMode(theme, "TextBoxBGColor");
+                FileHashUpperHashMode.BackColor = TS_ThemeEngine.ColorMode(theme, "ContentPanelBGColor");
                 FileHashUpperHashMode.ForeColor = TS_ThemeEngine.ColorMode(theme, "TextBoxFEColor");
+                FileHashUpperHashMode.CheckedColor = TS_ThemeEngine.ColorMode(theme, "AccentColor");
+                FileHashUpperHashMode.CheckMarkColor = TS_ThemeEngine.ColorMode(theme, "SelectBoxBGColor");
+                FileHashUpperHashMode.UncheckedBorderColor = TS_ThemeEngine.ColorMode(theme, "CheckBoxUnCheckBorderColor");
                 FileHashExportHashsBtn.BackColor = TS_ThemeEngine.ColorMode(theme, "AccentColor");
                 FileHashExportHashsBtn.FlatAppearance.BorderColor = TS_ThemeEngine.ColorMode(theme, "AccentColor");
                 FileHashExportHashsBtn.FlatAppearance.MouseDownBackColor = TS_ThemeEngine.ColorMode(theme, "AccentColor");
@@ -1304,6 +1327,7 @@ namespace Vimera {
                 FileHashCompareTextBox.ForeColor = TS_ThemeEngine.ColorMode(theme, "TextBoxFEColor");
                 // TEXT HASH
                 TextHashPanel.BackColor = TS_ThemeEngine.ColorMode(theme, "ContentPanelBGColor");
+                //
                 TextHashAlgorithmSelect.BackColor = TS_ThemeEngine.ColorMode(theme, "SelectBoxBGColor");
                 TextHashAlgorithmSelect.ForeColor = TS_ThemeEngine.ColorMode(theme, "SelectBoxFEColor");
                 TextHashAlgorithmSelect.HoverBackColor = TS_ThemeEngine.ColorMode(theme, "SelectBoxBGColor");
@@ -1312,14 +1336,23 @@ namespace Vimera {
                 TextHashAlgorithmSelect.HoverButtonColor = TS_ThemeEngine.ColorMode(theme, "SelectBoxBGColor2");
                 TextHashAlgorithmSelect.BorderColor = TS_ThemeEngine.ColorMode(theme, "SelectBoxBorderColor");
                 TextHashAlgorithmSelect.FocusedBorderColor = TS_ThemeEngine.ColorMode(theme, "SelectBoxBorderColor");
+                TextHashAlgorithmSelect.HoverForeColor = TS_ThemeEngine.ColorMode(theme, "SelectBoxFEColor");
+                TextHashAlgorithmSelect.SelectedBackColor = TS_ThemeEngine.ColorMode(theme, "AccentColor");
+                TextHashAlgorithmSelect.SelectedForeColor = TS_ThemeEngine.ColorMode(theme, "SelectBoxBGColor");
+                //
                 TextHashL1.ForeColor = TS_ThemeEngine.ColorMode(theme, "LeftMenuButtonFEColor");
                 TextHashL2.ForeColor = TS_ThemeEngine.ColorMode(theme, "LeftMenuButtonFEColor");
                 TextHashL3.ForeColor = TS_ThemeEngine.ColorMode(theme, "LeftMenuButtonFEColor");
                 TextHashOriginalTextBox.BackColor = TS_ThemeEngine.ColorMode(theme, "TextBoxBGColor");
                 TextHashOriginalTextBox.ForeColor = TS_ThemeEngine.ColorMode(theme, "TextBoxFEColor");
+                TextHashSaltingMode.BackColor = TS_ThemeEngine.ColorMode(theme, "ContentPanelBGColor");
                 TextHashSaltingMode.ForeColor = TS_ThemeEngine.ColorMode(theme, "TextBoxFEColor");
+                TextHashSaltingMode.CheckedColor = TS_ThemeEngine.ColorMode(theme, "AccentColor");
+                TextHashSaltingMode.CheckMarkColor = TS_ThemeEngine.ColorMode(theme, "SelectBoxBGColor");
+                TextHashSaltingMode.UncheckedBorderColor = TS_ThemeEngine.ColorMode(theme, "CheckBoxUnCheckBorderColor");
                 TextHashSaltingTextBox.BackColor = TS_ThemeEngine.ColorMode(theme, "TextBoxBGColor");
                 TextHashSaltingTextBox.ForeColor = TS_ThemeEngine.ColorMode(theme, "TextBoxFEColor");
+                //
                 TextHashSaltingLocateMode.BackColor = TS_ThemeEngine.ColorMode(theme, "SelectBoxBGColor");
                 TextHashSaltingLocateMode.ForeColor = TS_ThemeEngine.ColorMode(theme, "SelectBoxFEColor");
                 TextHashSaltingLocateMode.HoverBackColor = TS_ThemeEngine.ColorMode(theme, "SelectBoxBGColor");
@@ -1328,6 +1361,10 @@ namespace Vimera {
                 TextHashSaltingLocateMode.HoverButtonColor = TS_ThemeEngine.ColorMode(theme, "SelectBoxBGColor2");
                 TextHashSaltingLocateMode.BorderColor = TS_ThemeEngine.ColorMode(theme, "SelectBoxBorderColor");
                 TextHashSaltingLocateMode.FocusedBorderColor = TS_ThemeEngine.ColorMode(theme, "SelectBoxBorderColor");
+                TextHashSaltingLocateMode.HoverForeColor = TS_ThemeEngine.ColorMode(theme, "SelectBoxFEColor");
+                TextHashSaltingLocateMode.SelectedBackColor = TS_ThemeEngine.ColorMode(theme, "AccentColor");
+                TextHashSaltingLocateMode.SelectedForeColor = TS_ThemeEngine.ColorMode(theme, "SelectBoxBGColor");
+                //
                 TextHashResultTextBox.BackColor = TS_ThemeEngine.ColorMode(theme, "TextBoxBGColor");
                 TextHashResultTextBox.ForeColor = TS_ThemeEngine.ColorMode(theme, "TextBoxFEColor");
                 TextHashResultCopyBtn.BackColor = TS_ThemeEngine.ColorMode(theme, "AccentColor");
