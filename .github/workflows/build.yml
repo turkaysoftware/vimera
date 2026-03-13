@@ -20,5 +20,4 @@ jobs:
         uses: microsoft/setup-msbuild@v2
 
       - name: Build solution
-
-        run: msbuild Vimera.sln /p:Configuration=Release
+        run: msbuild Vimera/Vimera.sln /p:Configuration=Release /p:Platform=x64
