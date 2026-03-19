@@ -1,17 +1,16 @@
-# 🔍 Vimera - Advanced Hash Analysis Software
+# Vimera - Advanced Hash Analysis Software
 
 ![GitHub all releases](https://img.shields.io/github/downloads/turkaysoftware/vimera/total?style=for-the-badge&color=DF313F)
 ![GitHub Repo stars](https://img.shields.io/github/stars/turkaysoftware/vimera?style=for-the-badge&color=167C33)
 ![GitHub release (latest by date)](https://img.shields.io/github/v/release/turkaysoftware/vimera?style=for-the-badge&color=9A194C)
 ![Platform](https://img.shields.io/badge/platform-Windows-366194?style=for-the-badge&logo=windows)
-![GitHub license](https://img.shields.io/github/license/turkaysoftware/vimera?style=for-the-badge&color=17796E)
 
 **Vimera** is a professional-grade **hash analysis software** developed by **Eray Türkay**. Designed for data integrity and security verification, Vimera allows you to generate, analyze, and compare file and text hashes with extreme speed. Whether you are verifying a large download or comparing sensitive data, Vimera provides the precision you need.
 
 ---
 
-### ☕ Support the Project
-Vimera is free and will always be. If you find it useful, consider supporting the development!
+### Donate
+You can support this project by making a donation to help ensure its sustainability and the development of new features.
 
 [![Buy Me A Coffee](https://img.shields.io/badge/Buy%20Me%20A%20Coffee-Donate-DF313F?style=for-the-badge&logo=buy-me-a-coffee)](https://buymeacoffee.com/turkaysoftware)
 
@@ -19,18 +18,18 @@ Vimera is free and will always be. If you find it useful, consider supporting th
 
 ---
 
-## ✨ Key Features
+## Key Features
 
-* 🛡️ **Integrity Focused:** Verify file and data authenticity with high-precision hash algorithms.
-* 🚀 **Pure Performance:** Developed exclusively in **C# and .NET Framework** with **zero external libraries** for maximum efficiency.
-* 🌓 **Modern UI:** Advanced interface featuring Light, Dark, and System theme support.
-* 🌍 **Multilingual:** Fully supports 15+ languages including Arabic, Chinese, English, Turkish, and more.
-* 📦 **Portable:** No installation required. Extract the ZIP and start analyzing immediately.
-* 🆓 **Truly Free:** Professional features provided at no cost, with no hidden paywalls.
+* **Integrity Focused:** Verify file and data authenticity with high-precision hash algorithms.
+* **Pure Performance:** Developed exclusively in **C# and .NET Framework** with **zero external libraries** for maximum efficiency.
+* **Modern UI:** Advanced interface featuring Light, Dark, and System theme support.
+* **Multilingual:** Fully supports 15+ languages including Arabic, Chinese, English, Turkish, and more.
+* **Portable:** No installation required. Extract the ZIP and start analyzing immediately.
+* **Truly Free:** Professional features provided at no cost, with no hidden paywalls.
 
 ---
 
-## 🛠️ Advanced Capabilities
+## Advanced Capabilities
 
 Vimera offers a specialized set of tools for comprehensive data verification:
 
@@ -41,20 +40,20 @@ Vimera offers a specialized set of tools for comprehensive data verification:
 
 ---
 
-## 🛠️ Automatic Updates and Translation Support
+## Automatic Updates and Translation Support
 
 * **TS Wizard Integration:** Fully compatible with [TS Wizard](https://www.turkaysoftware.com/ts-wizard) for automatic updates and system monitoring.
 * **Translation Support:** Community-driven localization via the official [Translation Guide](https://github.com/turkaysoftware/vimera/discussions/2).
 
 ---
 
-## 📸 Interface Preview
+## Interface Preview
 
 <img width="1010" height="633" alt="Vimera UI" src="https://github.com/user-attachments/assets/d8c81e91-3812-4b78-818d-a293d4174510" />
 
 ---
 
-## 💻 System Requirements
+## System Requirements
 
 | Feature | Minimum Requirements | Recommended Requirements |
 | :--- | :--- | :--- |
@@ -64,7 +63,7 @@ Vimera offers a specialized set of tools for comprehensive data verification:
 
 ---
 
-## 🚀 Getting Started
+## Getting Started
 
 1.  Navigate to the **[Releases](https://github.com/turkaysoftware/vimera/releases/latest)** page.
 2.  Download the latest ZIP file.
@@ -75,7 +74,7 @@ Vimera offers a specialized set of tools for comprehensive data verification:
 
 ---
 
-## 🛡️ Security
+## Security
 
 * **Zero Data Export Policy:** Your privacy is our priority; no data leaves your machine.
 * **No Dependencies:** Developed entirely from scratch using its own source code, there are no risks from security vulnerabilities in third-party libraries.
@@ -83,6 +82,6 @@ Vimera offers a specialized set of tools for comprehensive data verification:
 
 ---
 
-## 📄 License
+## License
 
 This software is offered free of charge as part of the **Türkay Software solutions package** and is protected under the [**MIT License**](https://github.com/turkaysoftware/vimera?tab=MIT-1-ov-file).
