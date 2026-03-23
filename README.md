@@ -1,9 +1,9 @@
 # Vimera - Advanced Hash Analysis Software
 
-[![GitHub downloads](https://img.shields.io/github/downloads/turkaysoftware/vimera/total?style=flat&color=1a893c)](https://github.com/turkaysoftware/vimera/releases)
-[![GitHub stars](https://img.shields.io/github/stars/turkaysoftware/vimera?style=flat&color=0062cc)](https://github.com/turkaysoftware/vimera/stargazers)
-[![GitHub release](https://img.shields.io/github/v/release/turkaysoftware/vimera?style=flat&color=5a32a3)](https://github.com/turkaysoftware/vimera/releases/latest)
-[![Platform](https://img.shields.io/badge/platform-Windows-b31d28?style=flat)](https://github.com/turkaysoftware/vimera)
+[![GitHub downloads](https://img.shields.io/github/downloads/turkaysoftware/vimera/total?style=flat&color=1a893c&label=Downloads)](https://github.com/turkaysoftware/vimera/releases)
+[![GitHub stars](https://img.shields.io/github/stars/turkaysoftware/vimera?style=flat&color=0062cc&label=Stars)](https://github.com/turkaysoftware/vimera/stargazers)
+[![GitHub release](https://img.shields.io/github/v/release/turkaysoftware/vimera?style=flat&color=5a32a3&label=Latest%20Release)](https://github.com/turkaysoftware/vimera/releases/latest)
+[![Platform](https://img.shields.io/badge/platform-Windows-b31d28?style=flat&label=Platform)](https://github.com/turkaysoftware/vimera)
 
 **Vimera** is a professional-grade **hash analysis software** developed by **Eray Türkay**. Designed for data integrity and security verification, Vimera allows you to generate, analyze, and compare file and text hashes with extreme speed. Whether you are verifying a large download or comparing sensitive data, Vimera provides the precision you need.
 
