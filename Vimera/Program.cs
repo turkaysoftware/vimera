@@ -1,7 +1,6 @@
 ﻿using System;
 using System.Linq;
 using System.Management;
-using System.Threading;
 using System.Windows.Forms;
 //
 using static Vimera.TSModules;
@@ -12,14 +11,11 @@ namespace Vimera{
         /// Uygulamanın ana girdi noktası.
         /// </summary>
         // ======================================================================================================
-        // GLOBAL TS CANCEL TOKEN
-        public static CancellationTokenSource TS_TokenEngine;
-        // ======================================================================================================
         // GLOBAL SYSTEM INFO
         public static int windows_mode = 0;
         // ======================================================================================================
         // TS PRELOADER DEBUG MODE
-        public static bool ts_pre_debug_mode = false;
+        public static readonly bool ts_pre_debug_mode = false;
         // ======================================================================================================
         [STAThread]
         static void Main(){

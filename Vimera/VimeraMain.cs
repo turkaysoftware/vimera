@@ -27,8 +27,8 @@ using System.Text.RegularExpressions;
 using System.Threading;
 using System.Threading.Tasks;
 using System.Windows.Forms;
-using static Vimera.TSCrcChecksumModule;
 // TS MODULES
+using static Vimera.TSCrcChecksumModule;
 using static Vimera.TSModules;
 
 namespace Vimera {
@@ -270,7 +270,7 @@ namespace Vimera {
                     foreach (var path in select_files){
                         if (Directory.Exists(path)){
                             string[] file_list = Directory.GetFiles(path, "*.*", SearchOption.AllDirectories);
-                            var sorted_file_list = file_list.OrderBy(file => TSNaturalSortKey(file, CultureInfo.CurrentCulture)).ToArray();
+                            var sorted_file_list = file_list.OrderBy(file => TSNaturalSortKey(file)).ToArray();
                             foreach (string file in sorted_file_list){
                                 string ext = Path.GetExtension(file);
                                 if (checksumExtensions.Contains(ext)){
@@ -306,7 +306,7 @@ namespace Vimera {
                     select_file.Multiselect = true;
                     if (select_file.ShowDialog() == DialogResult.OK){
                         File_select_clear_function();
-                        var sortedFileNames = select_file.FileNames.OrderBy(name => TSNaturalSortKey(name, CultureInfo.CurrentCulture)).ToArray();
+                        var sortedFileNames = select_file.FileNames.OrderBy(name => TSNaturalSortKey(name)).ToArray();
                         foreach (string file in sortedFileNames){
                             string ext = Path.GetExtension(file);
                             if (checksumExtensions.Contains(ext)){
@@ -991,12 +991,12 @@ namespace Vimera {
         // INTERFACE NAVIGATION: Prevents focus traps and enables cyclic page switching with arrow keys
         // ======================================================================================================
         protected override bool ProcessCmdKey(ref Message msg, Keys keyData){
-            if (keyData == Keys.Right || keyData == Keys.Left){
+            if (keyData == Keys.Up || keyData == Keys.Down || keyData == Keys.Left || keyData == Keys.Right){
                 int currentIndex = MainContent.SelectedIndex;
                 int totalTabs = MainContent.TabCount;
-                if (keyData == Keys.Right){
+                if (keyData == Keys.Down || keyData == Keys.Right){
                     MainContent.SelectedIndex = (currentIndex + 1) % totalTabs;
-                }else if (keyData == Keys.Left){
+                }else if (keyData == Keys.Up || keyData == Keys.Left){
                     MainContent.SelectedIndex = (currentIndex - 1 + totalTabs) % totalTabs;
                 }
                 return true;
